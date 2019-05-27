@@ -1,0 +1,428 @@
+{
+  "resourceId": "3d9481ba-80d7-43b0-b0c2-cc861b745f71",
+  "properties": {
+    "process_id": "ccc",
+    "name": "ccc",
+    "documentation": "",
+    "process_author": "",
+    "process_version": "",
+    "process_namespace": "http://www.activiti.org/processdef",
+    "executionlisteners": "{\"executionListeners\":\"[]\"}",
+    "eventlisteners": "{\"eventListeners\":\"[]\"}",
+    "signaldefinitions": "\"[]\"",
+    "messagedefinitions": "\"[]\"",
+    "messages": []
+  },
+  "stencil": {
+    "id": "BPMNDiagram"
+  },
+  "childShapes": [
+    {
+      "resourceId": "startEvent1",
+      "properties": {
+        "overrideid": "startEvent1",
+        "name": "",
+        "documentation": "",
+        "executionlisteners": {
+          "executionListeners": []
+        },
+        "initiator": "",
+        "formkeydefinition": "",
+        "formreference": "",
+        "formproperties": ""
+      },
+      "stencil": {
+        "id": "StartNoneEvent"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-900CD6A0-0B56-4D5F-ACC3-62DF2E857A4A"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 120,
+          "y": 284
+        },
+        "upperLeft": {
+          "x": 90,
+          "y": 254
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "test-java-service",
+      "properties": {
+        "overrideid": "test-java-service",
+        "name": "测试javaservice",
+        "documentation": "",
+        "asynchronousdefinition": false,
+        "exclusivedefinition": true,
+        "executionlisteners": {
+          "executionListeners": []
+        },
+        "multiinstance_type": "None",
+        "multiinstance_cardinality": "",
+        "multiinstance_collection": "",
+        "multiinstance_variable": "",
+        "multiinstance_condition": "",
+        "isforcompensation": "false",
+        "servicetaskclass": "com.yw56.javaservice.TestService",
+        "servicetaskexpression": "",
+        "servicetaskdelegateexpression": "",
+        "servicetaskfields": {
+          "fields": [
+            {
+              "name": "field2",
+              "stringValue": "1+1",
+              "implementation": "1+1",
+              "$$hashKey": "uiGrid-006"
+            },
+            {
+              "name": "fieldName",
+              "stringValue": "字符串",
+              "implementation": "字符串",
+              "$$hashKey": "uiGrid-008"
+            }
+          ]
+        },
+        "servicetaskresultvariable": ""
+      },
+      "stencil": {
+        "id": "ServiceTask"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-AAB8801C-1B84-44B3-9143-ECF7E45182E6"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 805,
+          "y": 350
+        },
+        "upperLeft": {
+          "x": 705,
+          "y": 270
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27",
+      "properties": {
+        "overrideid": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27",
+        "name": "",
+        "documentation": "",
+        "executionlisteners": {
+          "executionListeners": []
+        }
+      },
+      "stencil": {
+        "id": "EndNoneEvent"
+      },
+      "childShapes": [],
+      "outgoing": [],
+      "bounds": {
+        "lowerRight": {
+          "x": 1033,
+          "y": 283
+        },
+        "upperLeft": {
+          "x": 1005,
+          "y": 255
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-AAB8801C-1B84-44B3-9143-ECF7E45182E6",
+      "properties": {
+        "overrideid": "sid-AAB8801C-1B84-44B3-9143-ECF7E45182E6",
+        "name": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 1004.640625,
+          "y": 310
+        },
+        "upperLeft": {
+          "x": 805.21875,
+          "y": 269
+        }
+      },
+      "dockers": [
+        {
+          "x": 50,
+          "y": 40
+        },
+        {
+          "x": 905,
+          "y": 310
+        },
+        {
+          "x": 905,
+          "y": 269
+        },
+        {
+          "x": 14,
+          "y": 14
+        }
+      ],
+      "target": {
+        "resourceId": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27"
+      }
+    },
+    {
+      "resourceId": "getSum",
+      "properties": {
+        "scriptformat": "JavaScript",
+        "scripttext": "execution.setVariable(\"myVar\", \"test123\")",
+        "overrideid": "getSum",
+        "name": "getSum",
+        "documentation": "",
+        "asynchronousdefinition": false,
+        "exclusivedefinition": true,
+        "executionlisteners": {
+          "executionListeners": []
+        },
+        "multiinstance_type": "None",
+        "multiinstance_cardinality": "",
+        "multiinstance_collection": "",
+        "multiinstance_variable": "",
+        "multiinstance_condition": "",
+        "isforcompensation": "false"
+      },
+      "stencil": {
+        "id": "ScriptTask"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-060067EF-F75E-4504-BCE0-3D4863EBF6EA"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 355,
+          "y": 350
+        },
+        "upperLeft": {
+          "x": 255,
+          "y": 270
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-900CD6A0-0B56-4D5F-ACC3-62DF2E857A4A",
+      "properties": {
+        "overrideid": "sid-900CD6A0-0B56-4D5F-ACC3-62DF2E857A4A",
+        "name": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "getSum"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 254.44921875,
+          "y": 310
+        },
+        "upperLeft": {
+          "x": 120.765625,
+          "y": 269
+        }
+      },
+      "dockers": [
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 157.5,
+          "y": 269
+        },
+        {
+          "x": 157.5,
+          "y": 310
+        },
+        {
+          "x": 50,
+          "y": 40
+        }
+      ],
+      "target": {
+        "resourceId": "getSum"
+      }
+    },
+    {
+      "resourceId": "sid-060067EF-F75E-4504-BCE0-3D4863EBF6EA",
+      "properties": {
+        "overrideid": "sid-060067EF-F75E-4504-BCE0-3D4863EBF6EA",
+        "name": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "test-java-service"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 704.78125,
+          "y": 310
+        },
+        "upperLeft": {
+          "x": 355.21875,
+          "y": 310
+        }
+      },
+      "dockers": [
+        {
+          "x": 50,
+          "y": 40
+        },
+        {
+          "x": 50,
+          "y": 40
+        }
+      ],
+      "target": {
+        "resourceId": "test-java-service"
+      }
+    },
+    {
+      "resourceId": "sid-87C29717-6192-4F46-9C24-5DFE270812C4",
+      "properties": {
+        "overrideid": "",
+        "name": "",
+        "documentation": "",
+        "extjsserviceid": "",
+        "extjsservicerequestparam": {
+          "fields": [
+            {
+              "name": "fieldName",
+              "implementation": "",
+              "stringValue": "",
+              "expression": "",
+              "string": "",
+              "$$hashKey": "uiGrid-00V"
+            },
+            {
+              "name": "fieldName",
+              "implementation": "",
+              "stringValue": "",
+              "expression": "",
+              "string": "",
+              "$$hashKey": "uiGrid-011"
+            }
+          ]
+        },
+        "extjsserviceresultset": {
+          "fields": [
+            {
+              "name": "fieldName",
+              "implementation": "",
+              "stringValue": "",
+              "expression": "",
+              "string": "",
+              "$$hashKey": "uiGrid-007"
+            }
+          ]
+        },
+        "servicetaskresultvariable": ""
+      },
+      "stencil": {
+        "id": "EXTJSServiceTask"
+      },
+      "childShapes": [],
+      "outgoing": [],
+      "bounds": {
+        "lowerRight": {
+          "x": 250,
+          "y": 650
+        },
+        "upperLeft": {
+          "x": 150,
+          "y": 570
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-868912DD-CA13-4E96-8D36-EF72BDA1346D",
+      "properties": {
+        "overrideid": "",
+        "name": "aaaa",
+        "documentation": "",
+        "extjsserviceid": "",
+        "extjsservicerequestparam": "",
+        "extjsserviceresultset": ""
+      },
+      "stencil": {
+        "id": "EXTJSServiceTask"
+      },
+      "childShapes": [],
+      "outgoing": [],
+      "bounds": {
+        "lowerRight": {
+          "x": 558.5,
+          "y": 465
+        },
+        "upperLeft": {
+          "x": 458.5,
+          "y": 385
+        }
+      },
+      "dockers": []
+    }
+  ],
+  "bounds": {
+    "lowerRight": {
+      "x": 1200,
+      "y": 1050
+    },
+    "upperLeft": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "stencilset": {
+    "url": "stencilsets/bpmn2.0/bpmn2.0.json",
+    "namespace": "http://b3mn.org/stencilset/bpmn2.0#"
+  },
+  "ssextensions": []
+}

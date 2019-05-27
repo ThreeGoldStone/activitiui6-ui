@@ -12,24 +12,26 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 public class ExtJSService implements JavaDelegate {
-	private FixedValue serviceId;
+    private FixedValue extjsserviceid;
+    private FixedValue requestParamsDelegateField;
+    private FixedValue extjsserviceresultset;
 
-	@Override
-	public void execute(DelegateExecution execution) {
-		String tenantId = execution.getTenantId();
-		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-		requestFactory.setConnectTimeout(10 * 1000);
-		requestFactory.setReadTimeout(10 * 1000);
-		RestTemplate restTemplate = new RestTemplate(requestFactory);
-		String url = "";
-		String requestBody = "";
-		HttpMethod method = HttpMethod.POST;
+    @Override
+    public void execute(DelegateExecution execution) {
+        String tenantId = execution.getTenantId();
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(10 * 1000);
+        requestFactory.setReadTimeout(10 * 1000);
+        RestTemplate restTemplate = new RestTemplate(requestFactory);
+        String url = "";
+        String requestBody = "";
+        HttpMethod method = HttpMethod.POST;
 
-		Class responseType = String.class;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
-		ResponseEntity response = restTemplate.exchange(url, method, requestEntity, responseType);
-	}
+        Class responseType = String.class;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
+        ResponseEntity response = restTemplate.exchange(url, method, requestEntity, responseType);
+    }
 
 }

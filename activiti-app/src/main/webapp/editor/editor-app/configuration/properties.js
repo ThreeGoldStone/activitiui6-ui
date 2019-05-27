@@ -101,5 +101,17 @@ KISBPM.PROPERTY_CONFIG =
         "oryx-decisiontaskdecisiontablereference-complex": {
             "readModeTemplateUrl": "editor-app/configuration/properties/decisiontable-reference-display-template.html",
             "writeModeTemplateUrl": "editor-app/configuration/properties/decisiontable-reference-write-template.html"
+        },
+        "oryx-extjsserviceid-complex": {
+            "readModeTemplateUrl": "editor-app/configuration/properties/fields-display-template.html",
+            "writeModeTemplateUrl": "editor-app/configuration/properties/fields-write-template.html"
+        },
+        "oryx-extjsservicerequestparam-complex": {
+            "readModeTemplateUrl": "editor-app/configuration/properties/fields-display-template.html",
+            "writeModeTemplateUrl": "editor-app/configuration/properties/fields-write-template.html"
+        },
+        "oryx-extjsserviceresultset-complex": {
+            "readModeTemplateUrl": "editor-app/configuration/properties/fields-display-template.html",
+            "writeModeTemplateUrl": "editor-app/configuration/properties/fields-write-template.html"
         }
     };
