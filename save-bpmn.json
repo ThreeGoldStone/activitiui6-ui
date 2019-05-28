@@ -1,368 +1,59 @@
 {
-  "resourceId": "3d9481ba-80d7-43b0-b0c2-cc861b745f71",
-  "properties": {
-    "process_id": "ccc",
-    "name": "ccc",
-    "documentation": "",
-    "process_author": "",
-    "process_version": "",
-    "process_namespace": "http://www.activiti.org/processdef",
-    "executionlisteners": "{\"executionListeners\":\"[]\"}",
-    "eventlisteners": "{\"eventListeners\":\"[]\"}",
-    "signaldefinitions": "\"[]\"",
-    "messagedefinitions": "\"[]\"",
-    "messages": []
-  },
-  "stencil": {
-    "id": "BPMNDiagram"
-  },
-  "childShapes": [
+  "size": 4,
+  "total": 4,
+  "start": 0,
+  "data": [
     {
-      "resourceId": "startEvent1",
-      "properties": {
-        "overrideid": "startEvent1",
-        "name": "",
-        "documentation": "",
-        "executionlisteners": {
-          "executionListeners": []
-        },
-        "initiator": "",
-        "formkeydefinition": "",
-        "formreference": "",
-        "formproperties": ""
-      },
-      "stencil": {
-        "id": "StartNoneEvent"
-      },
-      "childShapes": [],
-      "outgoing": [
-        {
-          "resourceId": "sid-900CD6A0-0B56-4D5F-ACC3-62DF2E857A4A"
-        }
-      ],
-      "bounds": {
-        "lowerRight": {
-          "x": 120,
-          "y": 284
-        },
-        "upperLeft": {
-          "x": 90,
-          "y": 254
-        }
-      },
-      "dockers": []
+      "id": "3d9481ba-80d7-43b0-b0c2-cc861b745f71",
+      "name": "ccc2",
+      "key": "ccc2",
+      "description": "",
+      "createdBy": "admin",
+      "lastUpdatedBy": "admin",
+      "lastUpdated": "2019-05-28T07:13:00.999+0000",
+      "latestVersion": true,
+      "version": 1,
+      "comment": null,
+      "modelType": 0
     },
     {
-      "resourceId": "test-java-service",
-      "properties": {
-        "overrideid": "test-java-service",
-        "name": "测试javaservice",
-        "documentation": "",
-        "asynchronousdefinition": false,
-        "exclusivedefinition": true,
-        "executionlisteners": {
-          "executionListeners": []
-        },
-        "multiinstance_type": "None",
-        "multiinstance_cardinality": "",
-        "multiinstance_collection": "",
-        "multiinstance_variable": "",
-        "multiinstance_condition": "",
-        "isforcompensation": "false",
-        "servicetaskclass": "com.yw56.javaservice.TestService",
-        "servicetaskexpression": "",
-        "servicetaskdelegateexpression": "",
-        "servicetaskfields": {
-          "fields": [
-            {
-              "name": "field2",
-              "stringValue": "1+1",
-              "implementation": "1+1",
-              "$$hashKey": "uiGrid-026"
-            },
-            {
-              "name": "fieldName",
-              "stringValue": "字符串",
-              "implementation": "字符串",
-              "$$hashKey": "uiGrid-028"
-            }
-          ]
-        },
-        "servicetaskresultvariable": ""
-      },
-      "stencil": {
-        "id": "ServiceTask"
-      },
-      "childShapes": [],
-      "outgoing": [
-        {
-          "resourceId": "sid-AAB8801C-1B84-44B3-9143-ECF7E45182E6"
-        }
-      ],
-      "bounds": {
-        "lowerRight": {
-          "x": 805,
-          "y": 350
-        },
-        "upperLeft": {
-          "x": 705,
-          "y": 270
-        }
-      },
-      "dockers": []
+      "id": "1c468e6a-bb63-4806-9603-64c93ed8bcc9",
+      "name": "sub-p",
+      "key": "sub-p",
+      "description": "",
+      "createdBy": "admin",
+      "lastUpdatedBy": "admin",
+      "lastUpdated": "2019-05-13T04:23:41.574+0000",
+      "latestVersion": true,
+      "version": 1,
+      "comment": null,
+      "modelType": 0
     },
     {
-      "resourceId": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27",
-      "properties": {
-        "overrideid": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27",
-        "name": "",
-        "documentation": "",
-        "executionlisteners": {
-          "executionListeners": []
-        }
-      },
-      "stencil": {
-        "id": "EndNoneEvent"
-      },
-      "childShapes": [],
-      "outgoing": [],
-      "bounds": {
-        "lowerRight": {
-          "x": 1033,
-          "y": 283
-        },
-        "upperLeft": {
-          "x": 1005,
-          "y": 255
-        }
-      },
-      "dockers": []
+      "id": "fe337344-3034-4e68-b3ed-a349347032f2",
+      "name": "ccc",
+      "key": "ccc",
+      "description": "",
+      "createdBy": "admin",
+      "lastUpdatedBy": "admin",
+      "lastUpdated": "2019-05-13T02:51:56.941+0000",
+      "latestVersion": true,
+      "version": 1,
+      "comment": null,
+      "modelType": 0
     },
     {
-      "resourceId": "sid-AAB8801C-1B84-44B3-9143-ECF7E45182E6",
-      "properties": {
-        "overrideid": "sid-AAB8801C-1B84-44B3-9143-ECF7E45182E6",
-        "name": "",
-        "documentation": "",
-        "conditionsequenceflow": "",
-        "executionlisteners": "",
-        "defaultflow": "false"
-      },
-      "stencil": {
-        "id": "SequenceFlow"
-      },
-      "childShapes": [],
-      "outgoing": [
-        {
-          "resourceId": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27"
-        }
-      ],
-      "bounds": {
-        "lowerRight": {
-          "x": 1004.640625,
-          "y": 310
-        },
-        "upperLeft": {
-          "x": 805.21875,
-          "y": 269
-        }
-      },
-      "dockers": [
-        {
-          "x": 50,
-          "y": 40
-        },
-        {
-          "x": 905,
-          "y": 310
-        },
-        {
-          "x": 905,
-          "y": 269
-        },
-        {
-          "x": 14,
-          "y": 14
-        }
-      ],
-      "target": {
-        "resourceId": "sid-E590F70B-4207-4C1D-87FF-A51732B7DD27"
-      }
-    },
-    {
-      "resourceId": "getSum",
-      "properties": {
-        "scriptformat": "JavaScript",
-        "scripttext": "execution.setVariable(\"myVar\", \"test123\")",
-        "overrideid": "getSum",
-        "name": "getSum",
-        "documentation": "",
-        "asynchronousdefinition": false,
-        "exclusivedefinition": true,
-        "executionlisteners": {
-          "executionListeners": []
-        },
-        "multiinstance_type": "None",
-        "multiinstance_cardinality": "",
-        "multiinstance_collection": "",
-        "multiinstance_variable": "",
-        "multiinstance_condition": "",
-        "isforcompensation": "false"
-      },
-      "stencil": {
-        "id": "ScriptTask"
-      },
-      "childShapes": [],
-      "outgoing": [
-        {
-          "resourceId": "sid-060067EF-F75E-4504-BCE0-3D4863EBF6EA"
-        }
-      ],
-      "bounds": {
-        "lowerRight": {
-          "x": 355,
-          "y": 350
-        },
-        "upperLeft": {
-          "x": 255,
-          "y": 270
-        }
-      },
-      "dockers": []
-    },
-    {
-      "resourceId": "sid-900CD6A0-0B56-4D5F-ACC3-62DF2E857A4A",
-      "properties": {
-        "overrideid": "sid-900CD6A0-0B56-4D5F-ACC3-62DF2E857A4A",
-        "name": "",
-        "documentation": "",
-        "conditionsequenceflow": "",
-        "executionlisteners": "",
-        "defaultflow": "false"
-      },
-      "stencil": {
-        "id": "SequenceFlow"
-      },
-      "childShapes": [],
-      "outgoing": [
-        {
-          "resourceId": "getSum"
-        }
-      ],
-      "bounds": {
-        "lowerRight": {
-          "x": 254.44921875,
-          "y": 310
-        },
-        "upperLeft": {
-          "x": 120.765625,
-          "y": 269
-        }
-      },
-      "dockers": [
-        {
-          "x": 15,
-          "y": 15
-        },
-        {
-          "x": 157.5,
-          "y": 269
-        },
-        {
-          "x": 157.5,
-          "y": 310
-        },
-        {
-          "x": 50,
-          "y": 40
-        }
-      ],
-      "target": {
-        "resourceId": "getSum"
-      }
-    },
-    {
-      "resourceId": "sid-060067EF-F75E-4504-BCE0-3D4863EBF6EA",
-      "properties": {
-        "overrideid": "sid-060067EF-F75E-4504-BCE0-3D4863EBF6EA",
-        "name": "",
-        "documentation": "",
-        "conditionsequenceflow": "",
-        "executionlisteners": "",
-        "defaultflow": "false"
-      },
-      "stencil": {
-        "id": "SequenceFlow"
-      },
-      "childShapes": [],
-      "outgoing": [
-        {
-          "resourceId": "test-java-service"
-        }
-      ],
-      "bounds": {
-        "lowerRight": {
-          "x": 704.78125,
-          "y": 310
-        },
-        "upperLeft": {
-          "x": 355.21875,
-          "y": 310
-        }
-      },
-      "dockers": [
-        {
-          "x": 50,
-          "y": 40
-        },
-        {
-          "x": 50,
-          "y": 40
-        }
-      ],
-      "target": {
-        "resourceId": "test-java-service"
-      }
-    },
-    {
-      "resourceId": "sid-87C29717-6192-4F46-9C24-5DFE270812C4",
-      "properties": {
-        "overrideid": "",
-        "name": "",
-        "documentation": "",
-        "servicetaskresultvariable": ""
-      },
-      "stencil": {
-        "id": "EXTJSServiceTask"
-      },
-      "childShapes": [],
-      "outgoing": [],
-      "bounds": {
-        "lowerRight": {
-          "x": 512.5,
-          "y": 268
-        },
-        "upperLeft": {
-          "x": 412.5,
-          "y": 188
-        }
-      },
-      "dockers": []
+      "id": "02073ff1-71a6-496b-97c9-74c0b9a5e68e",
+      "name": "testP1",
+      "key": "tp1",
+      "description": "",
+      "createdBy": "admin",
+      "lastUpdatedBy": "admin",
+      "lastUpdated": "2019-05-10T07:11:43.555+0000",
+      "latestVersion": true,
+      "version": 1,
+      "comment": null,
+      "modelType": 0
     }
-  ],
-  "bounds": {
-    "lowerRight": {
-      "x": 1200,
-      "y": 1050
-    },
-    "upperLeft": {
-      "x": 0,
-      "y": 0
-    }
-  },
-  "stencilset": {
-    "url": "stencilsets/bpmn2.0/bpmn2.0.json",
-    "namespace": "http://b3mn.org/stencilset/bpmn2.0#"
-  },
-  "ssextensions": []
+  ]
 }

@@ -12,7 +12,12 @@
  */
 package org.activiti.app.servlet;
 
+import com.yw56.javaservice.ClassAccessUtils;
+import com.yw56.javaservice.EXTJSServiceJsonConverter;
 import org.activiti.app.conf.ApplicationConfiguration;
+import org.activiti.bpmn.model.BaseElement;
+import org.activiti.editor.language.json.converter.BaseBpmnJsonConverter;
+import org.activiti.editor.language.json.converter.BpmnJsonConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.WebApplicationContext;
@@ -28,16 +33,23 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
 import java.util.EnumSet;
+import java.util.Map;
 
 /**
  * Configuration of web application with Servlet 3.0 APIs.
  */
 public class WebConfigurer implements ServletContextListener {
 
-    private final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
+    private static final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
 
     public AnnotationConfigWebApplicationContext context;
+    static {
+        Map<Class<? extends BaseElement>, Class<? extends BaseBpmnJsonConverter>> convertersToJsonMap = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "convertersToJsonMap");
+        Map<String, Class<? extends BaseBpmnJsonConverter>> convertersToBpmnMap = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "convertersToBpmnMap");
+        EXTJSServiceJsonConverter.fillTypes(convertersToBpmnMap, convertersToJsonMap);
+        log.info("BaseBpmnJsonConverter  添加EXTJS服务的JSON解析器");
 
+    }
     public void setContext(AnnotationConfigWebApplicationContext context) {
         this.context = context;
     }

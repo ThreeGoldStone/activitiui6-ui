@@ -187,6 +187,32 @@ function _drawServiceTask(element) {
     }
     _addHoverLogic(element, "rect", ACTIVITY_STROKE_COLOR);
 }
+// add by djl 增加extjs服务的预览
+function _drawExtJSServiceTask(element) {
+    _drawTask(element);
+    if (element.taskType === "mail") {
+        _drawSendTaskIcon(paper, element.x + 4, element.y + 4);
+    }
+    else if (element.taskType === "camel") {
+        _drawCamelTaskIcon(paper, element.x + 4, element.y + 4);
+    }
+    else if (element.taskType === "mule") {
+        _drawMuleTaskIcon(paper, element.x + 4, element.y + 4);
+    }
+    else if (element.taskType === "alfresco_publish") {
+        _drawAlfrescoPublishTaskIcon(paper, element.x + 4, element.y + 4);
+    }
+    else if (element.taskType === "rest_call") {
+        _drawRestCallTaskIcon(paper, element.x + 4, element.y + 4);
+    }
+    else if (element.stencilIconId) {
+        paper.image("../service/stencilitem/" + element.stencilIconId + "/icon", element.x + 4, element.y + 4, 16, 16);
+    }
+    else {
+        _drawServiceTaskIcon(paper, element.x + 4, element.y + 4);
+    }
+    _addHoverLogic(element, "rect", ACTIVITY_STROKE_COLOR);
+}
 
 function _drawCallActivity(element) {
     var width = element.width - (CALL_ACTIVITY_STROKE / 2);
