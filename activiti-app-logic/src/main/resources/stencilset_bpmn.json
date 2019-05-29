@@ -1228,9 +1228,25 @@
         "documentationpackage",
         "extjsserviceidackage",
         "extjsservicerequestparampackage",
-        "extjsserviceresultsetpackage"
+        "extjsserviceresultsetpackage",
+        "multiinstance_typepackage",
+        "isforcompensationpackage"
       ],
-      "hiddenPropertyPackages": [],
+      "hiddenPropertyPackages": [
+        "asynchronousdefinitionpackage",
+        "exclusivedefinitionpackage",
+        "executionlistenerspackage",
+        "multiinstance_cardinalitypackage",
+        "multiinstance_collectionpackage",
+        "multiinstance_variablepackage",
+        "multiinstance_conditionpackage",
+        "isforcompensationpackage",
+        "servicetaskclasspackage",
+        "servicetaskexpressionpackage",
+        "servicetaskdelegateexpressionpackage",
+        "servicetaskfieldspackage",
+        "servicetaskresultvariablepackage"
+      ],
       "roles": [
         "Activity",
         "sequence_start",

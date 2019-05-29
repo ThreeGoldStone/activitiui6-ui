@@ -25,13 +25,13 @@ import java.io.IOException;
 public class ImageGenerator {
 
     public static BufferedImage createImage(BpmnModel bpmnModel) {
-        ProcessDiagramGenerator diagramGenerator = new MyProcessDiagramGenerator();
+        ProcessDiagramGenerator diagramGenerator = new DefaultProcessDiagramGenerator();
         BufferedImage diagramImage = diagramGenerator.generatePngImage(bpmnModel, 1.0);
         return diagramImage;
     }
 
     public static BufferedImage createImage(BpmnModel bpmnModel, double scaleFactor) {
-        ProcessDiagramGenerator diagramGenerator = new MyProcessDiagramGenerator(scaleFactor);
+        ProcessDiagramGenerator diagramGenerator = new DefaultProcessDiagramGenerator(scaleFactor);
         BufferedImage diagramImage = diagramGenerator.generatePngImage(bpmnModel, scaleFactor);
         return diagramImage;
     }

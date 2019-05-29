@@ -21,35 +21,30 @@ import java.util.Map;
 
 public class ExtJSService implements JavaDelegate {
     private FixedValue extjsserviceid;
-    private FixedValue requestParamsDelegateField;
+    private FixedValue extjsservicerequestparam;
     private FixedValue extjsserviceresultset;
     protected static final Logger LOGGER = LoggerFactory.getLogger(ExtJSService.class);
-
-    static {
-        Map<Class<? extends BaseElement>, Class<? extends BaseBpmnJsonConverter>> convertersToJsonMap = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "convertersToJsonMap");
-        Map<String, Class<? extends BaseBpmnJsonConverter>> convertersToBpmnMap = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "convertersToBpmnMap");
-        EXTJSServiceJsonConverter.fillTypes(convertersToBpmnMap, convertersToJsonMap);
-        LOGGER.info("BaseBpmnJsonConverter  添加EXTJS服务的JSON解析器");
-
-    }
-
 
     @Override
     public void execute(DelegateExecution execution) {
         String tenantId = execution.getTenantId();
-        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setConnectTimeout(10 * 1000);
-        requestFactory.setReadTimeout(10 * 1000);
-        RestTemplate restTemplate = new RestTemplate(requestFactory);
-        String url = "";
-        String requestBody = "";
-        HttpMethod method = HttpMethod.POST;
-
-        Class responseType = String.class;
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
-        ResponseEntity response = restTemplate.exchange(url, method, requestEntity, responseType);
+        LOGGER.info(tenantId);
+        LOGGER.info(extjsserviceid.getExpressionText());
+        LOGGER.info(extjsservicerequestparam.getExpressionText());
+        LOGGER.info(extjsserviceresultset.getExpressionText());
+//        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+//        requestFactory.setConnectTimeout(10 * 1000);
+//        requestFactory.setReadTimeout(10 * 1000);
+//        RestTemplate restTemplate = new RestTemplate(requestFactory);
+//        String url = "";
+//        String requestBody = "";
+//        HttpMethod method = HttpMethod.POST;
+//
+//        Class responseType = String.class;
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
+//        ResponseEntity response = restTemplate.exchange(url, method, requestEntity, responseType);
     }
 
 }

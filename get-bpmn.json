@@ -1,0 +1,198 @@
+{
+  "modelId": "3d9481ba-80d7-43b0-b0c2-cc861b745f71",
+  "name": "ccc2",
+  "key": "ccc2",
+  "description": "",
+  "lastUpdated": "2019-05-28T08:28:18.605+0000",
+  "lastUpdatedBy": "admin",
+  "model": {
+    "resourceId": "3d9481ba-80d7-43b0-b0c2-cc861b745f71",
+    "properties": {
+      "process_id": "ccc",
+      "name": "ccc",
+      "documentation": "",
+      "process_author": "",
+      "process_version": "",
+      "process_namespace": "http://www.activiti.org/processdef",
+      "executionlisteners": "{\"executionListeners\":\"[]\"}",
+      "eventlisteners": "{\"eventListeners\":\"[]\"}",
+      "signaldefinitions": "\"[]\"",
+      "messagedefinitions": "\"[]\"",
+      "messages": []
+    },
+    "stencil": {
+      "id": "BPMNDiagram"
+    },
+    "childShapes": [
+      {
+        "resourceId": "sid-659F737F-9987-4CDA-BEA6-DA494CDB9CC4",
+        "properties": {
+          "overrideid": "",
+          "name": "",
+          "documentation": "",
+          "executionlisteners": "",
+          "initiator": "",
+          "formkeydefinition": "",
+          "formreference": "",
+          "formproperties": ""
+        },
+        "stencil": {
+          "id": "StartNoneEvent"
+        },
+        "childShapes": [],
+        "outgoing": [],
+        "bounds": {
+          "lowerRight": {
+            "x": 301.5,
+            "y": 179
+          },
+          "upperLeft": {
+            "x": 271.5,
+            "y": 149
+          }
+        },
+        "dockers": []
+      },
+      {
+        "resourceId": "sid-4B93D1A5-CCF7-4923-A3D3-2BC02EEF96AA",
+        "properties": {
+          "overrideid": "",
+          "name": "",
+          "documentation": "",
+          "asynchronousdefinition": "false",
+          "exclusivedefinition": "false",
+          "executionlisteners": "",
+          "multiinstance_type": "None",
+          "multiinstance_cardinality": "",
+          "multiinstance_collection": "",
+          "multiinstance_variable": "",
+          "multiinstance_condition": "",
+          "isforcompensation": "false",
+          "servicetaskclass": "",
+          "servicetaskexpression": "",
+          "servicetaskdelegateexpression": "",
+          "servicetaskfields": "",
+          "servicetaskresultvariable": ""
+        },
+        "stencil": {
+          "id": "ServiceTask"
+        },
+        "childShapes": [],
+        "outgoing": [],
+        "bounds": {
+          "lowerRight": {
+            "x": 640.5,
+            "y": 314
+          },
+          "upperLeft": {
+            "x": 540.5,
+            "y": 234
+          }
+        },
+        "dockers": []
+      },
+      {
+        "resourceId": "sid-B5D52AA7-7021-4697-8D28-65F58C98FF12",
+        "properties": {
+          "overrideid": "",
+          "name": "",
+          "documentation": "",
+          "extjsserviceid": {
+            "fields": [
+              {
+                "name": "fieldName",
+                "implementation": "啊啊啊",
+                "stringValue": "啊啊啊",
+                "expression": "",
+                "string": "",
+                "$$hashKey": "uiGrid-007"
+              }
+            ]
+          },
+          "extjsservicerequestparam": {
+            "fields": [
+              {
+                "name": "fieldName",
+                "implementation": "吧",
+                "stringValue": "吧",
+                "expression": "",
+                "string": "",
+                "$$hashKey": "uiGrid-00J"
+              },
+              {
+                "name": "fieldName",
+                "implementation": "啊",
+                "stringValue": "啊",
+                "expression": "",
+                "string": "",
+                "$$hashKey": "uiGrid-00P"
+              }
+            ]
+          },
+          "extjsserviceresultset": {
+            "fields": [
+              {
+                "name": "fieldName",
+                "implementation": "密码",
+                "stringValue": "密码",
+                "expression": "",
+                "string": "",
+                "$$hashKey": "uiGrid-011"
+              },
+              {
+                "name": "fieldName",
+                "implementation": "哈哈",
+                "stringValue": "",
+                "expression": "哈哈",
+                "string": "",
+                "$$hashKey": "uiGrid-017"
+              },
+              {
+                "name": "fieldName",
+                "implementation": "嘻嘻嘻",
+                "stringValue": "嘻嘻嘻",
+                "expression": "",
+                "string": "",
+                "$$hashKey": "uiGrid-01D"
+              }
+            ]
+          },
+          "multiinstance_type": "None",
+          "isforcompensation": "false"
+        },
+        "stencil": {
+          "id": "EXTJSServiceTask"
+        },
+        "childShapes": [],
+        "outgoing": [],
+        "bounds": {
+          "lowerRight": {
+            "x": 205,
+            "y": 350
+          },
+          "upperLeft": {
+            "x": 105,
+            "y": 270
+          }
+        },
+        "dockers": []
+      }
+    ],
+    "bounds": {
+      "lowerRight": {
+        "x": 1200,
+        "y": 1050
+      },
+      "upperLeft": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "stencilset": {
+      "url": "stencilsets/bpmn2.0/bpmn2.0.json",
+      "namespace": "http://b3mn.org/stencilset/bpmn2.0#"
+    },
+    "ssextensions": [],
+    "modelType": "model"
+  }
+}
