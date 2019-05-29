@@ -33,7 +33,11 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
+
+import static com.yw56.javaservice.EXTJSConstants.STENCIL_EXTJS_TASK_SERVICE;
+import static org.activiti.editor.constants.StencilConstants.STENCIL_TASK_SERVICE;
 
 /**
  * Configuration of web application with Servlet 3.0 APIs.
@@ -43,13 +47,19 @@ public class WebConfigurer implements ServletContextListener {
     private static final Logger log = LoggerFactory.getLogger(WebConfigurer.class);
 
     public AnnotationConfigWebApplicationContext context;
+
     static {
         Map<Class<? extends BaseElement>, Class<? extends BaseBpmnJsonConverter>> convertersToJsonMap = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "convertersToJsonMap");
         Map<String, Class<? extends BaseBpmnJsonConverter>> convertersToBpmnMap = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "convertersToBpmnMap");
+        // json解析器
         EXTJSServiceJsonConverter.fillTypes(convertersToBpmnMap, convertersToJsonMap);
+        List<String> DI_RECTANGLES = ClassAccessUtils.getStaticPropertyAccess(BpmnJsonConverter.class, "DI_RECTANGLES");
+        // 添加图像解析类型
+        DI_RECTANGLES.add(STENCIL_EXTJS_TASK_SERVICE);
         log.info("BaseBpmnJsonConverter  添加EXTJS服务的JSON解析器");
 
     }
+
     public void setContext(AnnotationConfigWebApplicationContext context) {
         this.context = context;
     }
