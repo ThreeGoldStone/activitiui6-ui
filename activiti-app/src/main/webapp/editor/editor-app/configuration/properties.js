@@ -103,15 +103,15 @@ KISBPM.PROPERTY_CONFIG =
             "writeModeTemplateUrl": "editor-app/configuration/properties/decisiontable-reference-write-template.html"
         },
         "oryx-extjsserviceid-complex": {
-            "readModeTemplateUrl": "editor-app/configuration/properties/fields-display-template.html",
-            "writeModeTemplateUrl": "editor-app/configuration/properties/fields-write-template.html"
+            "readModeTemplateUrl": "editor-app/configuration/extjs/properties/serviceid-display-template.html",
+            "writeModeTemplateUrl": "editor-app/configuration/extjs/properties/serviceid-write-template.html"
         },
         "oryx-extjsservicerequestparam-complex": {
-            "readModeTemplateUrl": "editor-app/configuration/properties/fields-display-template.html",
-            "writeModeTemplateUrl": "editor-app/configuration/properties/fields-write-template.html"
+            "readModeTemplateUrl": "editor-app/configuration/extjs/properties/requestparam-display-template.html",
+            "writeModeTemplateUrl": "editor-app/configuration/extjs/properties/requestparam-write-template.html"
         },
         "oryx-extjsserviceresultset-complex": {
-            "readModeTemplateUrl": "editor-app/configuration/properties/fields-display-template.html",
-            "writeModeTemplateUrl": "editor-app/configuration/properties/fields-write-template.html"
+            "readModeTemplateUrl": "editor-app/configuration/extjs/properties/resultset-display-template.html",
+            "writeModeTemplateUrl": "editor-app/configuration/extjs/properties/resultset-write-template.html"
         }
     };

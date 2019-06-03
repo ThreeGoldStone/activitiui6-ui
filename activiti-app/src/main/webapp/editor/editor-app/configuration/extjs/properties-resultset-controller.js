@@ -15,7 +15,7 @@
  * Task listeners
  */
 
-angular.module('activitiModeler').controller('DjlKisBpmFieldsCtrl',
+angular.module('activitiModeler').controller('BpmResultsetCtrl',
     ['$scope', '$modal', '$timeout', '$translate', function ($scope, $modal, $timeout, $translate) {
 
         // Config for the modal window
@@ -30,7 +30,7 @@ angular.module('activitiModeler').controller('DjlKisBpmFieldsCtrl',
         _internalCreateModal(opts, $modal, $scope);
     }]);
 
-angular.module('activitiModeler').controller('DjlKisBpmFieldsPopupCtrl',
+angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
 // javaservices的数据定义
         $scope.javaServices = [];
