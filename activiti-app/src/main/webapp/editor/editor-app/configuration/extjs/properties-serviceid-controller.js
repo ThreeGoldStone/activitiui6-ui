@@ -33,196 +33,126 @@ angular.module('activitiModeler').controller('BpmServiceidCtrl',
 angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
 // javaservices的数据定义
-        $scope.javaServices = [];
-        $scope.isJavaServicesLoaded = false;
-        $scope.currentJavaServices = {};
-        $scope.currentJavaServicesFields = [];
-        // grid 绑定的数组只能插入删除，指向新的数组，会导致变更无效
-        $scope.pushAllJavaServices = function () {
-            // 清空
-            $scope.currentJavaServicesFields.splice(0,$scope.currentJavaServicesFields.length)
-            // 塞入
-            $scope.currentJavaServices.fields.forEach(function (field) {
-                $scope.currentJavaServicesFields.push(field);
-            });
-        }
+        $scope.serviceList = [
+            {
+                id: "1",
+                appname: "系统应用",
+                serviceList: [
+                    {
+                        serviceid: "test-service-1",
+                        servicename: "测试服务1",
+                        des: "测试服务1 des"
+                    },
+                    {
+                        serviceid: "test-service-2",
+                        servicename: "测试服务1",
+                        des: "测试服务2 des"
+                    },
+                    {
+                        serviceid: "test-service-3",
+                        servicename: "测试服务1",
+                        des: "测试服务3 des"
+                    }
+                ]
+            },
+            {
+                id: "",
+                appname: "djl应用",
+                serviceList: [
+                    {
+                        serviceid: "test-djl-service-1",
+                        servicename: "djl服务1",
+                        des: "djl服务1 des"
+                    },
+                    {
+                        serviceid: "test-djl-service-2",
+                        servicename: "djl服务2",
+                        des: "djl服务2 des"
+                    }
+                ]
+            },
 
-        $scope.selectJavaServices = function (currentJavaServices) {
-            $scope.currentJavaServices = currentJavaServices;
-            // $scope.currentJavaServicesFields.concat($scope.currentJavaServices.fields);
-            $scope.pushAllJavaServices();
-            // for (var i = 0, arrayLength = $scope.currentJavaServices.fields.length; j < arrayLength; j++)
-            //     array.push(arguments[i][j]);
-            console.log(currentJavaServices);
-        }
-        // javaservices的数据加载
-        $http({
-            method: 'GET',
-            url: KISBPM.URL.getJavaServices()
-        }).success(function (data, status, headers, config) {
-
-            $scope.javaServices = data;
-            $scope.currentJavaServices = data[0];
-            // $scope.currentJavaServicesFields = angular.copy($scope.currentJavaServices.fields);
-            // $scope.fields = angular.copy($scope.property.value.fields);
-            $scope.pushAllJavaServices();
-            $scope.isJavaServicesLoaded = true;
-            console.log(data)
-
-        }).error(function (data, status, headers, config) {
-            console.log('Something went wrong when fetching java services:' + JSON.stringify(data));
-        });
-        // Put json representing form properties on scope
-        if ($scope.property.value !== undefined && $scope.property.value !== null
-            && $scope.property.value.fields !== undefined
-            && $scope.property.value.fields !== null) {
-
-            // Note that we clone the json object rather then setting it directly,
-            // this to cope with the fact that the user can click the cancel button and no changes should have happened
-            $scope.fields = angular.copy($scope.property.value.fields);
-
-            for (var i = 0; i < $scope.fields.length; i++) {
-                var field = $scope.fields[i];
-                if (field.stringValue !== undefined && field.stringValue !== '') {
-                    field.implementation = field.stringValue;
-                } else if (field.expression !== undefined && field.expression !== '') {
-                    field.implementation = field.expression;
-                } else if (field.string !== undefined && field.string !== '') {
-                    field.implementation = field.string;
+        ];
+        $scope.service = {
+            serviceid: null,
+            servicename: null,
+            des: null
+        };
+        // 初始化已选择的数据
+        if ($scope.property.value != null) {
+            for (var j = 0, len = $scope.serviceList.length; j < len; j++) {
+                var app = $scope.serviceList[j];
+                for (var i = 0, len = app.serviceList.length; i < len; i++) {
+                    var service = app.serviceList[i];
+                    if (service.serviceid == $scope.property.value.serviceid) {
+                        $scope.service = service;
+                        $scope.service.$$isChecked = true;
+                        break;
+                    }
                 }
             }
+        }
+        // javaservices的数据加载
+        // $http({
+        //     method: 'GET',
+        //     url: KISBPM.URL.getJavaServices()
+        // }).success(function (data, status, headers, config) {
+        //
+        //     $scope.javaServices = data;
+        //     $scope.currentJavaServices = data[0];
+        //     // $scope.currentJavaServicesFields = angular.copy($scope.currentJavaServices.fields);
+        //     // $scope.fields = angular.copy($scope.property.value.fields);
+        //     $scope.pushAllJavaServices();
+        //     $scope.isJavaServicesLoaded = true;
+        //     console.log(data)
+        //
+        // }).error(function (data, status, headers, config) {
+        //     console.log('Something went wrong when fetching java services:' + JSON.stringify(data));
+        // });
+        // Put json representing form properties on scope
+        if ($scope.property.value !== undefined && $scope.property.value !== null) {
+            $scope.service = $scope.property.value;
 
         } else {
-            $scope.fields = [];
+            $scope.service = {
+                serviceid: null,
+                servicename: null,
+                des: null
+            };
         }
 
-        $scope.translationsRetrieved = false;
-        $scope.labels = {};
 
         var namePromise = $translate('PROPERTY.FIELDS.NAME');
         var implementationPromise = $translate('PROPERTY.FIELDS.IMPLEMENTATION');
 
         $q.all([namePromise, implementationPromise]).then(function (results) {
-            $scope.labels.nameLabel = results[0];
-            $scope.labels.implementationLabel = results[1];
-            $scope.translationsRetrieved = true;
+            // $scope.labels.nameLabel = results[0];
+            // $scope.labels.implementationLabel = results[1];
+            // $scope.translationsRetrieved = true;
 
-            // Config for grid
-            $scope.gridOptions = {
-                data: $scope.currentJavaServicesFields,
-                // data: $scope.fields,
-                headerRowHeight: 28,
-                enableRowSelection: true,
-                enableRowHeaderSelection: false,
-                multiSelect: false,
-                modifierKeysToMultiSelect: false,
-                enableHorizontalScrollbar: 0,
-                enableColumnMenus: false,
-                enableSorting: false,
-                columnDefs: [{field: 'name', displayName: $scope.labels.nameLabel},
-                    {field: 'implementation', displayName: $scope.labels.implementationLabel}]
-            };
-
-            $scope.gridOptions.onRegisterApi = function (gridApi) {
-                //set gridApi on scope
-                $scope.gridApi = gridApi;
-                gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-                    $scope.selectedField = row.entity;
-                });
-            };
         });
-
-        $scope.fieldDetailsChanged = function () {
-            if ($scope.selectedField.stringValue != '') {
-                $scope.selectedField.implementation = $scope.selectedField.stringValue;
-            } else if ($scope.selectedField.expression != '') {
-                $scope.selectedField.implementation = $scope.selectedField.expression;
-            } else if ($scope.selectedField.string != '') {
-                $scope.selectedField.implementation = $scope.selectedField.string;
-            } else {
-                $scope.selectedField.implementation = '';
-            }
+        $scope.getItemIcon = function (item) {
+            return item.$$isExpend ? 'fa fa-minus' : 'fa fa-plus';
         };
-
-        // Click handler for add button
-        // $scope.addNewField = function () {
-        //     var newField = {
-        //         name: 'fieldName',
-        //         implementation: '',
-        //         stringValue: '',
-        //         expression: '',
-        //         string: ''
-        //     };
-        //
-        //     $scope.fields.push(newField);
-        //     $timeout(function () {
-        //         $scope.gridApi.selection.toggleRowSelection(newField);
-        //     });
-        // };
-        //
-        // // Click handler for remove button
-        // $scope.removeField = function () {
-        //
-        //     var selectedItems = $scope.gridApi.selection.getSelectedRows();
-        //     if (selectedItems && selectedItems.length > 0) {
-        //         var index = $scope.fields.indexOf(selectedItems[0]);
-        //         $scope.gridApi.selection.toggleRowSelection(selectedItems[0]);
-        //         $scope.fields.splice(index, 1);
-        //
-        //         if ($scope.fields.length == 0) {
-        //             $scope.selectedField = undefined;
-        //         }
-        //
-        //         $timeout(function () {
-        //             if ($scope.fields.length > 0) {
-        //                 $scope.gridApi.selection.toggleRowSelection($scope.fields[0]);
-        //             }
-        //         });
-        //     }
-        // };
-        //
-        // // Click handler for up button
-        // $scope.moveFieldUp = function () {
-        //     var selectedItems = $scope.gridApi.selection.getSelectedRows();
-        //     if (selectedItems && selectedItems.length > 0) {
-        //         var index = $scope.fields.indexOf(selectedItems[0]);
-        //         if (index != 0) { // If it's the first, no moving up of course
-        //             var temp = $scope.fields[index];
-        //             $scope.fields.splice(index, 1);
-        //             $timeout(function () {
-        //                 $scope.fields.splice(index + -1, 0, temp);
-        //                 $timeout(function () {
-        //                     $scope.gridApi.selection.toggleRowSelection(temp);
-        //                 });
-        //             });
-        //         }
-        //     }
-        // };
-        //
-        // // Click handler for down button
-        // $scope.moveFieldDown = function () {
-        //     var selectedItems = $scope.gridApi.selection.getSelectedRows();
-        //     if (selectedItems && selectedItems.length > 0) {
-        //         var index = $scope.fields.indexOf(selectedItems[0]);
-        //         if (index != $scope.fields.length - 1) { // If it's the last element, no moving down of course
-        //             var temp = $scope.fields[index];
-        //             $scope.fields.splice(index, 1);
-        //             $timeout(function () {
-        //                 $scope.fields.splice(index + 1, 0, temp);
-        //                 $timeout(function () {
-        //                     $scope.gridApi.selection.toggleRowSelection(temp);
-        //                 });
-        //             });
-        //         }
-        //     }
-        // };
-
+        $scope.itemExpended = function (item, $event) {
+            item.$$isExpend = !item.$$isExpend;
+            $event.stopPropagation();
+        };
+        $scope.itemCheckedChanged = function ($item) {
+            // 实现单选
+            if ($item.$$isChecked && $scope.service != null && ($scope.service != $item)) {
+                $scope.service.$$isChecked = false;
+            }
+            $scope.service = $item;
+            // $http.post('/url', $item);
+            console.log($item, 'item checked');
+        };
         // Click handler for save button
         $scope.save = function () {
 
-            if ($scope.fields.length > 0) {
+            if ($scope.service.serviceid !== undefined && $scope.service.serviceid !== null) {
                 $scope.property.value = {};
-                $scope.property.value.fields = $scope.fields;
+                $scope.property.value = $scope.service;
             } else {
                 $scope.property.value = null;
             }

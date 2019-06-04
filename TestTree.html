@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            display: block;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #lv2U,#lv3U1,#lv3U2,#lv3U3 {
+            display: none;
+        }
+
+        #tree img {
+            display: block;
+            float: left;
+            width: 20px;
+            height: 20px;
+        }
+
+        .lv3Checks{
+            display: block; float: left; clear: left; width: 15px; height: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="tree">
+
+    <ul id="lv1U">
+        <img src="../../img/add.png" id="lv1M" />
+        <input type="checkbox" id="allCheck" style="display: block; float: left; width: 15px; height: 15px;"/>
+        <li id="lv1L1">一级菜单
+            <ul id="lv2U" style="clear: left;">
+                <img src="../../img/add.png" id="lv2M1" style="clear: left;"/>
+                <input type="checkbox" id="secondCheck1" style="display: block; float: left; width: 15px; height: 15px;"/>
+                <li id="lv2L1">二级菜单1
+                    <ul id="lv3U1" style="clear: left;">
+                        <input type="checkbox" name="lv3_1Check" class="lv3Checks"/>
+                        <li>三级菜单1_1</li>
+                        <input type="checkbox" name="lv3_1Check" class="lv3Checks"/>
+                        <li>三级菜单1_2</li>
+                        <input type="checkbox" name="lv3_1Check" class="lv3Checks"/>
+                        <li>三级菜单1_3</li>
+                    </ul>
+                </li>
+
+                <img src="../../img/add.png" id="lv2M2" style="clear: left;"/>
+                <input type="checkbox" id="secondCheck2" style="display: block; float: left; width: 15px; height: 15px;"/>
+                <li id="lv2L2"><span style="float: left;">二级菜单2</span>
+                    <ul id="lv3U2" style="clear: left;">
+                        <input type="checkbox" name="lv3_2Check" class="lv3Checks"/>
+                        <li>三级菜单2_1</li>
+                        <input type="checkbox" name="lv3_2Check" class="lv3Checks"/>
+                        <li>三级菜单2_2</li>
+                        <input type="checkbox" name="lv3_2Check" class="lv3Checks"/>
+                        <li>三级菜单2_3</li>
+                        <input type="checkbox" name="lv3_2Check" class="lv3Checks"/>
+                        <li>三级菜单2_4</li>
+                        <input type="checkbox" name="lv3_2Check" class="lv3Checks"/>
+                        <li>三级菜单2_5</li>
+                    </ul>
+                </li>
+                <img src="../../img/add.png" id="lv2M3" style="clear: left;"/>
+                <input type="checkbox" id="secondCheck3" style="display: block; float: left; width: 15px; height: 15px;"/>
+                <li id="lv2L3">
+                    <span style="float: left;">二级菜单3</span>
+                    <ul id="lv3U3" style="clear: left;">
+                        <input type="checkbox" name="lv3_3Check" class="lv3Checks"/>
+                        <li>三级菜单3_1</li>
+                        <input type="checkbox" name="lv3_3Check" class="lv3Checks"/>
+                        <li>三级菜单3_2</li>
+                        <input type="checkbox" name="lv3_3Check" class="lv3Checks"/>
+                        <li>三级菜单3_3</li>
+                        <input type="checkbox" name="lv3_3Check" class="lv3Checks"/>
+                        <li>三级菜单3_4</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<script type="text/javascript" src="../../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#lv1M").click(function() {
+            if($("#lv2U").is(":visible")) {
+                //                      alert("隐藏内容");
+                $("#lv1M").attr("src", "../../img/add.png");
+            } else {
+                //                      alert("显示内容");
+                $("#lv1M").attr("src", "../../img/cut.png");
+            }
+            $("#lv2U").slideToggle(300);
+        });
+
+        $("#lv2M1").click(function() {
+            if($("#lv3U1").is(":visible")) {
+                //                      alert("隐藏内容");
+                $("#lv2M1").attr("src", "../../img/add.png");
+            } else {
+                //                      alert("显示内容");
+                $("#lv2M1").attr("src", "../../img/cut.png");
+            }
+            $("#lv3U1").slideToggle(300);
+        });
+
+        $("#lv2M2").click(function() {
+            if($("#lv3U2").is(":visible")) {
+                //                      alert("隐藏内容");
+                $("#lv2M2").attr("src", "../../img/add.png");
+            } else {
+                //                      alert("显示内容");
+                $("#lv2M2").attr("src", "../../img/cut.png");
+            }
+            $("#lv3U2").slideToggle(500);
+        });
+
+        $("#lv2M3").click(function() {
+            if($("#lv3U3").is(":visible")) {
+                //                      alert("隐藏内容");
+                $("#lv2M3").attr("src", "../../img/add.png");
+            } else {
+                //                      alert("显示内容");
+                $("#lv2M3").attr("src", "../../img/cut.png");
+            }
+            $("#lv3U3").slideToggle(400);
+        });
+
+        $("#allCheck").click(function(){
+            $("input[type=checkbox]").prop("checked",$("#allCheck").prop("checked"));
+        });
+
+        $("#secondCheck1").click(function(){
+            $("input[name=lv3_1Check]").prop("checked",$("#secondCheck1").prop("checked"));
+        });
+
+        $("#secondCheck2").click(function(){
+            $("input[name=lv3_2Check]").prop("checked",$("#secondCheck2").prop("checked"));
+        });
+
+        $("#secondCheck3").click(function(){
+            $("input[name=lv3_3Check]").prop("checked",$("#secondCheck3").prop("checked"));
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -20,7 +20,7 @@ angular.module('activitiModeler').controller('BpmResultsetCtrl',
 
         // Config for the modal window
         var opts = {
-            template: 'editor-app/configuration/properties/djl-fields-popup.html?version=' + Date.now(),
+            template: 'editor-app/configuration/extjs/properties/resultset-popup.html?version=' + Date.now(),
             scope: $scope,
             // 可以让弹窗不关闭，除非调用hide
             backdrop: false
