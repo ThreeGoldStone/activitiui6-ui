@@ -1,0 +1,18 @@
+ul{
+    list-style: none;
+}
+.text-field{
+    cursor: pointer;
+}
+.text-des{
+    font-size: 1px;
+    color: rgba(118, 118, 119, 0.95);
+}
+.check-box{
+    width: 24px;
+    height: 18px;
+    border-radius: 8px;
+}
+.item-selected{
+    background: #2a6496;
+}

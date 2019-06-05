@@ -7,75 +7,26 @@
                 <h3>{{'PROPERTY.PROPERTY.EDIT.TITLE' | translate}} "{{property.title | translate}}"</h3>
             </div>
             <div class="modal-body">
-                <select ng-if="isJavaServicesLoaded"  ng-model="currentJavaServices" ng-options="item as item.name for item in javaServices"
-                        ng-change="selectJavaServices(currentJavaServices)">
-                    <!--<option value="en">English</option>-->
-                    <!--<option value="zh">简体中文</option>-->
-                    <!--<option ng-repeat="item in javaServices"-->
-                            <!--value="{{item}}">-->
-                        <!--{{item.name}}-->
-                    <!--</option>-->
-                </select>
                 <div class="row row-no-gutter">
                     <div class="col-xs-6">
-                        <div ng-if="translationsRetrieved" class="kis-listener-grid" ui-grid="gridOptions"
-                             ui-grid-selection></div>
-                        <!--<div class="pull-right">-->
-                            <!--<div class="btn-group">-->
-                                <!--<a class="btn btn-icon btn-lg" rel="tooltip"-->
-                                   <!--data-title="{{'ACTION.MOVE.UP' | translate}}" data-placement="bottom"-->
-                                   <!--data-original-title="" title="" ng-click="moveFieldUp()"><i-->
-                                        <!--class="glyphicon glyphicon-arrow-up"></i></a>-->
-                                <!--<a class="btn btn-icon btn-lg" rel="tooltip"-->
-                                   <!--data-title="{{'ACTION.MOVE.DOWN' | translate}}" data-placement="bottom"-->
-                                   <!--data-original-title="" title="" ng-click="moveFieldDown()"><i-->
-                                        <!--class="glyphicon glyphicon-arrow-down"></i></a>-->
-                            <!--</div>-->
-                            <!--<div class="btn-group">-->
-                                <!--<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.ADD' | translate}}"-->
-                                   <!--data-placement="bottom" data-original-title="" title="" ng-click="addNewField()"><i-->
-                                        <!--class="glyphicon glyphicon-plus"></i></a>-->
-                                <!--<a class="btn btn-icon btn-lg" rel="tooltip"-->
-                                   <!--data-title="{{'ACTION.REMOVE' | translate}}" data-placement="bottom"-->
-                                   <!--data-original-title="" title="" ng-click="removeField()"><i-->
-                                        <!--class="glyphicon glyphicon-minus"></i></a>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <button ng-click="changeAllOpenStatus(true);">全部展开</button>
+                        <button ng-click="changeAllOpenStatus(false);">全部关闭</button>
+                        <div style="overflow-y:auto; overflow-x:auto; height:400px;">
+                            <tree-view tree-data="requestParamTree" text-field="name" value-field='id'
+                                       item-clicked="itemClicked($item)"
+                                       item-checked-changed="itemCheckedChanged($item)" can-checked="true"></tree-view>
+                        </div>
+
                     </div>
-
                     <div class="col-xs-6">
-                        <div ng-show="selectedField">
-
-                            <div class="form-group">
-                                <label translate>PROPERTY.FIELDS.NAME</label>
-                                <input type="text" class="form-control" ng-model="selectedField.name"
-                                       placeholder="{{'PROPERTY.FIELDS.NAME.PLACEHOLDER' | translate}}"/>
-                            </div>
-                            <div>
-                                <label translate>PROPERTY.FIELDS.STRINGVALUE</label>
-                                <input type="text" class="form-control" ng-model="selectedField.stringValue"
-                                       ng-change="fieldDetailsChanged()"
-                                       placeholder="{{'PROPERTY.FIELDS.STRINGVALUE.PLACEHOLDER' | translate}}"/>
-                            </div>
-                            <div>
-                                <label translate>PROPERTY.FIELDS.EXPRESSION</label>
-                                <input type="text" class="form-control" ng-model="selectedField.expression"
-                                       ng-change="fieldDetailsChanged()"
-                                       placeholder="{{'PROPERTY.FIELDS.EXPRESSION.PLACEHOLDER' | translate}}"/>
-                            </div>
-                            <div>
-                                <label translate>PROPERTY.FIELDS.STRING</label>
-                                <textarea type="text" class="form-control" ng-model="selectedField.string"
-                                          ng-change="fieldDetailsChanged()"
-                                          placeholder="{{'PROPERTY.FIELDS.STRING.PLACEHOLDER' | translate}}"></textarea>
-                            </div>
-
-                        </div>
-                        <div ng-show="!selectedField" class="muted no-property-selected" translate>
-                            PROPERTY.FIELDS.EMPTY
-                        </div>
+                        <span>{{selectedItem.name}} 绑定的参数值:</span>
+                        <p><textarea auto-focus class="form-control" ng-model="selectedItem.bindParam"
+                                     style="width:70%; height:100%; max-width: 100%; max-height: 100%; min-height: 200px"/>
+                        </p>
+                        <button>从全局参数中选取</button>
                     </div>
                 </div>
+
 
             </div>
             <div class="modal-footer">
