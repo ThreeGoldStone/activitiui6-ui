@@ -214,7 +214,7 @@
 //     return vm;
 // }])
 angular.module('activitiModeler')
-    .directive('treeView', ['appResourceRoot',function (appResourceRoot) {
+    .directive('treeView', ['appResourceRoot', function (appResourceRoot) {
 
         return {
             restrict: 'E',
@@ -256,3 +256,19 @@ angular.module('activitiModeler')
             }]
         };
     }]);
+
+/**
+ *递归树数据，并执行callback
+ * @param tree
+ * @param callback
+ */
+function treeDiGui(tree, callback) {
+    for (var j = 0, len = tree.length; j < len; j++) {
+        let element = tree[j];
+        callback(element);
+        let clist = element.children;
+        if (clist != null && clist.length > 0) {
+            treeDiGui(clist, callback)
+        }
+    }
+}

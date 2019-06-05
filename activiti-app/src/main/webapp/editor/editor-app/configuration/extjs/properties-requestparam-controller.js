@@ -34,15 +34,9 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
 
 
-        $scope.translationsRetrieved = false;
-        $scope.labels = {};
 
-        var namePromise = $translate('PROPERTY.FIELDS.NAME');
-        var implementationPromise = $translate('PROPERTY.FIELDS.IMPLEMENTATION');
 
-        $q.all([namePromise, implementationPromise]).then(function (results) {
-            $scope.labels.nameLabel = results[0];
-            $scope.labels.implementationLabel = results[1];
+        $q.all([]).then(function (results) {
             $scope.translationsRetrieved = true;
         });
         $scope.requestParamTree = [
@@ -324,23 +318,24 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
         };
 
-        function changeAll(list, status) {
-            for (var j = 0, len = list.length; j < len; j++) {
-                var item = list[j];
-                if (item.children != null && item.children.length > 0) {
-                    item.$$isExpend = status;
-                    changeAll(item.children, status);
-                }
-            }
-        }
+        // function changeAll(list, status) {
+        //     for (var j = 0, len = list.length; j < len; j++) {
+        //         var item = list[j];
+        //         if (item.children != null && item.children.length > 0) {
+        //             item.$$isExpend = status;
+        //             changeAll(item.children, status);
+        //         }
+        //     }
+        // }
 
         $scope.changeAllOpenStatus = function (status) {
-            changeAll($scope.requestParamTree, status);
-            // $scope.selectedItem = $item;
-            // console.log($item, 'item clicked');
-            // $scope.itemCheckedChanged($item)
+            // changeAll($scope.requestParamTree, status);
+            treeDiGui($scope.requestParamTree,function (element) {
+                element.$$isExpend = status;
+            })
 
         };
+
 
         $scope.itemCheckedChanged = function ($item) {
             // 实现单选
@@ -355,6 +350,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
         // Click handler for save button
         $scope.save = function () {
+
             $scope.property.value = $scope.requestParamTree;
             $scope.updatePropertyInModel($scope.property);
             $scope.close();
@@ -366,6 +362,10 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
         // Close button handler
         $scope.close = function () {
+            treeDiGui($scope.requestParamTree,function (element) {
+                element.$$isExpend = false;
+                element.$$isChecked = false;
+            })
             $scope.property.mode = 'read';
             $scope.$hide();
         };
