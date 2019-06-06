@@ -271,4 +271,67 @@ function treeDiGui(tree, callback) {
             treeDiGui(clist, callback)
         }
     }
+
+}
+
+/**
+ *递归遍历树，并可获得父级对象
+ * @param parents 当前等级的父级集合
+ * @param tree 当前等级的树
+ * @param callback 执行的回调方法
+ */
+function treeDiGuiWithParent(parents, tree, callback) {
+    for (var j = 0, len = tree.length; j < len; j++) {
+        let element = tree[j];
+        callback(parents, element);
+        let clist = element.children;
+        if (clist != null && clist.length > 0) {
+            if (parents == null) {
+                parents = [];
+            }
+            parents.push(element);
+            treeDiGuiWithParent(parents, clist, callback)
+        }
+    }
+
+}
+
+function singleCheckById(tree, id) {
+    treeDiGui(tree, function (element) {
+        element.$$isChecked = element.id == id;
+    })
+}
+
+/**
+ * 根据id进行单选，并展开其父组件
+ * @param tree
+ * @param id
+ */
+function singleCheckByIdWhithParentExpend(tree, id) {
+    treeDiGuiWithParent(null, tree, function (parents, element) {
+        element.$$isChecked = element.id == id;
+        if (element.$$isChecked && parents != null && parents.length > 0) {
+            for (let i = 0, len = parents.length; i < len; i++) {
+                let parent = parents[i];
+                parent.$$isExpend = true;
+            }
+        }
+
+    })
+}
+
+/**
+ *遍历数组，可以通过设置 listElement.$$break=true;来打断循环
+ * @param list
+ * @param callBack
+ */
+function myForEach(list, callBack) {
+    for (let i = 0, len = list.length; i < len; i++) {
+        let listElement = list[i];
+        callBack(listElement);
+        if (listElement.$$break) {
+            delete listElement.$$break;
+            break;
+        }
+    }
 }

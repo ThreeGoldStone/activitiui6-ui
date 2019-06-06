@@ -31,290 +31,60 @@ angular.module('activitiModeler').controller('BpmRequestparamCtrl',
     }]);
 
 angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
-    ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
-
-
+    ['$scope', '$modal', '$q', '$translate', '$timeout', '$http', function ($scope, $modal, $q, $translate, $timeout, $http) {
 
 
         $q.all([]).then(function (results) {
             $scope.translationsRetrieved = true;
         });
-        $scope.requestParamTree = [
-            {
-                id: 1,
-                name: "p1",
-                des: "des-pp1",
-                bindParam: "bindParam",
-                children: [
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p13",
-                        des: "des-p1",
-                        bindParam: "bindParam",
-                        children: [
-                            {
-                                id: 2,
-                                name: "p131",
-                                des: "des-p1",
-                                bindParam: "bindParam"
-
-                            },
-                            {
-                                id: 2,
-                                name: "p132",
-                                bindParam: "bindParam"
-
-                            },
-                            {
-                                id: 2,
-                                name: "p133",
-                                des: "des-p1",
-
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 1,
-                name: "p2",
-                des: "des-pp1",
-                bindParam: "bindParam",
-                children: [
-
-                    {
-                        id: 2,
-                        name: "p21",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p22",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    }
-                ]
-            },
-
-        ];
-        let allJson = $scope.editor.getJSON();
-        console.log(allJson);
-        let childShapes = allJson.childShapes;
-        console.log(childShapes);
-        for (var i=0,len=childShapes.length;i < len;i++) {
-            let childShape = childShapes[i];
-            let stencil = childShape.stencil;
-            if (stencil.id=='EXTJSServiceTask') {
-                console.log(childShape)
-                // TODO 生成全局参数总树
-            }
-        }
-        if ($scope.property.value != null && (typeof $scope.property.value)=='object') {
+        $scope.globalVariables = [];
+        $scope.requestParamTree = null;
+        if ($scope.property.value != null && (typeof $scope.property.value) == 'object') {
             $scope.requestParamTree = $scope.property.value;
         }
-        $scope.itemClicked = function ($item) {
+        let editor = $scope.editor;
+        let resourceId = editor.selection[0].resourceId;
+        let allJson = editor.getJSON();
+        let childShapes = allJson.childShapes;
+        myForEach(childShapes, function (childShape) {
+            let stencil = childShape.stencil;
+            if (stencil.id == 'EXTJSServiceTask') {
+                let globalVariable = {
+                    id: childShape.properties.overrideid,
+                    name: childShape.properties.name,
+                    fields: [],
+                    stencilid: stencil.id
+                };
+                let fields = childShape.properties.extjsserviceresultset.fields;
+                myForEach(fields, function (field) {
+                    globalVariable.fields.push({
+                        name: field.name,
+                        type: field.type // TODO resultset 得添加数据类型
+                    });
+                });
+                $scope.globalVariables.push(globalVariable);
+                if ($scope.requestParamTree == null && resourceId == childShape.resourceId) {
+                    console.log('当前选中的节点：' + childShape);
+                    // 从选取的服务处，初始化请求参数
+                    $scope.requestParamTree = childShape.properties.extjsserviceid.requestParams;
+                }
+            } else if (stencil.id == 'StartNoneEvent') {
+                // TODO 把startevent和人工节点等地方进啦的参数也添加到全局可选参数中
+            }
+
+        });
+
+        $scope.selectFromAllParam = function () {
             // $scope.selectedItem = $item;
-            // console.log($item, 'item clicked');
+            console.log('selectFromAllParam');
             // $scope.itemCheckedChanged($item)
+            _internalCreateModal({
+                backdrop: true,
+                keyboard: true,
+                template: 'editor-app/configuration/extjs/properties/global-variables-popup.html?version=' + Date.now(),
+                scope: $scope
+            }, $modal, $scope);
+
 
         };
 
@@ -330,7 +100,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
         $scope.changeAllOpenStatus = function (status) {
             // changeAll($scope.requestParamTree, status);
-            treeDiGui($scope.requestParamTree,function (element) {
+            treeDiGui($scope.requestParamTree, function (element) {
                 element.$$isExpend = status;
             })
 
@@ -339,10 +109,8 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
         $scope.itemCheckedChanged = function ($item) {
             // 实现单选
-            if ($item.$$isChecked && $scope.selectedItem != null && ($scope.selectedItem != $item)) {
-                $scope.selectedItem.$$isChecked = false;
-            }
             $scope.selectedItem = $item;
+            singleCheckById($scope.requestParamTree, $scope.selectedItem.id);
             // $http.post('/url', $item);
             console.log($item, 'item checked');
         };
@@ -362,7 +130,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
         // Close button handler
         $scope.close = function () {
-            treeDiGui($scope.requestParamTree,function (element) {
+            treeDiGui($scope.requestParamTree, function (element) {
                 element.$$isExpend = false;
                 element.$$isChecked = false;
             })

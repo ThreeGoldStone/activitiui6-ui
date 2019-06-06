@@ -41,236 +41,60 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                     {
                         serviceid: "test-service-1",
                         servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
+                        requestParams: [
+                            {
+                                id: 2,
+                                name: "p13",
+                                des: "des-p1",
+                                type: 'object',
+                                bindParam: null,
+                                children: [
+                                    {
+                                        id: 3,
+                                        name: "p131",
+                                        des: "des-p131",
+                                        type: 'string',
+                                        bindParam: null
+
+                                    },
+                                    {
+                                        id: 4,
+                                        name: "p132",
+                                        des: "des-p132",
+                                        type: 'string',
+                                        bindParam: null
+
+                                    }
+                                ]
+                            }
+                        ],
+                        resultSet: [
+                            {
+                                id: 2,
+                                name: "p13",
+                                des: "des-p1",
+                                type: 'object',
+                                bindParam: null,
+                                children: [
+                                    {
+                                        id: 3,
+                                        name: "p131",
+                                        des: "des-p131",
+                                        type: 'string',
+                                        bindParam: null
+
+                                    },
+                                    {
+                                        id: 4,
+                                        name: "p132",
+                                        des: "des-p132",
+                                        type: 'string',
+                                        bindParam: null
+
+                                    }
+                                ]
+                            }
+                        ],
                         des: "测试服务1 des"
                     },
                     {
@@ -310,45 +134,19 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
         };
         // 初始化已选择的数据
         if ($scope.property.value != null) {
-            for (var j = 0, len = $scope.serviceList.length; j < len; j++) {
-                var app = $scope.serviceList[j];
-                for (var i = 0, len = app.serviceList.length; i < len; i++) {
-                    var service = app.serviceList[i];
-                    if (service.serviceid == $scope.property.value.serviceid) {
-                        $scope.service = service;
-                        $scope.service.$$isChecked = true;
-                        break;
+            djlLoop:
+                for (var j = 0, len = $scope.serviceList.length; j < len; j++) {
+                    var app = $scope.serviceList[j];
+                    for (var i = 0, len = app.serviceList.length; i < len; i++) {
+                        var service = app.serviceList[i];
+                        if (service.serviceid == $scope.property.value.serviceid) {
+                            $scope.service = service;
+                            $scope.service.$$isChecked = true;
+                            app.$$isExpend = true;
+                            break djlLoop;
+                        }
                     }
                 }
-            }
-        }
-        // javaservices的数据加载
-        // $http({
-        //     method: 'GET',
-        //     url: KISBPM.URL.getJavaServices()
-        // }).success(function (data, status, headers, config) {
-        //
-        //     $scope.javaServices = data;
-        //     $scope.currentJavaServices = data[0];
-        //     // $scope.currentJavaServicesFields = angular.copy($scope.currentJavaServices.fields);
-        //     // $scope.fields = angular.copy($scope.property.value.fields);
-        //     $scope.pushAllJavaServices();
-        //     $scope.isJavaServicesLoaded = true;
-        //     console.log(data)
-        //
-        // }).error(function (data, status, headers, config) {
-        //     console.log('Something went wrong when fetching java services:' + JSON.stringify(data));
-        // });
-        // Put json representing form properties on scope
-        if ($scope.property.value !== undefined && $scope.property.value !== null) {
-            $scope.service = $scope.property.value;
-
-        } else {
-            $scope.service = {
-                serviceid: null,
-                servicename: null,
-                des: null
-            };
         }
 
 

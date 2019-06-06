@@ -31,7 +31,6 @@ angular.module('activitiModeler').controller('BpmResultsetCtrl',
     }]);
 
 
-
 angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
         // Put json representing form properties on scope
@@ -49,216 +48,28 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
                         bindParam: "bindParam"
 
                     },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
 
-                    },
                     {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
-                        name: "p12",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 2,
+                        id: 3,
                         name: "p13",
                         des: "des-p1",
                         bindParam: "bindParam",
                         children: [
                             {
-                                id: 2,
+                                id: 4,
                                 name: "p131",
                                 des: "des-p1",
                                 bindParam: "bindParam"
 
                             },
                             {
-                                id: 2,
+                                id: 5,
                                 name: "p132",
                                 bindParam: "bindParam"
 
                             },
                             {
-                                id: 2,
+                                id: 6,
                                 name: "p133",
                                 des: "des-p1",
 
@@ -268,21 +79,21 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
                 ]
             },
             {
-                id: 1,
+                id: 7,
                 name: "p2",
                 des: "des-pp1",
                 bindParam: "bindParam",
                 children: [
 
                     {
-                        id: 2,
+                        id: 8,
                         name: "p21",
                         des: "des-p1",
                         bindParam: "bindParam"
 
                     },
                     {
-                        id: 2,
+                        id: 9,
                         name: "p22",
                         des: "des-p1",
                         bindParam: "bindParam"
@@ -339,7 +150,10 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
                 $scope.gridApi = gridApi;
                 gridApi.selection.on.rowSelectionChanged($scope, function (row) {
                     $scope.selectedField = row.entity;
-                    // treeDiGui($scope., i);
+                    // treeDiGui($scope.requestParamTree, function (element) {
+                    //     element.$$isChecked = element.id == $scope.selectedField.implementationid;
+                    // });
+                    singleCheckByIdWhithParentExpend($scope.requestParamTree, $scope.selectedField.implementationid);
 
                 });
             };
@@ -437,7 +251,7 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
 
         $scope.changeAllOpenStatus = function (status) {
             // changeAll($scope.requestParamTree, status);
-            treeDiGui($scope.requestParamTree,function (element) {
+            treeDiGui($scope.requestParamTree, function (element) {
                 element.$$isExpend = status;
             })
 
@@ -445,10 +259,8 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
 
         $scope.itemCheckedChanged = function ($item) {
             // 实现单选
-            if ($item.$$isChecked && $scope.selectedItem != null && ($scope.selectedItem != $item)) {
-                $scope.selectedItem.$$isChecked = false;
-            }
             $scope.selectedItem = $item;
+            singleCheckById($scope.requestParamTree, $scope.selectedItem.id);
             if ($item.$$isChecked) {
                 $scope.selectedField.implementation = $item.name;
                 $scope.selectedField.implementationid = $item.id;

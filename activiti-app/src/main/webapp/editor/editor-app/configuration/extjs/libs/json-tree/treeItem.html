@@ -6,11 +6,14 @@
 
 <span class='text-field,item-selected'
       ng-click="warpCallback('itemClicked', item, $event);">{{item[textField]}}</span>
+<span class='text-field,item-selected'
+      ng-click="warpCallback('itemClicked', item, $event);">{{'类型：'+item.type}}</span>
 <span class='text-des' ng-if="item.des" ng-click="warpCallback('itemClicked', item, $event);">{{"描述: "+item.des}}</span>
 <span class='text-field' ng-if="item.bindParam" ng-click="warpCallback('itemClicked', item, $event);">{{"绑定: "+item.bindParam}}</span>
 <ul ng-if="!isLeaf(item)"
     ng-show="item.$$isExpend"
 >
-    <li ng-repeat="item in item.children" ng-include="itemTemplateUrl || (appResourceRoot + 'editor-app/configuration/extjs/libs/json-tree/treeItem.html')">
+    <li ng-repeat="item in item.children"
+        ng-include="itemTemplateUrl || (appResourceRoot + 'editor-app/configuration/extjs/libs/json-tree/treeItem.html')">
     </li>
 </ul>
