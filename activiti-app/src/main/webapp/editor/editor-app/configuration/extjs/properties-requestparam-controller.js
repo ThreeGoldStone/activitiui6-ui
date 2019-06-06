@@ -59,7 +59,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
                 myForEach(fields, function (field) {
                     globalVariable.fields.push({
                         name: field.name,
-                        type: field.type // TODO resultset 得添加数据类型
+                        type: field.type
                     });
                 });
                 $scope.globalVariables.push(globalVariable);

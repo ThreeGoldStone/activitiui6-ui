@@ -33,6 +33,7 @@ angular.module('activitiModeler').controller('BpmServiceidCtrl',
 angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
 // javaservices的数据定义
+        // TODO 当代数据接口
         $scope.serviceList = [
             {
                 id: "1",
