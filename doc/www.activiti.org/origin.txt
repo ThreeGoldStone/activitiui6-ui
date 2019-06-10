@@ -1,0 +1,504 @@
+Uri: https://www.activiti.org/userguide/
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\index.htm
+Content Type: text/html
+
+Uri: https://www.activiti.org/userguide/images/FinancialReportProcess.bpmn20.xml
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\FinancialReportProcess.bpmn20.xml
+Content Type: application/xml
+
+Uri: https://www.activiti.org/userguide/images/api.services.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.services.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.vacationRequest.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.vacationRequest.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.transient.variable.example.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.transient.variable.example.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.test.debug.breakpoint.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.test.debug.breakpoint.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.test.debug.view.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.test.debug.view.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.test.debug.start.h2.server.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.test.debug.start.h2.server.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.test.debug.start.h2.server.2.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.test.debug.start.h2.server.2.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.test.debug.h2.login.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.test.debug.h2.login.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/api.test.debug.h2.tables.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\api.test.debug.h2.tables.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/deployment.image.generation.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\deployment.image.generation.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/new.bpmn.procdef.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\new.bpmn.procdef.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/financial.report.example.diagram.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\financial.report.example.diagram.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.financial.report.example.start.process.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.financial.report.example.start.process.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.financial.report.example.task.assigned.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.financial.report.example.task.assigned.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.financial.report.example.claim.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.financial.report.example.claim.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.financial.report.example.process.ended.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.financial.report.example.process.ended.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.signal.event.throw.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.signal.event.throw.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.signal.event.catch.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.signal.event.catch.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.signal.event.warning.1.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.signal.event.warning.1.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.start.message.event.example.1.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.start.message.event.example.1.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.none.start.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.none.start.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.clock.start.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.clock.start.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.start.message.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.start.message.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.start.signal.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.start.signal.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.start.error.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.start.error.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.none.end.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.none.end.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.error.end.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.error.end.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.terminate.end.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.terminate.end.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.cancel.end.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.cancel.end.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.timer.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.timer.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.non.interrupting.boundary.timer.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.non.interrupting.boundary.timer.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.known.issue.boundary.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.known.issue.boundary.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.error.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.error.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.error.example.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.error.example.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.signal.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.signal.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.message.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.message.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.cancel.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.cancel.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.boundary.compensation.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.boundary.compensation.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.intermediate.timer.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.intermediate.timer.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.intermediate.signal.catch.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.intermediate.signal.catch.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.intermediate.message.catch.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.intermediate.message.catch.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.intermediate.none.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.intermediate.none.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.intermediate.signal.throw.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.intermediate.signal.throw.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.throw.compensation.example1.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.throw.compensation.example1.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.intermediate.compensation.throw.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.intermediate.compensation.throw.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.sequence.flow.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.sequence.flow.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.conditional.sequence.flow.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.conditional.sequence.flow.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.uel-expression.on.seq.flow.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.uel-expression.on.seq.flow.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.default.sequence.flow.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.default.sequence.flow.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.gateway.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.gateway.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.exclusive.gateway.notation.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.exclusive.gateway.notation.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.exclusive.gateway.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.exclusive.gateway.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.parallel.gateway.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.parallel.gateway.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.unbalanced.parallel.gateway.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.unbalanced.parallel.gateway.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.inclusive.gateway.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.inclusive.gateway.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.event.based.gateway.notation.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.event.based.gateway.notation.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.event.based.gateway.example.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.event.based.gateway.example.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.user.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.user.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.scripttask.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.scripttask.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.java.service.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.java.service.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.web.service.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.web.service.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.business.rule.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.business.rule.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/email.task.result.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\email.task.result.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.manual.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.manual.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.receive.task.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.receive.task.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.multi.instance.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.multi.instance.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.multi.instance.boundary.event.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.multi.instance.boundary.event.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.collapsed.subprocess.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.collapsed.subprocess.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.expanded.subprocess.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.expanded.subprocess.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.subprocess.with.boundary.timer.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.subprocess.with.boundary.timer.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.subprocess.eventSubprocess.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.subprocess.eventSubprocess.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.subprocess.eventSubprocess.example.1.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.subprocess.eventSubprocess.example.1.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.subprocess.eventSubprocess.example.2a.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.subprocess.eventSubprocess.example.2a.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.subprocess.eventSubprocess.example.2b.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.subprocess.eventSubprocess.example.2b.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.transaction.subprocess.example.1.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.transaction.subprocess.example.1.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.transaction.subprocess.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.transaction.subprocess.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.transaction.subprocess.example.2.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.transaction.subprocess.example.2.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.collapsed.call.activity.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.collapsed.call.activity.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.call.activity.super.process.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.call.activity.super.process.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.call.activity.sub.process.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.call.activity.sub.process.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/activiti.async.example.no.async.PNG
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\activiti.async.example.no.async.PNG
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/activiti.async.example.async.PNG
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\activiti.async.example.async.PNG
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/bpmn.why.exclusive.jobs.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\bpmn.why.exclusive.jobs.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/forms.explorer.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\forms.explorer.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/jpa.spring.example.process.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\jpa.spring.example.process.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.add.update.site.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.add.update.site.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.create.activiti.project.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.create.activiti.project.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.bpmn.file.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.bpmn.file.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.open.importedfile.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.open.importedfile.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.create.deployment.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.create.deployment.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.unittest.generate.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.unittest.generate.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.project.maven.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.project.maven.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.model.process.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.model.process.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.model.quick.change.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.model.quick.change.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.model.quick.new.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.model.quick.new.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.servicetask.property.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.servicetask.property.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.model.poolandlanes.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.model.poolandlanes.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.model.labels.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.model.labels.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.model.eventsubprocess.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.model.eventsubprocess.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.embeddedprocess.canvas.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.embeddedprocess.canvas.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.timerboundary.canvas.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.timerboundary.canvas.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.mailtask.property.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.mailtask.property.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.listener.configuration.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.listener.configuration.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.sequence.condition.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.sequence.condition.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.deployment.dir.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.deployment.dir.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.preferences.userlibraries.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.preferences.userlibraries.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.preferences.userlibraries.activiti.empty.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.preferences.userlibraries.activiti.empty.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.preferences.userlibraries.activiti.moneytasks.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.preferences.userlibraries.activiti.moneytasks.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.userlibraries.project.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.userlibraries.project.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.palette.add.money.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.palette.add.money.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.palette.add.money.properties.required.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.palette.add.money.properties.required.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.palette.add.money.help.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.palette.add.money.help.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.text.invalid.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.text.invalid.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.multiline.text.invalid.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.multiline.text.invalid.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.period.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.period.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.boolean.choice.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.boolean.choice.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.radio.choice.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.radio.choice.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.radio.choice.invalid.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.radio.choice.invalid.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.combobox.choice.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.combobox.choice.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.combobox.choice.invalid.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.combobox.choice.invalid.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.date.picker.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.date.picker.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.property.datagrid.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.property.datagrid.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.palette.disable.manual.and.script.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.palette.disable.manual.and.script.png
+Content Type: image/png
+
+Uri: https://www.activiti.org/userguide/images/designer.palette.disable.all.png
+File Name: E:\activiti6_workspace\activitiui6-ui\doc\www.activiti.org\userguide\images\designer.palette.disable.all.png
+Content Type: image/png
+

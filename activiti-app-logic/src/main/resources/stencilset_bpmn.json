@@ -1230,10 +1230,10 @@
         "extjsservicerequestparampackage",
         "extjsserviceresultsetpackage",
         "multiinstance_typepackage",
+        "asynchronousdefinitionpackage",
         "isforcompensationpackage"
       ],
       "hiddenPropertyPackages": [
-        "asynchronousdefinitionpackage",
         "exclusivedefinitionpackage",
         "executionlistenerspackage",
         "multiinstance_cardinalitypackage",
