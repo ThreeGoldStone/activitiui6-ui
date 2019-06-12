@@ -161,11 +161,17 @@ public class JsonTreeBean {
         }
         switch (type) {
             case obj:
-                ArrayList<JsonTreeBean> objChildren = parseObject(path, (JSONObject) value);
+                JSONObject value1 = (JSONObject) value;
+                JSONObject clone = (JSONObject) value1.clone();
+                treeBean.setTemplateValue(clone);
+                ArrayList<JsonTreeBean> objChildren = parseObject(path, value1);
                 treeBean.setChildren(objChildren);
                 break;
             case list:
-                ArrayList<JsonTreeBean> arrayChildren = parseArray(path, (JSONArray) value);
+                JSONArray array = (JSONArray) value;
+                JSONArray arrayClone = (JSONArray) array.clone();
+                treeBean.setTemplateValue(arrayClone);
+                ArrayList<JsonTreeBean> arrayChildren = parseArray(path, array);
                 treeBean.setChildren(arrayChildren);
                 break;
         }
