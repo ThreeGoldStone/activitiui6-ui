@@ -1,0 +1,26 @@
+{
+  "string": "我是string",
+  "bool": true,
+  "int": 1111111111111,
+  "number": 1.22,
+  "object": {
+    "string": "我是string",
+    "bool": true,
+    "int": 1,
+    "number": 1.22
+  },
+  "list": [
+    {
+      "string": "我是string",
+      "bool": true,
+      "int": 1,
+      "number": 1.22
+    },
+    {
+      "string": "我是string",
+      "bool": true,
+      "int": 1,
+      "number": 1.22
+    }
+  ]
+}

@@ -32,6 +32,7 @@ import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.identity.User;
+import org.activiti.engine.impl.asyncexecutor.AsyncExecutor;
 import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -79,6 +80,9 @@ public abstract class AbstractProcessInstancesResource {
     @Autowired
     protected ObjectMapper objectMapper;
 
+    @Autowired
+    protected AsyncExecutor asyncExecutor;
+
     public ProcessInstanceRepresentation startNewProcessInstance(CreateProcessInstanceRepresentation startRequest) {
         if (StringUtils.isEmpty(startRequest.getProcessDefinitionId())) {
             throw new BadRequestException("Process definition id is required");
@@ -105,7 +109,9 @@ public abstract class AbstractProcessInstancesResource {
         }
 
         ProcessInstance processInstance = activitiService.startProcessInstance(startRequest.getProcessDefinitionId(), variables, startRequest.getName());
-
+        if (!asyncExecutor.isActive()) {
+            asyncExecutor.start();
+        }
         // Mark any content created as part of the form-submission connected to the process instance
     /*if (formSubmission != null) {
       if (formSubmission.hasContent()) {

@@ -1,5 +1,8 @@
 package com.yw56.javaservice;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
 import org.activiti.engine.impl.el.FixedValue;
@@ -32,13 +35,14 @@ public class ExtJSService implements JavaDelegate {
         RestTemplate restTemplate = new RestTemplate(PropertiesUtils.requestFactory);
         String requestBody = formRequestBody(execution);
         HttpMethod method = HttpMethod.POST;
-
+        execution.setVariable("times", execution.getVariable("times") + "+1");
         Class responseType = String.class;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
         ResponseEntity response = restTemplate.exchange(url, method, requestEntity, responseType);
-        setResponseToEvn(response);
+        setResponseToEvn(response,execution);
+//       throw new RuntimeException();
 //        try {
 //            Thread.sleep(10000);
 //        } catch (InterruptedException e) {
@@ -49,11 +53,44 @@ public class ExtJSService implements JavaDelegate {
 
     private String getServiceId() {
         // TODO 生成serviceid
-        return null;
+        String expressionText = extjsserviceid.getExpressionText();
+        JSONObject parse = JSON.parseObject(expressionText);
+        String serviceid = parse.getString("serviceid");
+        return serviceid;
     }
 
-    private void setResponseToEvn(ResponseEntity response) {
-        LOGGER.info(response.getBody().toString());
+    /**
+     * [
+     *   {
+     *     "name": "fieldName1",            设置的全局参数的key
+     *     "implementation": "p133",        全局参数引用的参数名
+     *     "valuePath": "",                 引用参数的参数路径
+     *     "valueType": "",                 引用参数值的类型
+     *     "implementationid": 6,           引用参数的id
+     *   },
+     *   {
+     *     "name": "fieldName2",
+     *     "implementation": "p13",
+     *     "valuePath": "",
+     *     "valueType": "",
+     *     "implementationid": 3,
+     *   }
+     * ]
+     * @param response
+     * @param execution
+     */
+    private void setResponseToEvn(ResponseEntity response, DelegateExecution execution) {
+        String resultSetString = extjsserviceresultset.getExpressionText();
+        String data = response.getBody().toString();
+        LOGGER.info(data);
+        JSONArray resultSet = JSON.parseArray(resultSetString);
+        JSONObject result = JSON.parseObject(data);
+        for (int i = 0; i < resultSet.size(); i++) {
+            JSONObject paramSet = resultSet.getJSONObject(i);
+
+
+
+        }
         // TODO 把结果设置为环境变量
     }
 

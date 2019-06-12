@@ -1,0 +1,152 @@
+[
+  {
+    "name": "number",
+    "path": ".number",
+    "templateValue": 1.22,
+    "type": "number"
+  },
+  {
+    "name": "string",
+    "path": ".string",
+    "templateValue": "我是string",
+    "type": "string"
+  },
+  {
+    "name": "bool",
+    "path": ".bool",
+    "templateValue": true,
+    "type": "bool"
+  },
+  {
+    "name": "list",
+    "path": ".list",
+    "templateValue": [
+      {
+        "number": 1.22,
+        "string": "我是string",
+        "bool": true,
+        "int": 1
+      },
+      {
+        "number": 1.22,
+        "string": "我是string",
+        "bool": true,
+        "int": 1
+      }
+    ],
+    "type": "list",
+    "children": [
+      {
+        "name": "0",
+        "path": ".list.0",
+        "templateValue": {
+          "$ref": "$[3].templateValue[0]"
+        },
+        "type": "obj",
+        "children": [
+          {
+            "name": "number",
+            "path": ".list.0.number",
+            "templateValue": 1.22,
+            "type": "number"
+          },
+          {
+            "name": "string",
+            "path": ".list.0.string",
+            "templateValue": "我是string",
+            "type": "string"
+          },
+          {
+            "name": "bool",
+            "path": ".list.0.bool",
+            "templateValue": true,
+            "type": "bool"
+          },
+          {
+            "name": "int",
+            "path": ".list.0.int",
+            "templateValue": 1,
+            "type": "Int"
+          }
+        ]
+      },
+      {
+        "name": "1",
+        "path": ".list.1",
+        "templateValue": {
+          "$ref": "$[3].templateValue[1]"
+        },
+        "type": "obj",
+        "children": [
+          {
+            "name": "number",
+            "path": ".list.1.number",
+            "templateValue": 1.22,
+            "type": "number"
+          },
+          {
+            "name": "string",
+            "path": ".list.1.string",
+            "templateValue": "我是string",
+            "type": "string"
+          },
+          {
+            "name": "bool",
+            "path": ".list.1.bool",
+            "templateValue": true,
+            "type": "bool"
+          },
+          {
+            "name": "int",
+            "path": ".list.1.int",
+            "templateValue": 1,
+            "type": "Int"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "int",
+    "path": ".int",
+    "templateValue": 1111111111111,
+    "type": "Int"
+  },
+  {
+    "name": "object",
+    "path": ".object",
+    "templateValue": {
+      "number": 1.22,
+      "string": "我是string",
+      "bool": true,
+      "int": 1
+    },
+    "type": "obj",
+    "children": [
+      {
+        "name": "number",
+        "path": ".object.number",
+        "templateValue": 1.22,
+        "type": "number"
+      },
+      {
+        "name": "string",
+        "path": ".object.string",
+        "templateValue": "我是string",
+        "type": "string"
+      },
+      {
+        "name": "bool",
+        "path": ".object.bool",
+        "templateValue": true,
+        "type": "bool"
+      },
+      {
+        "name": "int",
+        "path": ".object.int",
+        "templateValue": 1,
+        "type": "Int"
+      }
+    ]
+  }
+]

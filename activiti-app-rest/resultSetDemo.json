@@ -1,0 +1,19 @@
+[
+  {
+    "name": "fieldName1",
+    "implementation": "p133",
+    "valuePath": "",
+    "valueType": "",
+    "implementationid": 6,
+    "$$hashKey": "uiGrid-016"
+  },
+  {
+    "name": "fieldName2",
+    "implementation": "p13",
+    "valuePath": "",
+    "valueType": "",
+    "implementationid": 3,
+    "$$hashKey": "uiGrid-018"
+  }
+]
+
