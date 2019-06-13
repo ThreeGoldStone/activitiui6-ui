@@ -16,7 +16,7 @@
                                 <input type="checkbox" ng-model="serviceItem.$$isChecked" class="check-box"
                                        ng-change="itemCheckedChanged(serviceItem)">
                                 <span>{{serviceItem.servicename}}</span>
-                                <span>{{serviceItem.serviceid}}</span>
+                                <span>{{'id:'+serviceItem.serviceid}}</span>
                                 <span>{{serviceItem.des}}</span>
                             </li>
                         </ul>

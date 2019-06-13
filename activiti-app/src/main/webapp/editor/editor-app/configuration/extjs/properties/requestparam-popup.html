@@ -11,7 +11,7 @@
                     <div class="col-xs-6">
                         <button ng-click="changeAllOpenStatus(true);">全部展开</button>
                         <button ng-click="changeAllOpenStatus(false);">全部关闭</button>
-                        <div style="overflow-y:auto; overflow-x:auto; height:400px;">
+                        <div style="overflow-y:auto;white-space: nowrap;margin-top: 10px; border:1px solid grey; border-radius: 4px; overflow-x:auto; width: 400px; height:400px;">
                             <tree-view tree-data="requestParamTree" text-field="name" value-field='id'
                                        item-clicked="itemClicked($item)"
                                        item-checked-changed="itemCheckedChanged($item)" can-checked="true"></tree-view>

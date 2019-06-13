@@ -35,120 +35,130 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
 // javaservices的数据定义
         // TODO 当代数据接口
         $scope.serviceList = [
-            {
-                id: "1",
-                appname: "系统应用",
-                serviceList: [
-                    {
-                        serviceid: "test-service-1",
-                        servicename: "测试服务1",
-                        requestParams: [
-                            {
-                                id: 2,
-                                name: "p13",
-                                des: "des-p1",
-                                type: 'object',
-                                bindParam: null,
-                                children: [
-                                    {
-                                        id: 3,
-                                        name: "p131",
-                                        des: "des-p131",
-                                        type: 'string',
-                                        bindParam: null
-
-                                    },
-                                    {
-                                        id: 4,
-                                        name: "p132",
-                                        des: "des-p132",
-                                        type: 'string',
-                                        bindParam: null
-
-                                    }
-                                ]
-                            }
-                        ],
-                        resultSet: [
-                            {
-                                id: 2,
-                                name: "p13",
-                                des: "des-p1",
-                                type: 'object',
-                                bindParam: null,
-                                children: [
-                                    {
-                                        id: 3,
-                                        name: "p131",
-                                        des: "des-p131",
-                                        type: 'string',
-                                        bindParam: null
-
-                                    },
-                                    {
-                                        id: 4,
-                                        name: "p132",
-                                        des: "des-p132",
-                                        type: 'string',
-                                        bindParam: null
-
-                                    }
-                                ]
-                            }
-                        ],
-                        des: "测试服务1 des"
-                    },
-                    {
-                        serviceid: "test-service-2",
-                        servicename: "测试服务1",
-                        des: "测试服务2 des"
-                    },
-                    {
-                        serviceid: "test-service-3",
-                        servicename: "测试服务1",
-                        des: "测试服务3 des"
-                    }
-                ]
-            },
-            {
-                id: "",
-                appname: "djl应用",
-                serviceList: [
-                    {
-                        serviceid: "test-djl-service-1",
-                        servicename: "djl服务1",
-                        des: "djl服务1 des"
-                    },
-                    {
-                        serviceid: "test-djl-service-2",
-                        servicename: "djl服务2",
-                        des: "djl服务2 des"
-                    }
-                ]
-            },
+            // {
+            //     id: "1",
+            //     appname: "系统应用",
+            //     serviceList: [
+            //         {
+            //             serviceid: "test-service-1",
+            //             servicename: "测试服务1",
+            //             requestParams: [
+            //                 {
+            //                     id: 2,
+            //                     name: "p13",
+            //                     des: "des-p1",
+            //                     type: 'object',
+            //                     bindParam: null,
+            //                     children: [
+            //                         {
+            //                             id: 3,
+            //                             name: "p131",
+            //                             des: "des-p131",
+            //                             type: 'string',
+            //                             bindParam: null
+            //
+            //                         },
+            //                         {
+            //                             id: 4,
+            //                             name: "p132",
+            //                             des: "des-p132",
+            //                             type: 'string',
+            //                             bindParam: null
+            //
+            //                         }
+            //                     ]
+            //                 }
+            //             ],
+            //             resultSet: [
+            //                 {
+            //                     id: 2,
+            //                     name: "p13",
+            //                     des: "des-p1",
+            //                     type: 'object',
+            //                     bindParam: null,
+            //                     children: [
+            //                         {
+            //                             id: 3,
+            //                             name: "p131",
+            //                             des: "des-p131",
+            //                             type: 'string',
+            //                             bindParam: null
+            //
+            //                         },
+            //                         {
+            //                             id: 4,
+            //                             name: "p132",
+            //                             des: "des-p132",
+            //                             type: 'string',
+            //                             bindParam: null
+            //
+            //                         }
+            //                     ]
+            //                 }
+            //             ],
+            //             des: "测试服务1 des"
+            //         },
+            //         {
+            //             serviceid: "test-service-2",
+            //             servicename: "测试服务1",
+            //             des: "测试服务2 des"
+            //         },
+            //         {
+            //             serviceid: "test-service-3",
+            //             servicename: "测试服务1",
+            //             des: "测试服务3 des"
+            //         }
+            //     ]
+            // },
+            // {
+            //     id: "",
+            //     appname: "djl应用",
+            //     serviceList: [
+            //         {
+            //             serviceid: "test-djl-service-1",
+            //             servicename: "djl服务1",
+            //             des: "djl服务1 des"
+            //         },
+            //         {
+            //             serviceid: "test-djl-service-2",
+            //             servicename: "djl服务2",
+            //             des: "djl服务2 des"
+            //         }
+            //     ]
+            // },
 
         ];
+        $http({
+            method: 'GET',
+            url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/ExtServices',
+            // data: instanceQueryData
+        }).success(function (response, status, headers, config) {
+            console.log('data: ' + response);
+            $scope.serviceList = response;
+            // 初始化已选择的数据
+            if ($scope.property.value != null) {
+                djlLoop:
+                    for (var j = 0, len = $scope.serviceList.length; j < len; j++) {
+                        var app = $scope.serviceList[j];
+                        for (var i = 0, len = app.serviceList.length; i < len; i++) {
+                            var service = app.serviceList[i];
+                            if (service.serviceid == $scope.property.value.serviceid) {
+                                $scope.service = service;
+                                $scope.service.$$isChecked = true;
+                                app.$$isExpend = true;
+                                break djlLoop;
+                            }
+                        }
+                    }
+            }
+        }).error(function (response, status, headers, config) {
+            console.log('Something went wrong: ' + response);
+        });
         $scope.service = {
             serviceid: null,
             servicename: null,
             des: null
         };
-        // 初始化已选择的数据
-        if ($scope.property.value != null) {
-            djlLoop:
-                for (var j = 0, len = $scope.serviceList.length; j < len; j++) {
-                    var app = $scope.serviceList[j];
-                    for (var i = 0, len = app.serviceList.length; i < len; i++) {
-                        var service = app.serviceList[i];
-                        if (service.serviceid == $scope.property.value.serviceid) {
-                            $scope.service = service;
-                            $scope.service.$$isChecked = true;
-                            app.$$isExpend = true;
-                            break djlLoop;
-                        }
-                    }
-                }
-        }
 
 
         var namePromise = $translate('PROPERTY.FIELDS.NAME');
@@ -158,6 +168,7 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
             // $scope.labels.nameLabel = results[0];
             // $scope.labels.implementationLabel = results[1];
             // $scope.translationsRetrieved = true;
+
 
         });
         $scope.getItemIcon = function (item) {
@@ -173,7 +184,6 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                 $scope.service.$$isChecked = false;
             }
             $scope.service = $item;
-            // $http.post('/url', $item);
             console.log($item, 'item checked');
         };
         // Click handler for save button

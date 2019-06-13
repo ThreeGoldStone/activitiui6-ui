@@ -7,5 +7,5 @@ package com.yw56.javaservice.bean;
  * @Created by djl20
  */
 public enum JsonNodeType {
-    string, number, Int, bool, list, obj
+    string, number, bool, array, object
 }

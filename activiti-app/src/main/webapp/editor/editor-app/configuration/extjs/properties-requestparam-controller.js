@@ -66,13 +66,18 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
                 if ($scope.requestParamTree == null && resourceId == childShape.resourceId) {
                     console.log('当前选中的节点：' + childShape);
                     // 从选取的服务处，初始化请求参数
-                    $scope.requestParamTree = childShape.properties.extjsserviceid.requestParams;
+                    $scope.requestParamTree = childShape.properties.extjsserviceid.requestTemplate;
                 }
             } else if (stencil.id == 'StartNoneEvent') {
                 // TODO 把startevent和人工节点等地方进啦的参数也添加到全局可选参数中
             }
 
         });
+        // 获取返回参数报文模板
+        let mShapeData = getSelectionShapesData($scope);
+        let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.requestTemplate);
+        // 生成返回参数报文模板树
+        $scope.requestParamTree = parseJsonToTree(reqObj);
 
         $scope.selectFromAllParam = function () {
             // $scope.selectedItem = $item;

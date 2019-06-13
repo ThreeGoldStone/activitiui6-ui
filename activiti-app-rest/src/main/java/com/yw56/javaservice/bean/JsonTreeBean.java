@@ -131,6 +131,7 @@ public class JsonTreeBean {
             for (int i = 0; i < value.size(); i++) {
                 Object oo = value.get(i);
                 JsonTreeBean treeBean = parseJsonTreeBean(parentPath, "" + i, oo);
+                if (treeBean == null) continue;
                 list.add(treeBean);
             }
             return list;
@@ -160,14 +161,14 @@ public class JsonTreeBean {
             return null;
         }
         switch (type) {
-            case obj:
+            case object:
                 JSONObject value1 = (JSONObject) value;
                 JSONObject clone = (JSONObject) value1.clone();
                 treeBean.setTemplateValue(clone);
                 ArrayList<JsonTreeBean> objChildren = parseObject(path, value1);
                 treeBean.setChildren(objChildren);
                 break;
-            case list:
+            case array:
                 JSONArray array = (JSONArray) value;
                 JSONArray arrayClone = (JSONArray) array.clone();
                 treeBean.setTemplateValue(arrayClone);
@@ -187,16 +188,14 @@ public class JsonTreeBean {
      */
     private static JsonNodeType parseJsonNodeType(Object value) {
         JsonNodeType type = null;
-        if (value instanceof BigDecimal) {
+        if (value instanceof Long || value instanceof Integer || value instanceof BigDecimal) {
             type = JsonNodeType.number;
         } else if (value instanceof Boolean) {
             type = JsonNodeType.bool;
-        } else if (value instanceof Long || value instanceof Integer) {
-            type = JsonNodeType.Int;
         } else if (value instanceof JSONArray) {
-            type = JsonNodeType.list;
+            type = JsonNodeType.array;
         } else if (value instanceof JSONObject) {
-            type = JsonNodeType.obj;
+            type = JsonNodeType.object;
         } else if (value instanceof String) {
             type = JsonNodeType.string;
         }

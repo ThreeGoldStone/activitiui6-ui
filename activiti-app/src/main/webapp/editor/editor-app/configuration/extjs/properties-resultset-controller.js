@@ -35,92 +35,86 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
         // Put json representing form properties on scope
         $scope.requestParamTree = [
-            {
-                id: 1,
-                name: "p1",
-                des: "des-pp1",
-                bindParam: "bindParam",
-                children: [
-                    {
-                        id: 2,
-                        name: "p11",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-
-                    {
-                        id: 3,
-                        name: "p13",
-                        des: "des-p1",
-                        bindParam: "bindParam",
-                        children: [
-                            {
-                                id: 4,
-                                name: "p131",
-                                des: "des-p1",
-                                bindParam: "bindParam"
-
-                            },
-                            {
-                                id: 5,
-                                name: "p132",
-                                bindParam: "bindParam"
-
-                            },
-                            {
-                                id: 6,
-                                name: "p133",
-                                des: "des-p1",
-
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 7,
-                name: "p2",
-                des: "des-pp1",
-                bindParam: "bindParam",
-                children: [
-
-                    {
-                        id: 8,
-                        name: "p21",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    },
-                    {
-                        id: 9,
-                        name: "p22",
-                        des: "des-p1",
-                        bindParam: "bindParam"
-
-                    }
-                ]
-            },
+            // {
+            //     id: 1,
+            //     name: "p1",
+            //     des: "des-pp1",
+            //     bindParam: "bindParam",
+            //     children: [
+            //         {
+            //             id: 2,
+            //             name: "p11",
+            //             des: "des-p1",
+            //             bindParam: "bindParam"
+            //
+            //         },
+            //
+            //         {
+            //             id: 3,
+            //             name: "p13",
+            //             des: "des-p1",
+            //             bindParam: "bindParam",
+            //             children: [
+            //                 {
+            //                     id: 4,
+            //                     name: "p131",
+            //                     des: "des-p1",
+            //                     bindParam: "bindParam"
+            //
+            //                 },
+            //                 {
+            //                     id: 5,
+            //                     name: "p132",
+            //                     bindParam: "bindParam"
+            //
+            //                 },
+            //                 {
+            //                     id: 6,
+            //                     name: "p133",
+            //                     des: "des-p1",
+            //
+            //                 }
+            //             ]
+            //         }
+            //     ]
+            // },
+            // {
+            //     id: 7,
+            //     name: "p2",
+            //     des: "des-pp1",
+            //     bindParam: "bindParam",
+            //     children: [
+            //
+            //         {
+            //             id: 8,
+            //             name: "p21",
+            //             des: "des-p1",
+            //             bindParam: "bindParam"
+            //
+            //         },
+            //         {
+            //             id: 9,
+            //             name: "p22",
+            //             des: "des-p1",
+            //             bindParam: "bindParam"
+            //
+            //         }
+            //     ]
+            // },
 
         ];
-        if ($scope.property.value !== undefined && $scope.property.value !== null
-            && $scope.property.value.fields !== undefined
-            && $scope.property.value.fields !== null) {
+        // 获取返回参数报文模板
+        let mShapeData = getSelectionShapesData($scope);
+        let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.responceTemplate);
+        // 生成返回参数报文模板树
+        $scope.requestParamTree = parseJsonToTree(reqObj);
+        // $http.post('/url', $item);
+        console.log($scope.requestParamTree);
+        if ($scope.property.value !== undefined && $scope.property.value !== null) {
 
             // Note that we clone the json object rather then setting it directly,
             // this to cope with the fact that the user can click the cancel button and no changes should have happened
-            $scope.fields = angular.copy($scope.property.value.fields);
-
-            for (var i = 0; i < $scope.fields.length; i++) {
-                var field = $scope.fields[i];
-                if (field.stringValue !== undefined && field.stringValue !== '') {
-                    field.implementation = field.stringValue;
-                } else if (field.expression !== undefined && field.expression !== '') {
-                    field.implementation = field.expression;
-                } else if (field.string !== undefined && field.string !== '') {
-                    field.implementation = field.string;
-                }
-            }
+            $scope.fields = angular.copy($scope.property.value);
 
         } else {
             $scope.fields = [];
@@ -141,8 +135,9 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
                 enableHorizontalScrollbar: 0,
                 enableColumnMenus: false,
                 enableSorting: false,
-                columnDefs: [{field: 'name', displayName: '全局变量名称'},
-                    {field: 'implementation', displayName: '全局变量取值'}]
+                columnDefs: [{field: 'name', displayName: '名称'},
+                    {field: 'type', displayName: '类型'},
+                    {field: 'valuePath', displayName: '取值'}]
             };
 
             $scope.gridOptions.onRegisterApi = function (gridApi) {
@@ -153,7 +148,7 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
                     // treeDiGui($scope.requestParamTree, function (element) {
                     //     element.$$isChecked = element.id == $scope.selectedField.implementationid;
                     // });
-                    singleCheckByIdWhithParentExpend($scope.requestParamTree, $scope.selectedField.implementationid);
+                    singleCheckByIdWhithParentExpend($scope.requestParamTree, $scope.selectedField.valuePath);
 
                 });
             };
@@ -163,10 +158,9 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
         $scope.addNewField = function () {
             var newField = {
                 name: 'fieldName',
-                implementation: '',
-                stringValue: '',
-                expression: '',
-                string: ''
+                type: '',
+                templateValue: '',
+                valuePath: ''
             };
 
             $scope.fields.push(newField);
@@ -260,13 +254,15 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
         $scope.itemCheckedChanged = function ($item) {
             // 实现单选
             $scope.selectedItem = $item;
-            singleCheckById($scope.requestParamTree, $scope.selectedItem.id);
+            singleCheckById($scope.requestParamTree, $scope.selectedItem.path);
             if ($item.$$isChecked) {
-                $scope.selectedField.implementation = $item.name;
-                $scope.selectedField.implementationid = $item.id;
+                $scope.selectedField.type = $item.type;
+                $scope.selectedField.valuePath = $item.path;
+                $scope.selectedField.templateValue = $item.templateValue;
             } else {
-                $scope.selectedField.implementation = null;
-                $scope.selectedField.implementationid = null;
+                $scope.selectedField.type = null;
+                $scope.selectedField.valuePath = null;
+                $scope.selectedField.templateValue = null;
             }
             // $http.post('/url', $item);
             console.log($item, 'item checked');
@@ -275,8 +271,8 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
         $scope.save = function () {
 
             if ($scope.fields.length > 0) {
-                $scope.property.value = {};
-                $scope.property.value.fields = $scope.fields;
+                $scope.property.value = [];
+                $scope.property.value = $scope.fields;
             } else {
                 $scope.property.value = null;
             }

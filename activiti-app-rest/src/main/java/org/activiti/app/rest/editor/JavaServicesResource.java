@@ -15,6 +15,9 @@ package org.activiti.app.rest.editor;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.activiti.app.service.exception.InternalServerErrorException;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
@@ -27,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yw56.javaservice.JavaServiceEntity;
+
+import javax.inject.Inject;
 
 /**
  * @author djl20
@@ -45,8 +50,8 @@ public class JavaServicesResource {
     protected RuntimeService runtimeService;
 
 //
-//	@Inject
-//	protected ObjectMapper objectMapper;
+	@Inject
+	protected ObjectMapper objectMapper;
 
     @RequestMapping(value = "/rest/java/services", method = RequestMethod.GET, produces = "application/json")
     public ArrayList<JavaServiceEntity> getJavaserviceList() {
@@ -63,17 +68,16 @@ public class JavaServicesResource {
     }
 
     @RequestMapping(value = "/rest/java/ExtServices", method = RequestMethod.GET, produces = "application/json")
-    public ArrayList<JavaServiceEntity> getExtJsServiceList() {
-//		try {
-//			String fileName = "java-services.js";
-//			JsonNode stencilNode = objectMapper
-//					.readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
-//			return stencilNode;
-//		} catch (Exception e) {
-//			log.error("Error reading bpmn stencil set json", e);
-//			throw new InternalServerErrorException("Error reading bpmn stencil set json");
-//		}
-        return JavaServiceEntity.getData();
+    public JsonNode getExtJsServiceList() {
+		try {
+			String fileName = "extjsAppList.json";
+			JsonNode stencilNode = objectMapper
+					.readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
+			return stencilNode;
+		} catch (Exception e) {
+			log.error("Error reading extjsAppList.json", e);
+			throw new InternalServerErrorException("Error reading extjsAppList.json json");
+		}
     }
 
     @RequestMapping(value = "/rest/java/getPDs", method = RequestMethod.GET, produces = "application/json")
