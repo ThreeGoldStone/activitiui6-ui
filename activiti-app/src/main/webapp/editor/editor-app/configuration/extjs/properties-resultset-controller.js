@@ -155,9 +155,10 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
         });
 
         // Click handler for add button
+        let fieldNameIndex = 1;
         $scope.addNewField = function () {
             var newField = {
-                name: 'fieldName',
+                name: 'fieldName_' + fieldNameIndex++,
                 type: '',
                 templateValue: '',
                 valuePath: ''

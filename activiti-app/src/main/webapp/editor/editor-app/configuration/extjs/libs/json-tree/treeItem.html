@@ -9,7 +9,7 @@
 <span class='text-field,item-selected'
       ng-click="warpCallback('itemClicked', item, $event);">{{':'+item.type}}</span>
 <!--<span class='text-des' ng-if="item.des" ng-click="warpCallback('itemClicked', item, $event);">{{"描述: "+item.des}}</span>-->
-<span class='text-field' ng-if="item.bindParam" ng-click="warpCallback('itemClicked', item, $event);">{{">"+item.bindParam}}</span>
+<span class='text-field' ng-if="item.valueConfig" ng-click="warpCallback('itemClicked', item, $event);">{{">"+item.valueConfig.name+item.valueConfig.path}}</span>
 <ul ng-if="!isLeaf(item)"
     ng-show="item.$$isExpend"
 >

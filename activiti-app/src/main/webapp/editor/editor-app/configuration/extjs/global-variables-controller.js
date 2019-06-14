@@ -20,26 +20,38 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
         // $scope.globalVariables
         $scope.selectField = {};
         // 初始化已选择的数据
-        let bindParam = $scope.selectedItem.bindParam;
-        let split = bindParam.split('.');
-        let taskId = split[0];
-        let variableName = split[1];
-        if (bindParam != null) {
-            myForEach($scope.globalVariables, function (task) {
-                if (taskId == task.id) {
-                    myForEach(task.fields, function (field) {
-                        if (field.name == variableName) {
-                            field.$$isChecked = true;
-                            task.$$isExpend = true;
-                            $scope.selectField = field;
-                        } else {
-                            field.$$isChecked = false;
-                        }
-                    });
-                    task.$$break =true;
+        $scope.myGlobalVarables = angular.copy($scope.globalVariables);
+        let valueConfig = $scope.selectedItem.valueConfig;
+        if (valueConfig != null) {
+            myForEach($scope.myGlobalVarables, function (element) {
+                if (element.resourceId == valueConfig.resourceId) {
+                    element.$$isExpend = true;
+                    singleCheckByIdWhithParentExpend(element.jsonTree, valueConfig.path);
+                    element.$$break = true;
                 }
 
             });
+            //
+            // let split = bindParam.split('.');
+            // let taskId = split[0];
+            // let variableName = split[1];
+            // if (bindParam != null) {
+            //     myForEach($scope.globalVariables, function (task) {
+            //         if (taskId == task.id) {
+            //             myForEach(task.fields, function (field) {
+            //                 if (field.name == variableName) {
+            //                     field.$$isChecked = true;
+            //                     task.$$isExpend = true;
+            //                     $scope.selectField = field;
+            //                 } else {
+            //                     field.$$isChecked = false;
+            //                 }
+            //             });
+            //             task.$$break = true;
+            //         }
+            //
+            //     });
+            // }
         }
         // if ($scope.property.value != null) {
         //     djlLoop:
@@ -76,26 +88,42 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
         };
         $scope.itemCheckedChanged = function ($item) {
             // 实现单选
+            $scope.selectField = {};
+            myForEach($scope.myGlobalVarables, function (element) {
+                let jsonTree = element.jsonTree;
+                let resourceId = element.resourceId;
+                treeDiGuiWithParent(null, jsonTree, function (parents, item) {
+                    if ($item == item) {
+                        item.$$isChecked = true;
+                        $scope.selectField.name = element.name || element.overrideid || element.resourceId;
+                        $scope.selectField.resourceId = resourceId;
+                        $scope.selectField.stencilid = element.stencilid;
+                        $scope.selectField.path = item.path;
+                    } else {
+                        item.$$isChecked = false;
+                    }
+                });
+            });
             if ($item.$$isChecked && $scope.selectField != null && ($scope.selectField != $item)) {
                 $scope.selectField.$$isChecked = false;
             }
-            $scope.selectField = $item;
+            // $scope.selectField = $item;
             // $http.post('/url', $item);
             console.log($item, 'item checked');
         };
         // Click handler for save button
         $scope.save = function () {
             if ($scope.selectField != null && $scope.selectField.name != null) {
-                djlloop:
-                    myForEach($scope.globalVariables, function (task) {
-                        myForEach(task.fields, function (field) {
-                            if (field == $scope.selectField) {
-                                $scope.selectedItem.bindParam = task.id + '.' + $scope.selectField.name;
-                                field.$$break = true;
-                                task.$$break = true;
-                            }
-                        });
-                    });
+                // myForEach($scope.globalVariables, function (task) {
+                //     myForEach(task.fields, function (field) {
+                //         if (field == $scope.selectField) {
+                //             $scope.selectedItem.bindParam = task.id + '.' + $scope.selectField.name;
+                //             field.$$break = true;
+                //             task.$$break = true;
+                //         }
+                //     });
+                // });
+                $scope.selectedItem.valueConfig = $scope.selectField;
             }
             // if ($scope.service.serviceid !== undefined && $scope.service.serviceid !== null) {
             //     $scope.property.value = {};
@@ -107,7 +135,18 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
             // $scope.updatePropertyInModel($scope.property);
             $scope.close();
         };
+        $scope.changeAllOpenStatus = function (status) {
+            // changeAll($scope.requestParamTree, status);
+            myForEach($scope.myGlobalVarables, function (element) {
 
+                treeDiGui(element.jsonTree, function (e) {
+                    e.$$isExpend = status;
+                });
+                element.$$isExpend = status;
+            });
+
+
+        };
         $scope.cancel = function () {
             $scope.close();
         };

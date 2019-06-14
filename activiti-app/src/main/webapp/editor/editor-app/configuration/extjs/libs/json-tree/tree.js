@@ -286,11 +286,13 @@ function treeDiGuiWithParent(parents, tree, callback) {
         callback(parents, element);
         let clist = element.children;
         if (clist != null && clist.length > 0) {
-            if (parents == null) {
-                parents = [];
-            }
-            parents.push(element);
-            treeDiGuiWithParent(parents, clist, callback)
+            let mParents = [];
+            if (parents != null) mParents = [...parents];
+            // if (parents != null) {
+            //     mParents.push(parents);
+            // }
+            mParents.push(element);
+            treeDiGuiWithParent(mParents, clist, callback)
         }
     }
 
@@ -480,28 +482,56 @@ function getAllGlobalVariablesJson($scope) {
         let stencilid = childShape.stencil.id;
         if (stencilid == 'EXTJSServiceTask') {
             let extJSNodeVariables = {
+                name: childShape.properties.name,
                 overrideid: childShape.properties.overrideid,
                 resourceId: childShape.resourceId,
                 variables: {},
                 stencilid: stencilid
             };
             myForEach(childShape.properties.extjsserviceresultset, function (resultSet) {
-                extJSNodeVariables.variables[resultSet.name] = resultSet.templateValue;
+                let name = resultSet.name;
+                if (name.indexOf("$$") != 0) {
+                    extJSNodeVariables.variables[name] = resultSet.templateValue;
+                }
             });
             allVariables.push(extJSNodeVariables);
-        } else if (stencilid == "StartEvent") {
+        } else if (stencilid.indexOf('Start') > -1) {
             // TODO  处理开始事件的form参数
             let formNodeVariables = {
+                name: childShape.properties.name,
                 overrideid: childShape.properties.overrideid,
                 resourceId: childShape.resourceId,
                 variables: {},
                 stencilid: stencilid
             };
             // childShape.properties.formproperties.formProperties[""0""].id
-            myForEach(childShape.properties.formproperties.formProperties,function (fp) {
+            myForEach(childShape.properties.formproperties.formProperties, function (fp) {
+                let varb = fp.variable;
+                if (varb == null) {
+                    switch (fb.type) {
+                        case 'string':
+                        case 'enum':
+                        case 'date':
+                            varb = "";
+                            break;
+                        case 'long':
+                            varb = 999999999;
+                            break;
+                        case 'boolean':
+                            varb = true;
+                            break;
 
+                    }
+                }
+                try {
+                    varb = JSON.parse(varb);
+                } catch (e) {
+                    console.log(varb + " 不是json，按照string处理")
+                }
 
-            })
+                formNodeVariables.variables[fp.id] = varb;
+            });
+            allVariables.push(formNodeVariables);
         }
     });
     return allVariables;

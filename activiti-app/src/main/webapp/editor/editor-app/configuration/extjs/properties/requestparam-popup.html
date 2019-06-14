@@ -18,11 +18,21 @@
                         </div>
 
                     </div>
-                    <div ng-if="selectedItem.id" class="col-xs-6">
-                        <span>{{selectedItem.name}} 绑定的参数值:</span>
-                        <p><textarea auto-focus class="form-control" ng-model="selectedItem.bindParam"
-                                     style="width:70%; height:100%; max-width: 100%; max-height: 100%; min-height: 200px"/>
-                        </p>
+                    <div ng-if="selectedItem.name" class="col-xs-6">
+                        <div class="form-group">
+                            <label>名称</label>
+                            <input type="text" class="form-control" ng-model="selectedItem.name"
+                                   placeholder="{{'PROPERTY.FIELDS.NAME.PLACEHOLDER' | translate}}"/>
+                        </div>
+                        <div>
+                            <label>样例</label>
+                            <pre style="height: fit-content;"
+                                 class="form-control">{{selectedItem.templateValue | json}}</pre>
+                        </div>
+                        <div class="form-group">
+                            <label>取值路径</label>
+                            <pre type="text" class="form-control">{{selectedItem.valueConfig.name+selectedItem.valueConfig.path}}</pre>
+                        </div>
                         <button ng-click="selectFromAllParam()">从全局参数中选取</button>
                     </div>
                 </div>

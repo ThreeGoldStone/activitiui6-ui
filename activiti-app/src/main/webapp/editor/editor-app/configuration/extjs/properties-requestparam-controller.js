@@ -42,43 +42,22 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
         if ($scope.property.value != null && (typeof $scope.property.value) == 'object') {
             $scope.requestParamTree = $scope.property.value;
         }
-        let editor = $scope.editor;
-        let resourceId = editor.selection[0].resourceId;
-        let allJson = editor.getJSON();
-        let childShapes = allJson.childShapes;
-        myForEach(childShapes, function (childShape) {
-            let stencil = childShape.stencil;
-            if (stencil.id == 'EXTJSServiceTask') {
-                let globalVariable = {
-                    id: childShape.properties.overrideid,
-                    name: childShape.properties.name,
-                    fields: [],
-                    stencilid: stencil.id
-                };
-                let fields = childShape.properties.extjsserviceresultset.fields;
-                myForEach(fields, function (field) {
-                    globalVariable.fields.push({
-                        name: field.name,
-                        type: field.type
-                    });
-                });
-                $scope.globalVariables.push(globalVariable);
-                if ($scope.requestParamTree == null && resourceId == childShape.resourceId) {
-                    console.log('当前选中的节点：' + childShape);
-                    // 从选取的服务处，初始化请求参数
-                    $scope.requestParamTree = childShape.properties.extjsserviceid.requestTemplate;
-                }
-            } else if (stencil.id == 'StartNoneEvent') {
-                // TODO 把startevent和人工节点等地方进啦的参数也添加到全局可选参数中
-            }
+        // 获取默认参数模板
+        if ($scope.requestParamTree == null) {
+            // 获取返回参数报文模板
+            let mShapeData = getSelectionShapesData($scope);
+            let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.requestTemplate);
+            // 生成返回参数报文模板树
+            $scope.requestParamTree = parseJsonToTree(reqObj);
+        }
 
+        // 获取全局参数 json
+        $scope.globalVariables = getAllGlobalVariablesJson($scope);
+        // 把各个节点的参数转化为树状结构
+        myForEach($scope.globalVariables, function (vj) {
+            let vt = parseJsonToTree(vj.variables);
+            vj.jsonTree = vt;
         });
-        // 获取返回参数报文模板
-        let mShapeData = getSelectionShapesData($scope);
-        let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.requestTemplate);
-        // 生成返回参数报文模板树
-        $scope.requestParamTree = parseJsonToTree(reqObj);
-
         $scope.selectFromAllParam = function () {
             // $scope.selectedItem = $item;
             console.log('selectFromAllParam');
@@ -115,7 +94,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
         $scope.itemCheckedChanged = function ($item) {
             // 实现单选
             $scope.selectedItem = $item;
-            singleCheckById($scope.requestParamTree, $scope.selectedItem.id);
+            singleCheckById($scope.requestParamTree, $scope.selectedItem.path);
             // $http.post('/url', $item);
             console.log($item, 'item checked');
         };
