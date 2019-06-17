@@ -1,0 +1,47 @@
+[
+  {
+    "name": "fieldName",
+    "type": "array",
+    "templateValue": [
+      {
+        "string": "我是string",
+        "bool": true,
+        "int": 1,
+        "number": 1.22
+      },
+      {
+        "string": "我是string",
+        "bool": true,
+        "int": 1,
+        "number": 1.22
+      }
+    ],
+    "valuePath": ".list",
+    "$$hashKey": "uiGrid-03P"
+  },
+  {
+    "name": "fieldName_1",
+    "type": "object",
+    "templateValue": {
+      "string": "我是string",
+      "bool": true,
+      "int": 1,
+      "number": 1.22,
+      "object": {
+        "string": "我是string",
+        "bool": true,
+        "int": 1,
+        "number": 1.22
+      }
+    },
+    "valuePath": ".object",
+    "$$hashKey": "uiGrid-04P"
+  },
+  {
+    "name": "fieldName_2",
+    "type": "bool",
+    "templateValue": true,
+    "valuePath": ".bool",
+    "$$hashKey": "uiGrid-04X"
+  }
+]

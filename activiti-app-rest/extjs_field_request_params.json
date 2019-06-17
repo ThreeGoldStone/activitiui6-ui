@@ -1,0 +1,290 @@
+[
+  {
+    "name": "string",
+    "path": ".string",
+    "templateValue": "我是string",
+    "type": "string",
+    "$$hashKey": "object:421",
+    "$$isExpend": false,
+    "$$isChecked": false,
+    "valueConfig": {
+      "name": "startEvent1",
+      "resourceId": "startEvent1",
+      "stencilid": "StartNoneEvent",
+      "path": ".new_property_2",
+      "$$isChecked": false
+    }
+  },
+  {
+    "name": "bool",
+    "path": ".bool",
+    "templateValue": true,
+    "type": "bool",
+    "$$hashKey": "object:422",
+    "$$isExpend": false,
+    "$$isChecked": false,
+    "valueConfig": {
+      "name": "水电费",
+      "resourceId": "sid-93F9DB00-A5B1-4B17-8CC1-6F0C179116F4",
+      "stencilid": "EXTJSServiceTask",
+      "path": ".fieldName_1.object.bool",
+      "$$isChecked": false
+    }
+  },
+  {
+    "name": "int",
+    "path": ".int",
+    "templateValue": 1111111111111,
+    "type": "number",
+    "$$hashKey": "object:423",
+    "$$isExpend": false,
+    "$$isChecked": false
+  },
+  {
+    "name": "number",
+    "path": ".number",
+    "templateValue": 1.22,
+    "type": "number",
+    "$$hashKey": "object:424",
+    "$$isExpend": false,
+    "$$isChecked": false
+  },
+  {
+    "name": "object",
+    "path": ".object",
+    "templateValue": {
+      "string": "我是string",
+      "bool": true,
+      "int": 1,
+      "number": 1.22,
+      "object": {
+        "string": "我是string",
+        "bool": true,
+        "int": 1,
+        "number": 1.22
+      }
+    },
+    "children": [
+      {
+        "name": "string",
+        "path": ".object.string",
+        "templateValue": "我是string",
+        "type": "string",
+        "$$hashKey": "object:445",
+        "$$isExpend": false,
+        "$$isChecked": false
+      },
+      {
+        "name": "bool",
+        "path": ".object.bool",
+        "templateValue": true,
+        "type": "bool",
+        "$$hashKey": "object:446",
+        "$$isExpend": false,
+        "$$isChecked": false
+      },
+      {
+        "name": "int",
+        "path": ".object.int",
+        "templateValue": 1,
+        "type": "number",
+        "$$hashKey": "object:447",
+        "$$isExpend": false,
+        "$$isChecked": false
+      },
+      {
+        "name": "number",
+        "path": ".object.number",
+        "templateValue": 1.22,
+        "type": "number",
+        "$$hashKey": "object:448",
+        "$$isExpend": false,
+        "$$isChecked": false
+      },
+      {
+        "name": "object",
+        "path": ".object.object",
+        "templateValue": {
+          "string": "我是string",
+          "bool": true,
+          "int": 1,
+          "number": 1.22
+        },
+        "children": [
+          {
+            "name": "string",
+            "path": ".object.object.string",
+            "templateValue": "我是string",
+            "type": "string",
+            "$$hashKey": "object:474",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "bool",
+            "path": ".object.object.bool",
+            "templateValue": true,
+            "type": "bool",
+            "$$hashKey": "object:475",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "int",
+            "path": ".object.object.int",
+            "templateValue": 1,
+            "type": "number",
+            "$$hashKey": "object:476",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "number",
+            "path": ".object.object.number",
+            "templateValue": 1.22,
+            "type": "number",
+            "$$hashKey": "object:477",
+            "$$isExpend": false,
+            "$$isChecked": false
+          }
+        ],
+        "type": "object",
+        "$$hashKey": "object:449",
+        "$$isExpend": false,
+        "$$isChecked": false
+      }
+    ],
+    "type": "object",
+    "$$hashKey": "object:425",
+    "$$isExpend": false,
+    "$$isChecked": false
+  },
+  {
+    "name": "list",
+    "path": ".list",
+    "templateValue": [
+      {
+        "string": "我是string",
+        "bool": true,
+        "int": 1,
+        "number": 1.22
+      },
+      {
+        "string": "我是string",
+        "bool": true,
+        "int": 1,
+        "number": 1.22
+      }
+    ],
+    "children": [
+      {
+        "name": 0,
+        "path": ".list.0",
+        "templateValue": {
+          "string": "我是string",
+          "bool": true,
+          "int": 1,
+          "number": 1.22
+        },
+        "children": [
+          {
+            "name": "string",
+            "path": ".list.0.string",
+            "templateValue": "我是string",
+            "type": "string",
+            "$$hashKey": "object:484",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "bool",
+            "path": ".list.0.bool",
+            "templateValue": true,
+            "type": "bool",
+            "$$hashKey": "object:485",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "int",
+            "path": ".list.0.int",
+            "templateValue": 1,
+            "type": "number",
+            "$$hashKey": "object:486",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "number",
+            "path": ".list.0.number",
+            "templateValue": 1.22,
+            "type": "number",
+            "$$hashKey": "object:487",
+            "$$isExpend": false,
+            "$$isChecked": false
+          }
+        ],
+        "type": "object",
+        "$$hashKey": "object:457",
+        "$$isExpend": false,
+        "$$isChecked": false
+      },
+      {
+        "name": 1,
+        "path": ".list.1",
+        "templateValue": {
+          "string": "我是string",
+          "bool": true,
+          "int": 1,
+          "number": 1.22
+        },
+        "children": [
+          {
+            "name": "string",
+            "path": ".list.1.string",
+            "templateValue": "我是string",
+            "type": "string",
+            "$$hashKey": "object:494",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "bool",
+            "path": ".list.1.bool",
+            "templateValue": true,
+            "type": "bool",
+            "$$hashKey": "object:495",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "int",
+            "path": ".list.1.int",
+            "templateValue": 1,
+            "type": "number",
+            "$$hashKey": "object:496",
+            "$$isExpend": false,
+            "$$isChecked": false
+          },
+          {
+            "name": "number",
+            "path": ".list.1.number",
+            "templateValue": 1.22,
+            "type": "number",
+            "$$hashKey": "object:497",
+            "$$isExpend": false,
+            "$$isChecked": false
+          }
+        ],
+        "type": "object",
+        "$$hashKey": "object:458",
+        "$$isExpend": false,
+        "$$isChecked": false
+      }
+    ],
+    "type": "array",
+    "$$hashKey": "object:426",
+    "$$isExpend": false,
+    "$$isChecked": false
+  }
+]

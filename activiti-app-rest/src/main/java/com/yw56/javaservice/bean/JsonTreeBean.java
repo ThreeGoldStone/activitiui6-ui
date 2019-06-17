@@ -186,7 +186,7 @@ public class JsonTreeBean {
      * @param value
      * @return
      */
-    private static JsonNodeType parseJsonNodeType(Object value) {
+    public static JsonNodeType parseJsonNodeType(Object value) {
         JsonNodeType type = null;
         if (value instanceof Long || value instanceof Integer || value instanceof BigDecimal) {
             type = JsonNodeType.number;
@@ -202,5 +202,16 @@ public class JsonTreeBean {
         return type;
     }
 
+    public static void treeDiGui(JSONArray array) {
+        for (int i = 0; i < array.size(); i++) {
+            JSONObject object = array.getJSONObject(i);
 
+
+        }
+
+    }
+
+    public interface TreeDiGuiListener {
+        void onDiGui(JSONObject object);
+    }
 }

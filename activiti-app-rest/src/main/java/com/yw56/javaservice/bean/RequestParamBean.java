@@ -44,13 +44,13 @@ public class RequestParamBean extends JsonTreeBean {
     /**
      * 请求参数绑定的取值路径
      */
-    private String bindParamPath;
+    private ValueConfig valueConfig;
 
-    public String getBindParamPath() {
-        return bindParamPath;
+    public ValueConfig getValueConfig() {
+        return valueConfig;
     }
 
-    public void setBindParamPath(String bindParamPath) {
-        this.bindParamPath = bindParamPath;
+    public void setValueConfig(ValueConfig valueConfig) {
+        this.valueConfig = valueConfig;
     }
 }

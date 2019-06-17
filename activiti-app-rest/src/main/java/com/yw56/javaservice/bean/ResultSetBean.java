@@ -26,48 +26,7 @@ import java.io.Serializable;
  */
 public class ResultSetBean implements Serializable {
     private String name;
-    private String implementation;
+    private String type;
+    private Object templateValue;
     private String valuePath;
-    private String valueType;
-    private String implementationid;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImplementation() {
-        return implementation;
-    }
-
-    public void setImplementation(String implementation) {
-        this.implementation = implementation;
-    }
-
-    public String getValuePath() {
-        return valuePath;
-    }
-
-    public void setValuePath(String valuePath) {
-        this.valuePath = valuePath;
-    }
-
-    public String getValueType() {
-        return valueType;
-    }
-
-    public void setValueType(String valueType) {
-        this.valueType = valueType;
-    }
-
-    public String getImplementationid() {
-        return implementationid;
-    }
-
-    public void setImplementationid(String implementationid) {
-        this.implementationid = implementationid;
-    }
 }
