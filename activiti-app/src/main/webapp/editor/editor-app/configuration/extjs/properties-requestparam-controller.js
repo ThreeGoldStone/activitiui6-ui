@@ -71,6 +71,11 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
 
 
         };
+        $scope.clearSelectedParam = function () {
+            console.log('selectFromAllParam');
+            $scope.selectedItem.valueConfig = null;
+
+        };
 
         // function changeAll(list, status) {
         //     for (var j = 0, len = list.length; j < len; j++) {

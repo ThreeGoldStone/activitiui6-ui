@@ -18,7 +18,7 @@
                         </div>
 
                     </div>
-                    <div  class="col-xs-6">
+                    <div class="col-xs-6">
                         <div class="form-group">
                             <label>名称</label>
                             <input type="text" class="form-control" ng-model="selectedItem.name"
@@ -31,7 +31,9 @@
                         </div>
                         <div class="form-group">
                             <label>取值路径</label>
+                            <!--<i ng-click="itemExpended(item, $event);" class="fa fa-times"></i>-->
                             <pre type="text" class="form-control">{{selectedItem.valueConfig.name+selectedItem.valueConfig.path}}</pre>
+
                         </div>
                         <div>
                             <label>取值样例</label>
@@ -39,6 +41,7 @@
                                  class="form-control">{{selectedItem.valueConfig.templateValue | json}}</pre>
                         </div>
                         <button ng-click="selectFromAllParam()">从全局参数中选取</button>
+                        <button ng-click="clearSelectedParam()">清空取值</button>
                     </div>
                 </div>
 
