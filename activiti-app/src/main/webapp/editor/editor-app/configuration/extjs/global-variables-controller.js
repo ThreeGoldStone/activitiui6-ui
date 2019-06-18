@@ -22,6 +22,11 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
         // 初始化已选择的数据
         $scope.myGlobalVarables = angular.copy($scope.globalVariables);
         let valueConfig = $scope.selectedItem.valueConfig;
+        myForEach($scope.myGlobalVarables, function (element) {
+            treeDiGui(element.jsonTree, function (e) {
+                e.$$isDisabled = e.type != $scope.selectedItem.type;
+            });
+        });
         if (valueConfig != null) {
             myForEach($scope.myGlobalVarables, function (element) {
                 if (element.resourceId == valueConfig.resourceId) {
