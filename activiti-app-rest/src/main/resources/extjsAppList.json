@@ -5,15 +5,11 @@
     "serviceList": [
       {
         "serviceid": 1,
-        "servicename": "测试服务1",
-        "requestTemplate": "{\n  \"string\": \"我是string\",\n  \"bool\": true,\n  \"int\": 1111111111111,\n  \"number\": 1.22,\n  \"object\": {\n    \"string\": \"我是string\",\n    \"bool\": true,\n    \"int\": 1,\n    \"number\": 1.22,\n    \"object\": {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  },\n  \"list\": [\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    },\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  ]\n}\n",
-        "responceTemplate": "{\n  \"string\": \"我是string\",\n  \"bool\": true,\n  \"int\": 1111111111111,\n  \"number\": 1.22,\n  \"object\": {\n    \"string\": \"我是string\",\n    \"bool\": true,\n    \"int\": 1,\n    \"number\": 1.22,\n    \"object\": {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  },\n  \"list\": [\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    },\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  ]\n}\n"
+        "servicename": "测试服务1"
       },
       {
         "serviceid": 2,
-        "servicename": "测试服务2",
-        "requestTemplate": "",
-        "responceTemplate": ""
+        "servicename": "测试服务2"
       }
     ]
   },
@@ -23,15 +19,11 @@
     "serviceList": [
       {
         "serviceid": 3,
-        "servicename": "djl服务1",
-        "requestTemplate": "{\n  \"string\": \"我是string\",\n  \"bool\": true,\n  \"int\": 1111111111111,\n  \"number\": 1.22,\n  \"object\": {\n    \"string\": \"我是string\",\n    \"bool\": true,\n    \"int\": 1,\n    \"number\": 1.22,\n    \"object\": {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  },\n  \"list\": [\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    },\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  ]\n}\n",
-        "responceTemplate": "{\n  \"string\": \"我是string\",\n  \"bool\": true,\n  \"int\": 1111111111111,\n  \"number\": 1.22,\n  \"object\": {\n    \"string\": \"我是string\",\n    \"bool\": true,\n    \"int\": 1,\n    \"number\": 1.22,\n    \"object\": {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  },\n  \"list\": [\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    },\n    {\n      \"string\": \"我是string\",\n      \"bool\": true,\n      \"int\": 1,\n      \"number\": 1.22\n    }\n  ]\n}\n"
+        "servicename": "djl服务1"
       },
       {
         "serviceid": 4,
-        "servicename": "djl服务2",
-        "requestTemplate": "",
-        "responceTemplate": ""
+        "servicename": "djl服务2"
       }
     ]
   }

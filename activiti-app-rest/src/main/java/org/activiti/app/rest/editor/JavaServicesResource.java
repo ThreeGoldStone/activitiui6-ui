@@ -25,6 +25,7 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,9 +50,9 @@ public class JavaServicesResource {
     @Autowired
     protected RuntimeService runtimeService;
 
-//
-	@Inject
-	protected ObjectMapper objectMapper;
+    //
+    @Inject
+    protected ObjectMapper objectMapper;
 
     @RequestMapping(value = "/rest/java/services", method = RequestMethod.GET, produces = "application/json")
     public ArrayList<JavaServiceEntity> getJavaserviceList() {
@@ -69,15 +70,29 @@ public class JavaServicesResource {
 
     @RequestMapping(value = "/rest/java/ExtServices", method = RequestMethod.GET, produces = "application/json")
     public JsonNode getExtJsServiceList() {
-		try {
-			String fileName = "extjsAppList.json";
-			JsonNode stencilNode = objectMapper
-					.readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
-			return stencilNode;
-		} catch (Exception e) {
-			log.error("Error reading extjsAppList.json", e);
-			throw new InternalServerErrorException("Error reading extjsAppList.json json");
-		}
+        try {
+            String fileName = "extjsAppList.json";
+            JsonNode stencilNode = objectMapper
+                    .readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
+            return stencilNode;
+        } catch (Exception e) {
+            log.error("Error reading extjsAppList.json", e);
+            throw new InternalServerErrorException("Error reading extjsAppList.json json");
+        }
+    }
+
+    @RequestMapping(value = "/rest/java/service/details/{serviceid}", method = RequestMethod.GET, produces = "application/json")
+    public JsonNode getExtJsServiceDetail(@PathVariable String serviceid) {
+        System.out.println("getExtJsServiceDetail > " + serviceid);
+        try {
+            String fileName = "detail.json";
+            JsonNode stencilNode = objectMapper
+                    .readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
+            return stencilNode;
+        } catch (Exception e) {
+            log.error("Error reading detail.json", e);
+            throw new InternalServerErrorException("Error reading detail.json json");
+        }
     }
 
     @RequestMapping(value = "/rest/java/getPDs", method = RequestMethod.GET, produces = "application/json")

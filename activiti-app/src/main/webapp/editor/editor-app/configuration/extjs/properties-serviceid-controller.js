@@ -33,6 +33,20 @@ angular.module('activitiModeler').controller('BpmServiceidCtrl',
 angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
     ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
 // javaservices的数据定义
+        $scope.getServiceDetail = function (service) {
+            $http({
+                method: 'GET',
+                url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/service/details/' + service.id,
+                // data: instanceQueryData
+            }).success(function (response, status, headers, config) {
+                console.log('data: ' + response);
+                service.requestTemplate = response.requestTemplate;
+                service.responceTemplate = response.responceTemplate;
+            }).error(function (response, status, headers, config) {
+                console.log('Something went wrong: ' + response);
+            });
+
+        };
         // TODO 当代数据接口
         $scope.serviceList = [
             // {
@@ -144,6 +158,7 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                             var service = app.serviceList[i];
                             if (service.serviceid == $scope.property.value.serviceid) {
                                 $scope.service = service;
+                                $scope.getServiceDetail($scope.service);
                                 $scope.service.$$isChecked = true;
                                 app.$$isExpend = true;
                                 break djlLoop;
@@ -184,8 +199,13 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                 $scope.service.$$isChecked = false;
             }
             $scope.service = $item;
+            if (!($scope.service.requestTemplate || $scope.service.responceTemplate)) {
+                $scope.getServiceDetail($scope.service);
+            }
+
             console.log($item, 'item checked');
         };
+
         // Click handler for save button
         $scope.save = function () {
 

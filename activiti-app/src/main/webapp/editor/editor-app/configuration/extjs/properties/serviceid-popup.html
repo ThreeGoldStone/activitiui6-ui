@@ -6,23 +6,40 @@
                 </button>
                 <h3>{{'PROPERTY.PROPERTY.EDIT.TITLE' | translate}} "{{property.title | translate}}"</h3>
             </div>
-            <div class="modal-body" style="overflow-y:auto; overflow-x:auto; height:400px;">
-                <ul class="tree-view">
-                    <li ng-repeat="appItem in serviceList">
-                        <i ng-click="itemExpended(appItem, $event);" class="{{getItemIcon(appItem)}}"></i>
-                        <span>{{appItem.appname}}</span>
-                        <ul ng-show="appItem.$$isExpend" class="tree-view">
-                            <li ng-repeat="serviceItem in appItem.serviceList">
-                                <input type="checkbox" ng-model="serviceItem.$$isChecked" class="check-box"
-                                       ng-change="itemCheckedChanged(serviceItem)">
-                                <span>{{serviceItem.servicename}}</span>
-                                <span>{{'id:'+serviceItem.serviceid}}</span>
-                                <span>{{serviceItem.des}}</span>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
+            <div class="modal-body">
+                <div class="row row-no-gutter">
+                    <div class="col-xs-6" style="width: 30%">
+                        <div style="overflow-y:auto; overflow-x:auto; height:400px;">
+                            <ul class="tree-view">
+                                <li ng-repeat="appItem in serviceList">
+                                    <i ng-click="itemExpended(appItem, $event);" class="{{getItemIcon(appItem)}}"></i>
+                                    <span>{{appItem.appname}}</span>
+                                    <ul ng-show="appItem.$$isExpend" class="tree-view">
+                                        <li ng-repeat="serviceItem in appItem.serviceList">
+                                            <input type="checkbox" ng-model="serviceItem.$$isChecked" class="check-box"
+                                                   ng-change="itemCheckedChanged(serviceItem)">
+                                            <span>{{serviceItem.servicename}}</span>
+                                            <span>{{'id:'+serviceItem.serviceid}}</span>
+                                            <span>{{serviceItem.des}}</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-6" style="width: 35%">
+                        <h4>请求报文模板</h4>
+                    <pre style="overflow-y:auto; overflow-x:auto; height:400px;">
+                        {{service.requestTemplate }}
+                    </pre>
+                    </div>
+                    <div class="col-xs-6" style="width: 35%">
+                        <h4>返回报文模板</h4>
+                        <pre style="overflow-y:auto; overflow-x:auto; height:400px;">
+                        {{service.responceTemplate}}
+                        </pre>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button ng-click="cancel()" class="btn btn-primary" translate>ACTION.CANCEL</button>
