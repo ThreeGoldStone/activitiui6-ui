@@ -104,6 +104,7 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
                         $scope.selectField.resourceId = resourceId;
                         $scope.selectField.stencilid = element.stencilid;
                         $scope.selectField.path = item.path;
+                        $scope.selectField.templateValue = item.templateValue;
                     } else {
                         item.$$isChecked = false;
                     }
