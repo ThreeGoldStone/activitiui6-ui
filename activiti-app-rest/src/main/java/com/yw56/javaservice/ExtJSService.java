@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.yw56.javaservice.bean.JsonNodeType;
 import com.yw56.javaservice.bean.JsonTreeBean;
-import com.yw56.javaservice.bean.RequestParamBean;
+import com.yw56.javaservice.bean.JsonTreeBean;
 import com.yw56.javaservice.bean.ValueConfig;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
@@ -17,11 +17,15 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static com.yw56.javaservice.PropertiesUtils.extProperties;
 
 public class ExtJSService implements JavaDelegate {
+    public static final String EXTJS_VARIABLE_PREFIX = "extjspppp";
+    public static final String KEY_FORM_VARIABLES = "key_form_variables";
     private FixedValue extjsserviceid;
     private FixedValue extjsservicerequestparam;
     private FixedValue extjsserviceresultset;
@@ -113,7 +117,7 @@ public class ExtJSService implements JavaDelegate {
             }
             resultsToGlobal.put(name, value);
         }
-        execution.setVariable(currentActivityId, resultsToGlobal);
+        execution.setVariable(EXTJS_VARIABLE_PREFIX + currentActivityId, resultsToGlobal);
     }
 
     private Object getValueFromJsonByPath(Object result, String valuePath) {
@@ -138,7 +142,7 @@ public class ExtJSService implements JavaDelegate {
 //
 //                    }
                     // TODO 根据路径取值，array路径后带*时的数据取值
-                    return arrayResult;
+                    return arrayNode;
                 } else {
                     // 默认单值从0处取
                     int index = 0;
@@ -162,57 +166,96 @@ public class ExtJSService implements JavaDelegate {
     }
 
     private String formRequestBody(DelegateExecution execution) {
+        JSONObject variableRoot = getVariableRootFromExecution(execution);
         // 配置的结果处理列表
         String requestParamString = extjsservicerequestparam.getExpressionText();
-        List<RequestParamBean> requestParams = JSON.parseArray(requestParamString, RequestParamBean.class);
+        List<JsonTreeBean> requestParams = JSON.parseArray(requestParamString, JsonTreeBean.class);
         // 请求的json
         JSONObject requestBody = new JSONObject();
-        for (RequestParamBean requestParam : requestParams) {
-            Object value = null;
+        diGuiFormRequestParam(requestParams, requestBody, variableRoot);
+        return requestBody.toJSONString();
+    }
+
+    private void diGuiFormRequestParam(List<JsonTreeBean> requestParams, JSONObject requestBody, JSONObject variableRoot) {
+        for (JsonTreeBean requestParam : requestParams) {
+            ArrayList<JsonTreeBean> children = requestParam.getChildren();
             ValueConfig valueConfig = requestParam.getValueConfig();
+            String name = requestParam.getName();
             if (valueConfig != null && !StringUtils.isBlank(valueConfig.getPath())) {
                 String stencilid = valueConfig.getStencilid();
                 String resourceId = valueConfig.getResourceId();
                 String valuePath = valueConfig.getPath();
-                switch (stencilid) {
-                    case "EXTJSServiceTask":
-                        JSONObject variable = (JSONObject) execution.getVariable(resourceId);
-                        value = getValueFromJsonByPath(variable, valuePath);
-                        break;
-                    default:
-                        String[] paths = valuePath.split(".");
-                        String formName = paths[0];
-                        Object fv = execution.getVariable(formName);
-                        Object fj = null;
-                        if (fv instanceof String) {
-                            String fs = (String) fv;
-                            try {
-                                fj = JSONObject.parse(fs);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            if (fj != null) {
-                                if (paths.length > 1) {
-                                    value = getValueFromJsonByPath(fj, valuePath.replace("." + formName, ""));
-                                } else {
-                                    value = fj;
-                                }
-                            } else {
-                                value = fs;
-                            }
-                        } else {
-                            value = fv;
-                        }
 
+                Object subRoot = null;
+                switch (stencilid) {
+                    // extjs服务的参数
+                    case "EXTJSServiceTask":
+                        subRoot = variableRoot.get(EXTJS_VARIABLE_PREFIX + resourceId);
+                        break;
+                    // 默认其他的直取参数
+                    default:
+                        subRoot = variableRoot.get(KEY_FORM_VARIABLES);
+                }
+                Object valueFromJsonByPath = getValueFromJsonByPath(subRoot, valuePath);
+
+                requestBody.put(name, valueFromJsonByPath);
+            } else if (children != null && children.size() > 0) {
+                // 递归子列表
+                JsonNodeType type = requestParam.getType();
+                switch (type) {
+                    case object:
+                        JSONObject jsonObject = new JSONObject();
+                        requestBody.put(name, jsonObject);
+                        diGuiFormRequestParam(children, jsonObject, variableRoot);
+                        break;
+                    case array:
+                        JSONArray array = new JSONArray();
+                        requestBody.put(name, array);
+
+                        // TODO JSONArray 的暂不处理
                         break;
                 }
-                // 递归子列表
-                requestBody.put(requestParam.getName(), value);
             }
 
         }
-        // TODO 根据设置的规则转化生成请求报文
-        return null;
+    }
+
+    /**
+     * 获得修正路径的全局参数集合
+     *
+     * @param execution
+     * @return
+     */
+    private JSONObject getVariableRootFromExecution(DelegateExecution execution) {
+        // 所有参数根节点
+        JSONObject variableRoot = new JSONObject();
+        // 所有的form参数根节点
+        JSONObject variablesForm = new JSONObject();
+
+        Map<String, Object> variables = execution.getVariables();
+        for (Map.Entry<String, Object> variablePair : variables.entrySet()) {
+            String key = variablePair.getKey();
+            Object value = variablePair.getValue();
+            if (key.startsWith(EXTJS_VARIABLE_PREFIX)) {
+                // extjs服务存的变量
+                variableRoot.put(key, value);
+            } else {
+                // 如果是string类型的，就需要判断是否为json，如果是json就设置json对象或数组
+                if (value instanceof String) {
+                    String fs = (String) value;
+                    try {
+                        value = JSONObject.parse(fs);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                variablesForm.put(key, value);
+                // 其他form存的变量
+            }
+
+        }
+        variableRoot.put(KEY_FORM_VARIABLES, variablesForm);
+        return variableRoot;
     }
 
 }

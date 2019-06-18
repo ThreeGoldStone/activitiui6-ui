@@ -35,6 +35,15 @@ public class JsonTreeBean {
      * 属相列表，OBJ 和list有此类型
      */
     private ArrayList<JsonTreeBean> children;
+    private ValueConfig valueConfig;
+
+    public ValueConfig getValueConfig() {
+        return valueConfig;
+    }
+
+    public void setValueConfig(ValueConfig valueConfig) {
+        this.valueConfig = valueConfig;
+    }
 
     public String getName() {
         return name;
