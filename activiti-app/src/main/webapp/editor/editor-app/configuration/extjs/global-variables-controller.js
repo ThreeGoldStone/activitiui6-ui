@@ -130,6 +130,7 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
                 //     });
                 // });
                 $scope.selectedItem.valueConfig = $scope.selectField;
+                $scope.refreshDisabled();
             }
             // if ($scope.service.serviceid !== undefined && $scope.service.serviceid !== null) {
             //     $scope.property.value = {};

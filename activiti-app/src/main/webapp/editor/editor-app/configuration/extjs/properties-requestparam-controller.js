@@ -39,8 +39,28 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
         });
         $scope.globalVariables = [];
         $scope.requestParamTree = null;
+        /**
+         * 根据父级是否有选取，刷新item是否可选取
+         */
+        $scope.refreshDisabled = function () {
+            treeDiGuiWithParent(null, $scope.requestParamTree, function (parents, element) {
+                if (parents != null && parents.size() > 0) {
+                    let isParentHasValue = false;
+                    myForEach(parents, function (parent) {
+                        if (parent.valueConfig && parent.valueConfig.path) {
+                            isParentHasValue = true;
+                            parent.$$break;
+
+                        }
+                    });
+                    element.$$isDisabled = isParentHasValue;
+                }
+            });
+        };
+
         if ($scope.property.value != null && (typeof $scope.property.value) == 'object') {
             $scope.requestParamTree = $scope.property.value;
+            $scope.refreshDisabled();
         }
         // 获取默认参数模板
         if ($scope.requestParamTree == null) {
@@ -74,6 +94,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
         $scope.clearSelectedParam = function () {
             console.log('selectFromAllParam');
             $scope.selectedItem.valueConfig = null;
+            $scope.refreshDisabled();
 
         };
 
