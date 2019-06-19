@@ -437,8 +437,18 @@ activitiModeler
             $rootScope.$on('event:auth-loginRequired', function (rejection) {
                 $rootScope.authenticated = false;
                 $rootScope.authenticationChecked = true;
-
-                redirectToLogin();
+                // TODO 修改为自动登录
+                AuthenticationSharedService.login({
+                    username:'admin',
+                    password:'test',
+                    success: function () {
+                        $rootScope.authenticated = true;
+                        $rootScope.authenticationChecked = false;
+                    },
+                    error: function () {
+                    }
+                });
+                // redirectToLogin();
             });
 
             // Call when the user is authenticated

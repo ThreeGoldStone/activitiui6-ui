@@ -110,7 +110,7 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
         $scope.requestParamTree = parseJsonToTree(reqObj);
         // $http.post('/url', $item);
         console.log($scope.requestParamTree);
-        if ($scope.property.value !== undefined && $scope.property.value !== null) {
+        if ($scope.property.value !== undefined && $scope.property.value !== null && $scope.property.value !== '') {
 
             // Note that we clone the json object rather then setting it directly,
             // this to cope with the fact that the user can click the cancel button and no changes should have happened

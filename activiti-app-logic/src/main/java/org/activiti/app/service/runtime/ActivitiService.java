@@ -46,5 +46,19 @@ public class ActivitiService {
         return processInstance;
 
     }
+    public ProcessInstance startProcessInstanceByKey(String processDefinitionKey, Map<String, Object> variables, String processInstanceName) {
+
+        // Actually start the process
+        // No need to pass the tenant id here, the process definition is already tenant based and the process instance will inherit it
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, variables);
+
+        // Can only set name in case process didn't end instantly
+        if (!processInstance.isEnded() && processInstanceName != null) {
+            runtimeService.setProcessInstanceName(processInstance.getId(), processInstanceName);
+        }
+
+        return processInstance;
+
+    }
 
 }

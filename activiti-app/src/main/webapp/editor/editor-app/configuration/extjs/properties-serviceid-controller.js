@@ -154,7 +154,7 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                 djlLoop:
                     for (var j = 0, len = $scope.serviceList.length; j < len; j++) {
                         var app = $scope.serviceList[j];
-                        for (var i = 0, len = app.serviceList.length; i < len; i++) {
+                        for (var i = 0, len2 = app.serviceList.length; i < len2; i++) {
                             var service = app.serviceList[i];
                             if (service.serviceid == $scope.property.value.serviceid) {
                                 $scope.service = service;
