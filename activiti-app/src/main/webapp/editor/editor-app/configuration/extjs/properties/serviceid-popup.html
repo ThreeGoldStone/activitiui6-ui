@@ -29,15 +29,11 @@
                     </div>
                     <div class="col-xs-6" style="width: 35%">
                         <h4>请求报文模板</h4>
-                    <pre style="overflow-y:auto; overflow-x:auto; height:400px;">
-                        {{service.requestTemplate }}
-                    </pre>
+                        <pre style="overflow-y:auto; overflow-x:auto; height:400px;">{{service.requestTemplate|parsejson|json}}</pre>
                     </div>
                     <div class="col-xs-6" style="width: 35%">
                         <h4>返回报文模板</h4>
-                        <pre style="overflow-y:auto; overflow-x:auto; height:400px;">
-                        {{service.responceTemplate}}
-                        </pre>
+                        <pre style="overflow-y:auto; overflow-x:auto; height:400px;">{{service.responceTemplate|json}}</pre>
                     </div>
                 </div>
             </div>

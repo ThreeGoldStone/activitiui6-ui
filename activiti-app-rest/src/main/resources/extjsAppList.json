@@ -26,5 +26,23 @@
         "servicename": "djl服务2"
       }
     ]
+  },
+  {
+    "id": 3,
+    "appname": "测试专用服务",
+    "serviceList": [
+      {
+        "serviceid": 5,
+        "servicename": "获取产品信息"
+      },
+      {
+        "serviceid": 6,
+        "servicename": "生成订单"
+      },
+      {
+        "serviceid": 7,
+        "servicename": "获取用户信息"
+      }
+    ]
   }
 ]

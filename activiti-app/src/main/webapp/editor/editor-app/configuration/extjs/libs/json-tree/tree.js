@@ -256,6 +256,11 @@ angular.module('activitiModeler')
             }]
         };
     }]);
+angular.module('activitiModeler').filter('parsejson', function () {
+    return function (text) {
+        return JSON.parse(text);
+    }
+})
 
 /**
  *递归树数据，并执行callback

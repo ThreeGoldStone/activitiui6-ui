@@ -1,0 +1,41 @@
+{
+  "productId": 2345,
+  "productName": "高性能主机套件",
+  "isInStock": true,
+  "subProductList": [
+    {
+      "productId": 23451,
+      "productName": "i7 9700k",
+      "des": "英特尔（Intel） i7-9700K 酷睿八核 盒装CPU处理器",
+      "price": 3099.00,
+      "productType": "cpu"
+    },
+    {
+      "productId": 23452,
+      "productName": "PRIME Z390-A",
+      "des": "华硕（ASUS）PRIME Z390-A 主板 大师",
+      "price": 1749.00,
+      "productType": "motherBoard"
+    },
+    {
+      "productId": 23453,
+      "productName": "PRIME Z390-A",
+      "des": "芝奇（G.SKILL）32GB(16G×2)套装 DDR4 3200频率 台式机内存条 皇家戟RGB灯条/(花耀银)",
+      "price": 1699.00,
+      "productType": "memory"
+    },
+    {
+      "productId": 23454,
+      "productName": "GeForce RTX 2080",
+      "des": "英伟达（NVIDIA） GeForce RTX 2080 Founders Edition",
+      "price": 5999.00,
+      "productType": "Graphics card"
+    }
+  ],
+  "storeInfo": {
+    "name": "组装电脑专营店",
+    "rank": 120,
+    "starClass": 4.7,
+    "storeId": 869
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "userId": 10,
+  "action": "getInfoByProductId",
+  "productId": 2345
+}

@@ -36,7 +36,7 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
         $scope.getServiceDetail = function (service) {
             $http({
                 method: 'GET',
-                url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/service/details/' + service.id,
+                url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/service/details/' + service.serviceid,
                 // data: instanceQueryData
             }).success(function (response, status, headers, config) {
                 console.log('data: ' + response);
