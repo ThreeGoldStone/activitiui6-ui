@@ -19,6 +19,16 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.activiti.app.domain.editor.AppDefinition;
+import org.activiti.app.domain.editor.AppModelDefinition;
+import org.activiti.app.domain.editor.Model;
+import org.activiti.app.model.editor.AppDefinitionPublishRepresentation;
+import org.activiti.app.model.editor.AppDefinitionUpdateResultRepresentation;
+import org.activiti.app.model.editor.ModelRepresentation;
+import org.activiti.app.repository.editor.ModelRepository;
+import org.activiti.app.security.SecurityUtils;
+import org.activiti.app.service.api.ModelService;
+import org.activiti.app.service.editor.AppDefinitionImportService;
 import org.activiti.app.service.exception.InternalServerErrorException;
 import org.activiti.app.service.runtime.ActivitiService;
 import org.activiti.engine.HistoryService;
@@ -51,11 +61,17 @@ public class JavaServicesResource {
     @Autowired
     protected RuntimeService runtimeService;
 
+    @Inject
+    protected ModelService modelService;
     //
     @Inject
     protected ObjectMapper objectMapper;
     @Autowired
     protected ActivitiService activitiService;
+    @Autowired
+    protected ModelRepository modelRepository;
+    @Autowired
+    protected AppDefinitionImportService appDefinitionImportService;
 
     @RequestMapping(value = "/rest/java/services", method = RequestMethod.GET, produces = "application/json")
     public ArrayList<JavaServiceEntity> getJavaserviceList() {
@@ -149,5 +165,88 @@ public class JavaServicesResource {
         ProcessInstance processInstance = activitiService.startProcessInstanceByKey(processId, variables, processInstanceName);
 
         return "success";
+    }
+
+    @RequestMapping(value = "/rest/java/saveEditDefAndPublish/{modelId}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public AppDefinitionUpdateResultRepresentation saveAndPublish(@PathVariable String modelId) {
+        Model modelProcessDef = modelService.getModel(modelId);
+        String processDefKey = modelProcessDef.getKey();
+        // 先查询有没有modelId对应的app
+        List<Model> apps = modelRepository.findModelsByKeyAndType(processDefKey + "xx-xx-app", Model.MODEL_TYPE_APP);
+        Model appModel = null;
+        if (apps.size() == 0) {
+            // 没有就新建一个
+            ModelRepresentation modelRepresentation = new ModelRepresentation();
+            modelRepresentation.setKey(processDefKey + "xx-xx-app");
+            modelRepresentation.setName(processDefKey + "xx-xx-app");
+            modelRepresentation.setDescription("自动创建的发布app");
+            modelRepresentation.setModelType(Model.MODEL_TYPE_APP);
+
+            String json = null;
+            try {
+                AppDefinition appDefinition = new AppDefinition();
+                appDefinition.setIcon("glyphicon-asterisk");
+                appDefinition.setTheme("theme-1");
+                List<AppModelDefinition> models = new ArrayList<>();
+                AppModelDefinition appModelDefinition = new AppModelDefinition();
+                appModelDefinition.setCreatedBy(modelProcessDef.getCreatedBy());
+                appModelDefinition.setId(modelProcessDef.getId());
+                appModelDefinition.setLastUpdatedBy(modelProcessDef.getLastUpdatedBy());
+                appModelDefinition.setName(modelProcessDef.getName());
+                appModelDefinition.setLastUpdated(modelProcessDef.getLastUpdated());
+                appModelDefinition.setVersion(modelProcessDef.getVersion());
+                appModelDefinition.setModelType(modelProcessDef.getModelType());
+                models.add(appModelDefinition);
+                appDefinition.setModels(models);
+
+                json = objectMapper.writeValueAsString(appDefinition);
+            } catch (Exception e) {
+                log.error("Error creating app definition", e);
+                throw new InternalServerErrorException("Error creating app definition");
+            }
+            appModel = modelService.createModel(modelRepresentation, json, SecurityUtils.getCurrentUserObject());
+        } else {
+            appModel = apps.get(0);
+        }
+        // 发布app
+        AppDefinitionPublishRepresentation publishModel = new AppDefinitionPublishRepresentation();
+        return appDefinitionImportService.publishAppDefinition(appModel.getId(), publishModel);
+//
+//
+//        // 有就
+//
+//        String json = null;
+//        try {
+//            json = objectMapper.writeValueAsString(new AppDefinition());
+//        } catch (Exception e) {
+//            log.error("Error creating app definition", e);
+//            throw new InternalServerErrorException("Error creating app definition");
+//        }
+//
+//        // 创建新的app
+//        ModelRepresentation modelRepresentation = new ModelRepresentation();
+//
+//        Model newModel = modelService.createModel(modelRepresentation, json, SecurityUtils.getCurrentUserObject());
+//        modelRepository.findModelsByKeyAndType()
+//        // 更新app
+//        Model model = modelService.getModel(modelId);
+//
+//        model.setName(updatedModel.getAppDefinition().getName());
+//        model.setKey(updatedModel.getAppDefinition().getKey());
+//        model.setDescription(updatedModel.getAppDefinition().getDescription());
+//        String editorJson = null;
+//        try {
+//            editorJson = objectMapper.writeValueAsString(updatedModel.getAppDefinition().getDefinition());
+//        } catch (Exception e) {
+//            logger.error("Error while processing app definition json " + modelId, e);
+//            throw new InternalServerErrorException("App definition could not be saved " + modelId);
+//        }
+//
+//        model = modelService.saveModel(model, editorJson, null, false, null, user);
+//        return appDefinitionImportService.publishAppDefinition(modelId, new AppDefinitionPublishRepresentation(null, updatedModel.getForce()));
+//        // 发布app
+//
+
     }
 }
