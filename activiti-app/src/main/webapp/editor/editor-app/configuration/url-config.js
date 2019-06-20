@@ -19,13 +19,16 @@ KISBPM.URL = {
     },
 
     getStencilSet: function () {
-        return ACTIVITI.CONFIG.contextRoot + '/app/rest/stencil-sets/editor?version=' + Date.now()+ "&lang=" + window.localStorage.lang;
+        return ACTIVITI.CONFIG.contextRoot + '/app/rest/stencil-sets/editor?version=' + Date.now() + "&lang=" + window.localStorage.lang;
     },
     getJavaServices: function () {
-        return ACTIVITI.CONFIG.contextRoot + '/app/rest/java/services?version=' + Date.now()+ "&lang=" + window.localStorage.lang;
+        return ACTIVITI.CONFIG.contextRoot + '/app/rest/java/services?version=' + Date.now() + "&lang=" + window.localStorage.lang;
     },
 
     putModel: function (modelId) {
         return ACTIVITI.CONFIG.contextRoot + '/app/rest/models/' + modelId + '/editor/json';
+    },
+    myPublish: function (modelId) {
+        return ACTIVITI.CONFIG.contextRoot + '/app/rest/java/saveEditDefAndPublish/' + modelId;
     }
 };
