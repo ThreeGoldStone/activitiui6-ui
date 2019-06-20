@@ -16,3 +16,10 @@ ul{
 .item-selected{
     background: #2a6496;
 }
+
+.isSingleEdit{
+    padding: 0px 0px 0px 0px;
+    overflow: hidden;
+    max-width: 100%;
+    min-width: 100%;
+}

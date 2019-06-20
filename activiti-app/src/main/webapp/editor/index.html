@@ -40,9 +40,9 @@
     <link href="editor-app/configuration/extjs/libs/json-tree/tree.css" type="text/css" rel="stylesheet">
     <!--加号，减号-->
 </head>
-<body ng-app="activitiModeler" ng-cloak>
+<body ng-app="activitiModeler"  ng-cloak>
 
-<div class="navbar navbar-fixed-top navbar-inverse" role="navigation" id="main-header">
+<div ng-if="!singleEdit" class="navbar navbar-fixed-top navbar-inverse" role="navigation" id="main-header">
     <div class="fixed-container">
         <div class="navbar-header">
             <a ng-click="backToLanding()" class="landing-logo" ng-if="account != null && account != undefined"
@@ -122,7 +122,7 @@
     </div>
 </div>
 
-<div id="main" class="wrapper full clearfix" ng-view="" ng-cloak ng-style="{height: window.height + 'px'}">
+<div id="main"  ng-class="singleEdit ? 'clearfix isSingleEdit' : 'wrapper full clearfix'" ng-view="" ng-cloak ng-style="{height: window.height + 'px'}">
 </div>
 
 <!--[if lt IE 9]>

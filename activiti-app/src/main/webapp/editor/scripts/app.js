@@ -192,8 +192,7 @@ activitiModeler
             $routeProvider.when('/', {
                 redirectTo: ACTIVITI.CONFIG.appDefaultRoute
             });
-        }
-        else {
+        } else {
             $routeProvider.when('/', {
                 redirectTo: '/processes',
                 resolve: {
@@ -213,7 +212,7 @@ activitiModeler
             suffix: '.json'
         });
 
-        $translateProvider.registerAvailableLanguageKeys(['en','zh'], {
+        $translateProvider.registerAvailableLanguageKeys(['en', 'zh'], {
             'en_*': 'en',
             'en-*': 'en',
             'zh_*': 'zh',
@@ -314,7 +313,7 @@ activitiModeler
             $rootScope.safeApply = function (fn) {
                 var phase = this.$root.$$phase;
                 if (phase == '$apply' || phase == '$digest') {
-                    if (fn && (typeof(fn) === 'function')) {
+                    if (fn && (typeof (fn) === 'function')) {
                         fn();
                     }
                 } else {
@@ -391,8 +390,8 @@ activitiModeler
     .run(['$rootScope', '$location', 'AuthenticationSharedService', 'Account', '$translate', '$window', '$modal',
         function ($rootScope, $location, AuthenticationSharedService, Account, $translate, $window, $modal) {
 //    	$rootScope.cur_lang = $rootScope.cur_lang||$translate.use()||'zh';
-    	var lang = window.localStorage.lang||'zh';
-    	$rootScope.cur_lang = lang;
+            var lang = window.localStorage.lang || 'zh';
+            $rootScope.cur_lang = lang;
 //            var proposedLanguage = $translate.proposedLanguage()|| $translate.use();
 //            if (proposedLanguage !== 'de' && proposedLanguage !== 'en' && proposedLanguage !== 'es' && proposedLanguage !== 'fr'
 //                && proposedLanguage !== 'it' && proposedLanguage !== 'ja') {
@@ -400,20 +399,20 @@ activitiModeler
 ////                $translate.use('en');
 //                $translate.use('zh');
 //            }
-    	$translate.use(lang);
+            $translate.use(lang);
             var fixedUrlPart = '/editor/';
 
             $rootScope.logout = function () {
                 AuthenticationSharedService.logout();
             };
             // TODO 添加的切换语言 start
-            $rootScope.switching = function(lang){
+            $rootScope.switching = function (lang) {
                 $translate.use(lang);
                 window.localStorage.lang = lang;
                 window.location.reload();
             };
-            
-         // TODO 添加的切换语言 end
+            $rootScope.singleEdit = $location.search().singleEdit;
+            // TODO 添加的切换语言 end
             var redirectToLogin = function (data) {
                 var absUrl = angular.copy($location.absUrl());
                 // var index = absUrl.indexOf(fixedUrlPart);
@@ -431,8 +430,8 @@ activitiModeler
                 // }
                 // $window.location.href = newUrl;
                 AuthenticationSharedService.login({
-                    username:'admin',
-                    password:'test',
+                    username: 'admin',
+                    password: 'test',
                     success: function () {
                         $rootScope.authenticated = true;
                         $rootScope.authenticationChecked = false;
