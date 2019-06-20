@@ -415,21 +415,35 @@ activitiModeler
             
          // TODO 添加的切换语言 end
             var redirectToLogin = function (data) {
-                var absUrl = $location.absUrl();
-                var index = absUrl.indexOf(fixedUrlPart);
-                var newUrl;
-                if (data !== null && data !== undefined && data.isFromLogout !== undefined && data.isFromLogout === true) {
-                    newUrl = absUrl.substring(0, index) + '/#login';
-                    if (ACTIVITI.CONFIG.loginUrl) {
-                        newUrl = ACTIVITI.CONFIG.loginUrl.replace("{url}", $location.absUrl());
+                var absUrl = angular.copy($location.absUrl());
+                // var index = absUrl.indexOf(fixedUrlPart);
+                // var newUrl;
+                // if (data !== null && data !== undefined && data.isFromLogout !== undefined && data.isFromLogout === true) {
+                //     newUrl = absUrl.substring(0, index) + '/#login';
+                //     if (ACTIVITI.CONFIG.loginUrl) {
+                //         newUrl = ACTIVITI.CONFIG.loginUrl.replace("{url}", $location.absUrl());
+                //     }
+                // } else {
+                //     newUrl = absUrl.substring(0, index) + '/#login?redirectUrl=' + encodeURIComponent($location.absUrl());
+                //     if (ACTIVITI.CONFIG.loginUrl) {
+                //         newUrl = ACTIVITI.CONFIG.loginUrl.replace("{url}", encodeURIComponent($location.absUrl()));
+                //     }
+                // }
+                // $window.location.href = newUrl;
+                AuthenticationSharedService.login({
+                    username:'admin',
+                    password:'test',
+                    success: function () {
+                        $rootScope.authenticated = true;
+                        $rootScope.authenticationChecked = false;
+                        $window.location.href = absUrl;
+                        window.location.reload();
+                        // let splitElement = absUrl.split('#')[1];
+                        // $location.path(splitElement);
+                    },
+                    error: function () {
                     }
-                } else {
-                    newUrl = absUrl.substring(0, index) + '/#login?redirectUrl=' + encodeURIComponent($location.absUrl());
-                    if (ACTIVITI.CONFIG.loginUrl) {
-                        newUrl = ACTIVITI.CONFIG.loginUrl.replace("{url}", encodeURIComponent($location.absUrl()));
-                    }
-                }
-                $window.location.href = newUrl;
+                });
             };
 
 
@@ -438,17 +452,8 @@ activitiModeler
                 $rootScope.authenticated = false;
                 $rootScope.authenticationChecked = true;
                 // TODO 修改为自动登录
-                AuthenticationSharedService.login({
-                    username:'admin',
-                    password:'test',
-                    success: function () {
-                        $rootScope.authenticated = true;
-                        $rootScope.authenticationChecked = false;
-                    },
-                    error: function () {
-                    }
-                });
-                // redirectToLogin();
+
+                redirectToLogin();
             });
 
             // Call when the user is authenticated
@@ -456,14 +461,14 @@ activitiModeler
                 $rootScope.authenticated = true;
                 Account.get().then(function () {
 
-                    if ($rootScope.account && $rootScope.account.type && $rootScope.account.type != 'enterprise' &&
-                        ($location.path() == '/stencils' || $location.path().indexOf('/stencils/') >= 0)) {
-
-                        $location.path('/processes');
-
-                    } else if ($location.path() == '' || $location.path() == '#') {
-                        $location.path('/processes');
-                    }
+                    // if ($rootScope.account && $rootScope.account.type && $rootScope.account.type != 'enterprise' &&
+                    //     ($location.path() == '/stencils' || $location.path().indexOf('/stencils/') >= 0)) {
+                    //
+                    //     $location.path('/processes');
+                    //
+                    // } else if ($location.path() == '' || $location.path() == '#') {
+                    //     $location.path('/processes');
+                    // }
                 });
             });
 
@@ -471,7 +476,7 @@ activitiModeler
             $rootScope.$on('event:auth-loginConfirmed', function () {
                 $rootScope.authenticated = true;
                 $rootScope.account = Account.get();
-                $location.path('/processes');
+                // $location.path('/processes');
             });
 
             // Call when the user logs out
