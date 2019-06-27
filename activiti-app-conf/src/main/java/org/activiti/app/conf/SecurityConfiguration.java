@@ -150,6 +150,8 @@ public class SecurityConfiguration {
                     .sameOrigin()
                     .addHeaderWriter(new XXssProtectionHeaderWriter())
                     .and()
+                    .headers().frameOptions().disable()
+                    .and()
                     .authorizeRequests()
                     .antMatchers("/*").permitAll()
                     .antMatchers("/app/rest/authenticate").permitAll()
