@@ -18,12 +18,121 @@ KISBPM.TOOLBAR = {
 
         saveModel: function (services) {
 
-            _internalCreateModal({
-                backdrop: true,
-                keyboard: true,
-                template: 'editor-app/popups/save-model.html?version=' + Date.now(),
-                scope: services.$scope
-            }, services.$modal, services.$scope);
+            // _internalCreateModal({
+            //     backdrop: true,
+            //     keyboard: true,
+            //     template: 'editor-app/popups/save-model.html?version=' + Date.now(),
+            //     scope: services.$scope
+            // }, services.$modal, services.$scope);
+
+
+            // Indicator spinner image
+            let $scope = services.$scope;
+            let $rootScope = services.$rootScope;
+            var modelMetaData = $scope.editor.getModelMetaData();
+            let $http = services.$http;
+            var description = '';
+            if (modelMetaData.description) {
+                description = modelMetaData.description;
+            }
+
+            var saveDialog = {
+                'name': modelMetaData.name,
+                'key': modelMetaData.key,
+                'description': description,
+                'newVersion': false,
+                'comment': ''
+            };
+
+            $scope.saveDialog = saveDialog;
+            // modelMetaData.name = $scope.saveDialog.name;
+            // modelMetaData.key = $scope.saveDialog.key;
+            // modelMetaData.description = $scope.saveDialog.description;
+
+            var json = $scope.editor.getJSON();
+            json = JSON.stringify(json);
+
+            var params = {
+                modeltype: modelMetaData.model.modelType,
+                json_xml: json,
+                name: $scope.saveDialog.name,
+                key: $scope.saveDialog.key,
+                description: $scope.saveDialog.description,
+                newversion: $scope.saveDialog.newVersion,
+                comment: $scope.saveDialog.comment,
+                lastUpdated: modelMetaData.lastUpdated
+            };
+
+            // if ($scope.error && $scope.error.isConflict) {
+            //     params.conflictResolveAction = $scope.error.conflictResolveAction;
+            //     if ($scope.error.conflictResolveAction === 'saveAs') {
+            //         params.saveAs = $scope.error.saveAs;
+            //     }
+            // }
+
+            // Update
+            var buttonClicked = $scope.items[0];
+            buttonClicked.enabled = false;
+            $http({
+                method: 'POST',
+                data: params,
+                ignoreErrors: true,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj) {
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    }
+                    return str.join("&");
+                },
+                url: KISBPM.URL.putModel(modelMetaData.modelId)
+            })
+
+                .success(function (data, status, headers, config) {
+                    $scope.editor.handleEvents({
+                        type: ORYX.CONFIG.EVENT_SAVED
+                    });
+                    $scope.modelData.name = $scope.saveDialog.name;
+                    $scope.modelData.key = $scope.saveDialog.key;
+                    $scope.modelData.lastUpdated = data.lastUpdated;
+
+                    buttonClicked.enabled = true;
+
+                    // Fire event to all who is listening
+                    var saveEvent = {
+                        type: KISBPM.eventBus.EVENT_TYPE_MODEL_SAVED,
+                        model: params,
+                        modelId: modelMetaData.modelId,
+                        eventType: 'update-model'
+                    };
+                    KISBPM.eventBus.dispatch(KISBPM.eventBus.EVENT_TYPE_MODEL_SAVED, saveEvent);
+                    $rootScope.addAlert("保存成功！" + $scope.saveDialog.name, 'info');
+                    // Reset state
+
+                    // Execute any callback
+                    if (successCallback) {
+                        successCallback();
+                    }
+
+                })
+                .error(function (data, status, headers, config) {
+                    // if (status == 409) {
+                    //     $scope.error = {};
+                    //     $scope.error.isConflict = true;
+                    //     $scope.error.userFullName = data.customData.userFullName;
+                    //     $scope.error.isNewVersionAllowed = data.customData.newVersionAllowed;
+                    //     $scope.error.saveAs = modelMetaData.name + "_2";
+                    // } else {
+                    //     $scope.error = undefined;
+                    //     $scope.saveDialog.errorMessage = data.message;
+                    // }
+
+                    $rootScope.addAlert("保存失败！" + data.message, 'error');
+                    buttonClicked.enabled = true;
+                });
         },
 
         undo: function (services) {
@@ -74,8 +183,7 @@ KISBPM.TOOLBAR = {
                         services.$scope.safeApply(function () {
                             item.enabled = false;
                         });
-                    }
-                    else if (toggleRedo && item.action === 'KISBPM.TOOLBAR.ACTIONS.redo') {
+                    } else if (toggleRedo && item.action === 'KISBPM.TOOLBAR.ACTIONS.redo') {
                         services.$scope.safeApply(function () {
                             item.enabled = true;
                         });
@@ -132,8 +240,7 @@ KISBPM.TOOLBAR = {
                         services.$scope.safeApply(function () {
                             item.enabled = true;
                         });
-                    }
-                    else if (toggleRedo && item.action === 'KISBPM.TOOLBAR.ACTIONS.redo') {
+                    } else if (toggleRedo && item.action === 'KISBPM.TOOLBAR.ACTIONS.redo') {
                         services.$scope.safeApply(function () {
                             item.enabled = false;
                         });
@@ -186,8 +293,7 @@ KISBPM.TOOLBAR = {
             if (enableAdd) {
                 dockerPlugin.setEnableRemove(false);
                 document.body.style.cursor = 'pointer';
-            }
-            else {
+            } else {
                 document.body.style.cursor = 'default';
             }
         },
@@ -204,8 +310,7 @@ KISBPM.TOOLBAR = {
             if (enableRemove) {
                 dockerPlugin.setEnableAdd(false);
                 document.body.style.cursor = 'pointer';
-            }
-            else {
+            } else {
                 document.body.style.cursor = 'default';
             }
         },
