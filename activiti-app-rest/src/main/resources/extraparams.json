@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "appname": "系统应用",
+  "serviceList": [
+    {
+      "serviceid": 1,
+      "servicename": "测试服务1"
+    },
+    {
+      "serviceid": 2,
+      "servicename": "测试服务2"
+    }
+  ]
+}

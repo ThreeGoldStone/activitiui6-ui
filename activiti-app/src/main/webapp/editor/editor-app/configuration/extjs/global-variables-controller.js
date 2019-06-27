@@ -21,6 +21,21 @@ angular.module('activitiModeler').controller('GlobalVariablesPopupCtrl',
         $scope.selectField = {};
         // 初始化已选择的数据
         $scope.myGlobalVarables = angular.copy($scope.globalVariables);
+        $http({
+            method: 'GET',
+            url: ACTIVITI.CONFIG.contextRoot + '/rest/java/getExtraParams',
+            // data: instanceQueryData
+        }).success(function (response, status, headers, config) {
+            console.log('data: ' + response);
+
+        }).error(function (response, status, headers, config) {
+            console.log('Something went wrong: ' + response);
+        });
+        $scope.service = {
+            serviceid: null,
+            servicename: null,
+            des: null
+        };
         let valueConfig = $scope.selectedItem.valueConfig;
         myForEach($scope.myGlobalVarables, function (element) {
             treeDiGui(element.jsonTree, function (e) {

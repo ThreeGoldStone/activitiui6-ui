@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/processdef">
+    <process id="timestart" name="test-timestart" isExecutable="true">
+        <startEvent id="sid-D8CFB9E7-32F7-4940-9BC6-F5E57506EE2E" activiti:isInterrupting="false">
+            <timerEventDefinition>
+                <timeCycle>0/10 * * * * ? *</timeCycle>
+            </timerEventDefinition>
+        </startEvent>
+        <serviceTask id="serviceTask1" activiti:class="com.yw56.javaservice.TestServiceException">
+            <extensionElements>
+                <activiti:executionListener event="start"
+                                            class="com.yw56.javaservice.LogListener"></activiti:executionListener>
+                <activiti:executionListener event="end"
+                                            class="com.yw56.javaservice.LogListener"></activiti:executionListener>
+                <activiti:executionListener event="take"
+                                            class="com.yw56.javaservice.LogListener"></activiti:executionListener>
+            </extensionElements>
+        </serviceTask>
+        <sequenceFlow id="sid-95ECD20B-7D14-426D-A1E6-8BF50F865A85" sourceRef="sid-D8CFB9E7-32F7-4940-9BC6-F5E57506EE2E"
+                      targetRef="serviceTask1"></sequenceFlow>
+        <endEvent id="sid-A1922A09-8954-4383-BA3E-D94BFB8E60E0"></endEvent>
+        <sequenceFlow id="sid-6CBCDF20-2126-4C7A-90CF-E154C1E2736B" sourceRef="serviceTask1"
+                      targetRef="sid-A1922A09-8954-4383-BA3E-D94BFB8E60E0"></sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_timestart">
+        <bpmndi:BPMNPlane bpmnElement="timestart" id="BPMNPlane_timestart">
+            <bpmndi:BPMNShape bpmnElement="sid-D8CFB9E7-32F7-4940-9BC6-F5E57506EE2E"
+                              id="BPMNShape_sid-D8CFB9E7-32F7-4940-9BC6-F5E57506EE2E">
+                <omgdc:Bounds height="31.0" width="31.0" x="150.0" y="180.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="serviceTask1" id="BPMNShape_serviceTask1">
+                <omgdc:Bounds height="80.0" width="100.0" x="300.5" y="155.5"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="sid-A1922A09-8954-4383-BA3E-D94BFB8E60E0"
+                              id="BPMNShape_sid-A1922A09-8954-4383-BA3E-D94BFB8E60E0">
+                <omgdc:Bounds height="28.0" width="28.0" x="570.0" y="181.5"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="sid-95ECD20B-7D14-426D-A1E6-8BF50F865A85"
+                             id="BPMNEdge_sid-95ECD20B-7D14-426D-A1E6-8BF50F865A85">
+                <omgdi:waypoint x="181.99994124634856" y="195.95663972561965"></omgdi:waypoint>
+                <omgdi:waypoint x="300.5" y="195.63550135501356"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="sid-6CBCDF20-2126-4C7A-90CF-E154C1E2736B"
+                             id="BPMNEdge_sid-6CBCDF20-2126-4C7A-90CF-E154C1E2736B">
+                <omgdi:waypoint x="400.5" y="195.5"></omgdi:waypoint>
+                <omgdi:waypoint x="570.0" y="195.5"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

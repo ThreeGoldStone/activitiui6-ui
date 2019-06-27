@@ -34,6 +34,8 @@ import org.activiti.app.service.runtime.ActivitiService;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.impl.asyncexecutor.AsyncExecutor;
+import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.slf4j.Logger;
@@ -72,6 +74,8 @@ public class JavaServicesResource {
     protected ModelRepository modelRepository;
     @Autowired
     protected AppDefinitionImportService appDefinitionImportService;
+    @Autowired
+    ProcessEngineConfigurationImpl processEngineConfiguration;
 
     @RequestMapping(value = "/rest/java/services", method = RequestMethod.GET, produces = "application/json")
     public ArrayList<JavaServiceEntity> getJavaserviceList() {
@@ -125,40 +129,13 @@ public class JavaServicesResource {
         }
     }
 
-    @RequestMapping(value = "/rest/java/getPDs", method = RequestMethod.GET, produces = "application/json")
-    public List<ProcessDefinition> getProcessDefines() {
-//		try {
-//			String fileName = "java-services.js";
-//			JsonNode stencilNode = objectMapper
-//					.readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
-//			return stencilNode;
-//		} catch (Exception e) {
-//			log.error("Error reading bpmn stencil set json", e);
-//			throw new InternalServerErrorException("Error reading bpmn stencil set json");
-//		}
-//        repositoryService.ge
-//        runtimeService
-        List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery().list();
-
-        return list;
-    }
 
     @RequestMapping(value = "/rest/java/startProcessInstance", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public String startProcessInstance(@RequestBody JSONObject jsonObject) {
-//		try {
-//			String fileName = "java-services.js";
-//			JsonNode stencilNode = objectMapper
-//					.readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
-//			return stencilNode;
-//		} catch (Exception e) {
-//			log.error("Error reading bpmn stencil set json", e);
-//			throw new InternalServerErrorException("Error reading bpmn stencil set json");
-//		}
-//        repositoryService.ge
-//        runtimeService
+        AsyncExecutor asyncExecutor = processEngineConfiguration.getAsyncExecutor();
+        asyncExecutor.start();
         log.info(jsonObject.toJSONString());
-//        List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery().list();
         String processId = jsonObject.getString("processId");
         String processInstanceName = jsonObject.getString("processInstanceName");
         JSONObject variables = jsonObject.getJSONObject("variables");
@@ -248,5 +225,18 @@ public class JavaServicesResource {
 //        // 发布app
 //
 
+    }
+
+    @RequestMapping(value = "/rest/java/getExtraParams", method = RequestMethod.GET, produces = "application/json")
+    public JsonNode getExtraParams() {
+        try {
+            String fileName = "extarparams.json";
+            JsonNode stencilNode = objectMapper
+                    .readTree(this.getClass().getClassLoader().getResourceAsStream(fileName));
+            return stencilNode;
+        } catch (Exception e) {
+            log.error("Error reading extarparams.json", e);
+            throw new InternalServerErrorException("Error reading extarparams.json json");
+        }
     }
 }

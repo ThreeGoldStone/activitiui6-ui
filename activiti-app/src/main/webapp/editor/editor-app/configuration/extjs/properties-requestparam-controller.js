@@ -62,10 +62,25 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
             $scope.requestParamTree = $scope.property.value;
             $scope.refreshDisabled();
         }
+        // Close button handler
+        $scope.close = function () {
+            treeDiGui($scope.requestParamTree, function (element) {
+                element.$$isExpend = false;
+                element.$$isChecked = false;
+            })
+            $scope.property.mode = 'read';
+            $scope.$hide();
+        };
         // 获取默认参数模板
         if ($scope.requestParamTree == null) {
             // 获取返回参数报文模板
             let mShapeData = getSelectionShapesData($scope);
+            if (!mShapeData.properties.extjsserviceid) {
+                // 如果没选取extjs的服务，就报错
+                $scope.addAlert('请先选择extjs服务！', 'error');
+                $scope.close();
+                return;
+            }
             let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.requestTemplate);
             // 生成返回参数报文模板树
             $scope.requestParamTree = parseJsonToTree(reqObj);
@@ -138,13 +153,5 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
             $scope.close();
         };
 
-        // Close button handler
-        $scope.close = function () {
-            treeDiGui($scope.requestParamTree, function (element) {
-                element.$$isExpend = false;
-                element.$$isChecked = false;
-            })
-            $scope.property.mode = 'read';
-            $scope.$hide();
-        };
+
     }]);

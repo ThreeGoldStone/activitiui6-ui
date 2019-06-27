@@ -60,6 +60,11 @@ public class ExtJSService implements JavaDelegate {
         Map<String, Object> variables = execution.getVariables();
         JSONObject jsonObject = new JSONObject();
         jsonObject.putAll(variables);
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         LOGGER.info("全局json参数为 >>>>> " + jsonObject.toJSONString());
 //       throw new RuntimeException();
 //        try {

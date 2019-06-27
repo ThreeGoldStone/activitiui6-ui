@@ -11,3 +11,9 @@ org.activiti.app.rest.editor.AppDefinitionResource.updateAppDefinition
 // 发布
 。。。publishAppDefinition
 
+
+//获取编辑列表
+http://localhost:8080/activiti-app/app/rest/models?filter=myProcesses&modelType=0&sort=modifiedDesc
+
+//获取执行的或执行过的流程列表
+http://localhost:8080/activiti-app/app/rest/query/process-instances

@@ -268,15 +268,16 @@ angular.module('activitiModeler').filter('parsejson', function () {
  * @param callback
  */
 function treeDiGui(tree, callback) {
-    for (var j = 0, len = tree.length; j < len; j++) {
-        let element = tree[j];
-        callback(element);
-        let clist = element.children;
-        if (clist != null && clist.length > 0) {
-            treeDiGui(clist, callback)
+    if (tree && tree.length) {
+        for (var j = 0, len = tree.length; j < len; j++) {
+            let element = tree[j];
+            callback(element);
+            let clist = element.children;
+            if (clist != null && clist.length > 0) {
+                treeDiGui(clist, callback)
+            }
         }
     }
-
 }
 
 /**
@@ -286,21 +287,22 @@ function treeDiGui(tree, callback) {
  * @param callback 执行的回调方法
  */
 function treeDiGuiWithParent(parents, tree, callback) {
-    for (var j = 0, len = tree.length; j < len; j++) {
-        let element = tree[j];
-        callback(parents, element);
-        let clist = element.children;
-        if (clist != null && clist.length > 0) {
-            let mParents = [];
-            if (parents != null) mParents = [...parents];
-            // if (parents != null) {
-            //     mParents.push(parents);
-            // }
-            mParents.push(element);
-            treeDiGuiWithParent(mParents, clist, callback)
+    if (tree && tree.length) {
+        for (var j = 0, len = tree.length; j < len; j++) {
+            let element = tree[j];
+            callback(parents, element);
+            let clist = element.children;
+            if (clist != null && clist.length > 0) {
+                let mParents = [];
+                if (parents != null) mParents = [...parents];
+                // if (parents != null) {
+                //     mParents.push(parents);
+                // }
+                mParents.push(element);
+                treeDiGuiWithParent(mParents, clist, callback)
+            }
         }
     }
-
 }
 
 function singleCheckById(tree, valuePath) {
@@ -333,23 +335,27 @@ function singleCheckByIdWhithParentExpend(tree, valuePath) {
  * @param callBack
  */
 function myForEach(list, callBack) {
-    for (let i = 0, len = list.length; i < len; i++) {
-        let listElement = list[i];
-        callBack(listElement);
-        if (listElement.$$break) {
-            delete listElement.$$break;
-            break;
+    if (list && list.length) {
+        for (let i = 0, len = list.length; i < len; i++) {
+            let listElement = list[i];
+            callBack(listElement);
+            if (listElement.$$break) {
+                delete listElement.$$break;
+                break;
+            }
         }
     }
 }
 
 function myForEachWitchIndex(list, callBack) {
-    for (let i = 0, len = list.length; i < len; i++) {
-        let listElement = list[i];
-        callBack(listElement, i);
-        if (listElement.$$break) {
-            delete listElement.$$break;
-            break;
+    if (list && list.length) {
+        for (let i = 0, len = list.length; i < len; i++) {
+            let listElement = list[i];
+            callBack(listElement, i);
+            if (listElement.$$break) {
+                delete listElement.$$break;
+                break;
+            }
         }
     }
 }
