@@ -59,7 +59,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
         };
 
         if ($scope.property.value != null && (typeof $scope.property.value) == 'object') {
-            $scope.requestParamTree = $scope.property.value;
+            $scope.requestParamTree = angular.copy($scope.property.value);
             $scope.refreshDisabled();
         }
         // Close button handler
@@ -71,8 +71,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
             $scope.property.mode = 'read';
             $scope.$hide();
         };
-        // 获取默认参数模板
-        if ($scope.requestParamTree == null) {
+        $scope.forceRefresh = function () {
             // 获取返回参数报文模板
             let mShapeData = getSelectionShapesData($scope);
             if (!mShapeData.properties.extjsserviceid) {
@@ -84,15 +83,46 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
             let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.requestTemplate);
             // 生成返回参数报文模板树
             $scope.requestParamTree = parseJsonToTree(reqObj);
+        };
+        // 获取默认参数模板
+        if ($scope.requestParamTree == null) {
+            $scope.forceRefresh();
         }
 
         // 获取全局参数 json
         $scope.globalVariables = getAllGlobalVariablesJson($scope);
-        // 把各个节点的参数转化为树状结构
-        myForEach($scope.globalVariables, function (vj) {
-            let vt = parseJsonToTree(vj.variables);
-            vj.jsonTree = vt;
+        // myForEach($scope.globalVariables, function (vj) {
+        //     let vt = parseJsonToTree(vj.variables);
+        //     vj.jsonTree = vt;
+        // });
+        $http({
+            method: 'GET',
+            url: KISBPM.URL.getExtraParams($scope.editor.id),
+            // data: instanceQueryData
+        }).success(function (response, status, headers, config) {
+            console.log('data: ' + response);
+            if (response) {
+
+                myForEach($scope.globalVariables, function (item) {
+                    if (item.stencilid.indexOf('Start') > -1) {
+                        // try {
+                        //     response = JSON.parse(response);
+                        // } catch (e) {
+                        //     console.log(response + " 不是json，按照string处理")
+                        // }
+                        item.variables.inputData = response.data;
+                    }
+                });
+            }
+            myForEach($scope.globalVariables, function (vj) {
+                let vt = parseJsonToTree(vj.variables);
+                vj.jsonTree = vt;
+            });
+        }).error(function (response, status, headers, config) {
+            console.log('Something went wrong: ' + response);
         });
+        // 把各个节点的参数转化为树状结构
+
         $scope.selectFromAllParam = function () {
             // $scope.selectedItem = $item;
             console.log('selectFromAllParam');

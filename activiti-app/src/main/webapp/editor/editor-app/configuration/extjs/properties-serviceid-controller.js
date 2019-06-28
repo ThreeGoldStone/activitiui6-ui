@@ -31,7 +31,7 @@ angular.module('activitiModeler').controller('BpmServiceidCtrl',
     }]);
 
 angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
-    ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
+    ['$scope', '$q', '$translate', '$timeout', '$http','$location', function ($scope, $q, $translate, $timeout, $http,$location) {
 // javaservices的数据定义
         $scope.getServiceDetail = function (service) {
             $http({
@@ -40,8 +40,8 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                 // data: instanceQueryData
             }).success(function (response, status, headers, config) {
                 console.log('data: ' + response);
-                service.requestTemplate = response.requestTemplate;
-                service.responceTemplate = response.responceTemplate;
+                service.requestTemplate = response.requestbody;
+                service.responceTemplate = response.responsebody;
             }).error(function (response, status, headers, config) {
                 console.log('Something went wrong: ' + response);
             });
@@ -142,9 +142,10 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
             // },
 
         ];
+        let tenantid = $location.search().tenantid;
         $http({
             method: 'GET',
-            url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/ExtServices',
+            url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/ExtServices/'+tenantid,
             // data: instanceQueryData
         }).success(function (response, status, headers, config) {
             console.log('data: ' + response);

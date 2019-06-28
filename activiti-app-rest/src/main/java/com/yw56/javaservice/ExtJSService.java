@@ -52,10 +52,8 @@ public class ExtJSService implements JavaDelegate {
         LOGGER.info(extjsserviceresultset.getExpressionText());
 
         String requestBody = formRequestBody(execution);
-//        ResponseEntity response = request(execution, url, requestBody);
         LOGGER.info("请求参数为 >>>>> " + requestBody);
         String data = request(execution, url, requestBody);
-//        String data = response.getBody().toString();
         setResponseToEvn(data, execution);
         Map<String, Object> variables = execution.getVariables();
         JSONObject jsonObject = new JSONObject();
@@ -76,17 +74,17 @@ public class ExtJSService implements JavaDelegate {
     }
 
     private String request(DelegateExecution execution, String url, String requestBody) {
-//        RestTemplate restTemplate = new RestTemplate(PropertiesUtils.requestFactory);
-//        HttpMethod method = HttpMethod.POST;
-//        execution.setVariable("times", execution.getVariable("times") + "+1");
-//        Class responseType = String.class;
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//        HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
-//        ResponseEntity responseEntity = restTemplate.exchange(url, method, requestEntity, responseType);
-//        String data = responseEntity.getBody().toString();
-//        return data;
-        String serviceId = getServiceId();
+        RestTemplate restTemplate = new RestTemplate(PropertiesUtils.requestFactory);
+        HttpMethod method = HttpMethod.POST;
+        execution.setVariable("times", execution.getVariable("times") + "+1");
+        Class responseType = String.class;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity requestEntity = new HttpEntity<String>(requestBody, headers);
+        ResponseEntity responseEntity = restTemplate.exchange(url, method, requestEntity, responseType);
+        String data = responseEntity.getBody().toString();
+        return data;
+
 //        switch (serviceId) {
 //            case "5":
 //
@@ -96,16 +94,16 @@ public class ExtJSService implements JavaDelegate {
 //            case "7":
 //                break;
 //        }
-        String fileNameRes = serviceId + "/response.json";
-        try {
-            InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream(fileNameRes);
-            byte[] b = new byte[resourceAsStream.available()];
-            resourceAsStream.read(b);
-            return new String(b, "utf-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+//        String fileNameRes = serviceId + "/response.json";
+//        try {
+//            InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream(fileNameRes);
+//            byte[] b = new byte[resourceAsStream.available()];
+//            resourceAsStream.read(b);
+//            return new String(b, "utf-8");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
     }
 
     private String getServiceId() {

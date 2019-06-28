@@ -30,5 +30,8 @@ KISBPM.URL = {
     },
     myPublish: function (modelId) {
         return ACTIVITI.CONFIG.contextRoot + '/app/rest/java/saveEditDefAndPublish/' + modelId;
+    },
+    getExtraParams: function (modelId) {
+        return ACTIVITI.CONFIG.contextRoot + '/app/rest/java/getExtraParams/' + modelId;
     }
 };
