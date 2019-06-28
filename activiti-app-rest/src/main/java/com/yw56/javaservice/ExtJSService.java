@@ -41,7 +41,7 @@ public class ExtJSService implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) {
         String tenantId = execution.getTenantId();
-        String url = extProperties.getProperty("interfacesforward.url") + "?tenantId=" +
+        String url = extProperties.getProperty("interfacesforward.url") + "?iswrapResult=false&tenantId=" +
                 tenantId +
                 "&serviceId=" +
                 getServiceId();
