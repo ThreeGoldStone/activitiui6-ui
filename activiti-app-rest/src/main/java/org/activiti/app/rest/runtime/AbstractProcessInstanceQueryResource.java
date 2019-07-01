@@ -58,7 +58,10 @@ public abstract class AbstractProcessInstanceQueryResource {
         if (processDefinitionIdNode != null && processDefinitionIdNode.isNull() == false) {
             instanceQuery.processDefinitionId(processDefinitionIdNode.asText());
         }
-
+        JsonNode processInstanceBusinessKey = requestNode.get("processInstanceBusinessKey");
+        if (processInstanceBusinessKey != null && processInstanceBusinessKey.isNull() == false) {
+            instanceQuery.processInstanceBusinessKey(processInstanceBusinessKey.asText());
+        }
         JsonNode deploymentKeyNode = requestNode.get("deploymentKey");
         if (deploymentKeyNode != null && deploymentKeyNode.isNull() == false) {
             // Results need to be filtered in an app-context. We need to fetch the deployment id for this app and use that in the query
