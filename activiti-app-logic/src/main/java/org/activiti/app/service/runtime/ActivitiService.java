@@ -14,6 +14,7 @@ package org.activiti.app.service.runtime;
 
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,11 +47,31 @@ public class ActivitiService {
         return processInstance;
 
     }
+
     public ProcessInstance startProcessInstanceByKey(String processDefinitionKey, Map<String, Object> variables, String processInstanceName) {
 
         // Actually start the process
         // No need to pass the tenant id here, the process definition is already tenant based and the process instance will inherit it
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, variables);
+
+        // Can only set name in case process didn't end instantly
+        if (!processInstance.isEnded() && processInstanceName != null) {
+            runtimeService.setProcessInstanceName(processInstance.getId(), processInstanceName);
+        }
+
+        return processInstance;
+
+    }
+
+    public ProcessInstance startProcessInstanceByKeyAndTenantId(String processDefinitionKey, Map<String, Object> variables, String processInstanceName, String businessKey) {
+
+        // Actually start the process
+        // No need to pass the tenant id here, the process definition is already tenant based and the process instance will inherit it
+        if (StringUtils.isBlank(businessKey)) {
+            return startProcessInstanceByKey(processDefinitionKey, variables, processInstanceName);
+        }
+
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, businessKey, variables);
 
         // Can only set name in case process didn't end instantly
         if (!processInstance.isEnded() && processInstanceName != null) {

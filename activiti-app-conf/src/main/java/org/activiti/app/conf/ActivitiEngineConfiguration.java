@@ -146,6 +146,7 @@ public class ActivitiEngineConfiguration {
         DefaultAsyncJobExecutor asyncExecutor = new DefaultAsyncJobExecutor();
         asyncExecutor.setDefaultAsyncJobAcquireWaitTimeInMillis(5000);
         asyncExecutor.setDefaultTimerJobAcquireWaitTimeInMillis(5000);
+        asyncExecutor.setAsyncJobLockTimeInMillis(5000);
         asyncExecutor.setAutoActivate(true);
         return asyncExecutor;
     }

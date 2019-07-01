@@ -49,7 +49,6 @@ public abstract class AbstractProcessInstanceQueryResource {
     public ResultListDataRepresentation getProcessInstances(ObjectNode requestNode) {
 
         HistoricProcessInstanceQuery instanceQuery = historyService.createHistoricProcessInstanceQuery();
-
         User currentUser = SecurityUtils.getCurrentUserObject();
         instanceQuery.involvedUser(String.valueOf(currentUser.getId()));
 
