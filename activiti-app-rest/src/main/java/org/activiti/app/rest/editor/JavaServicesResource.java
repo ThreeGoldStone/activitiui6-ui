@@ -192,10 +192,10 @@ public class JavaServicesResource {
         asyncExecutor.start();
         log.info(jsonObject.toJSONString());
         String processId = jsonObject.getString("processId");
-        String tenantid = jsonObject.getString("tenantid");
+        String businessKey = jsonObject.getString("businessKey");
         String processInstanceName = jsonObject.getString("processInstanceName");
         JSONObject variables = jsonObject.getJSONObject("variables");
-        ProcessInstance processInstance = activitiService.startProcessInstanceByKeyAndTenantId(processId, variables, processInstanceName, tenantid);
+        ProcessInstance processInstance = activitiService.startProcessInstanceByKeyAndTenantId(processId, variables, processInstanceName, businessKey);
         JSONObject jsonObject1 = new JSONObject();
         String processDefinitionId = processInstance.getProcessDefinitionId();
         jsonObject1.put("processDefinitionId", processDefinitionId);

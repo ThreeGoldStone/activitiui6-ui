@@ -31,21 +31,47 @@ angular.module('activitiModeler').controller('BpmServiceidCtrl',
     }]);
 
 angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
-    ['$scope', '$q', '$translate', '$timeout', '$http','$location', function ($scope, $q, $translate, $timeout, $http,$location) {
+    ['$rootScope', '$scope', '$q', '$translate', '$timeout', '$http', '$location', function ($rootScope, $scope, $q, $translate, $timeout, $http, $location) {
 // javaservices的数据定义
         $scope.getServiceDetail = function (service) {
+            $scope.detailStatus = {
+                loading: true,
+                error: false,
+                errorMessage: ''
+            };
             $http({
                 method: 'GET',
                 url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/service/details/' + service.serviceid,
                 // data: instanceQueryData
             }).success(function (response, status, headers, config) {
+                $scope.detailStatus.loading = false;
                 console.log('data: ' + response);
                 service.requestTemplate = response.requestbody;
                 service.responceTemplate = response.responsebody;
             }).error(function (response, status, headers, config) {
+                $scope.detailStatus.loading = false;
+                $scope.detailStatus.error = true;
+                $scope.detailStatus.errorMessage = '获取'+service.serviceid+'的模板失败！';
                 console.log('Something went wrong: ' + response);
             });
 
+        };
+        $scope.listStatus = {
+            loading: true,
+            error: false,
+            errorMessage: ''
+        };
+        $scope.detailStatus = {
+            loading: false,
+            error: false,
+            errorMessage: ''
+        };
+        $scope.close = function () {
+            $scope.property.mode = 'read';
+            $scope.$hide();
+        };
+        $scope.retryDetail = function () {
+            $scope.getServiceDetail($scope.service);
         };
         // TODO 当代数据接口
         $scope.serviceList = [
@@ -145,7 +171,7 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
         let tenantid = $location.search().tenantid;
         $http({
             method: 'GET',
-            url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/ExtServices/'+tenantid,
+            url: ACTIVITI.CONFIG.contextRoot + '/app/rest/java/ExtServices/' + tenantid,
             // data: instanceQueryData
         }).success(function (response, status, headers, config) {
             console.log('data: ' + response);
@@ -167,8 +193,12 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
                         }
                     }
             }
+            $scope.listStatus.loading = false;
         }).error(function (response, status, headers, config) {
             console.log('Something went wrong: ' + response);
+            $scope.close();
+            $rootScope.addAlert('获取EXTJS服务列表失败：' + status, 'error');
+            $scope.listStatus.loading = false;
         });
         $scope.service = {
             serviceid: null,
@@ -195,6 +225,11 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
             $event.stopPropagation();
         };
         $scope.itemCheckedChanged = function ($item) {
+            $scope.detailStatus = {
+                loading: false,
+                error: false,
+                errorMessage: ''
+            };
             // 实现单选
             if ($item.$$isChecked && $scope.service != null && ($scope.service != $item)) {
                 $scope.service.$$isChecked = false;
@@ -226,8 +261,5 @@ angular.module('activitiModeler').controller('BpmServiceidPopupCtrl',
         };
 
         // Close button handler
-        $scope.close = function () {
-            $scope.property.mode = 'read';
-            $scope.$hide();
-        };
+
     }]);

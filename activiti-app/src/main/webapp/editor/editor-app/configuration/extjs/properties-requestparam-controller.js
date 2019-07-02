@@ -31,7 +31,7 @@ angular.module('activitiModeler').controller('BpmRequestparamCtrl',
     }]);
 
 angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
-    ['$scope', '$modal', '$q', '$translate', '$timeout', '$http', function ($scope, $modal, $q, $translate, $timeout, $http) {
+    ['$rootScope','$scope', '$modal', '$q', '$translate', '$timeout', '$http', function ($rootScope,$scope, $modal, $q, $translate, $timeout, $http) {
 
 
         $q.all([]).then(function (results) {
@@ -76,7 +76,7 @@ angular.module('activitiModeler').controller('BpmRequestparamPopupCtrl',
             let mShapeData = getSelectionShapesData($scope);
             if (!mShapeData.properties.extjsserviceid) {
                 // 如果没选取extjs的服务，就报错
-                $scope.addAlert('请先选择extjs服务！', 'error');
+                $rootScope.addAlert('请先选择extjs服务id！', 'error');
                 $scope.close();
                 return;
             }

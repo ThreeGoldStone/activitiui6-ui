@@ -32,7 +32,7 @@ angular.module('activitiModeler').controller('BpmResultsetCtrl',
 
 
 angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
-    ['$scope', '$q', '$translate', '$timeout', '$http', function ($scope, $q, $translate, $timeout, $http) {
+    ['$rootScope', '$scope', '$q', '$translate', '$timeout', '$http', function ($rootScope, $scope, $q, $translate, $timeout, $http) {
         // Put json representing form properties on scope
         $scope.requestParamTree = [
             // {
@@ -103,8 +103,16 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
             // },
 
         ];
+        $scope.close = function () {
+            $scope.property.mode = 'read';
+            $scope.$hide();
+        };
         // 获取返回参数报文模板
         let mShapeData = getSelectionShapesData($scope);
+        if (!mShapeData.properties.extjsserviceid) {
+            $rootScope.addAlert('请先选择extjs服务id！', 'error');
+            $scope.close();
+        }
         let reqObj = JSON.parse(mShapeData.properties.extjsserviceid.responceTemplate);
         // 生成返回参数报文模板树
         $scope.requestParamTree = parseJsonToTree(reqObj);
@@ -287,8 +295,5 @@ angular.module('activitiModeler').controller('BpmResultsetPopupCtrl',
         };
 
         // Close button handler
-        $scope.close = function () {
-            $scope.property.mode = 'read';
-            $scope.$hide();
-        };
+
     }]);

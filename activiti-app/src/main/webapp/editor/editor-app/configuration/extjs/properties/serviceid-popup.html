@@ -9,6 +9,7 @@
             <div class="modal-body">
                 <div class="row row-no-gutter">
                     <div class="col-xs-6" style="width: 30%">
+                        <span loading="listStatus.loading"></span>
                         <div style="overflow-y:auto; overflow-x:auto; height:400px;">
                             <ul class="tree-view">
                                 <li ng-repeat="appItem in serviceList">
@@ -19,7 +20,7 @@
                                             <input type="checkbox" ng-model="serviceItem.$$isChecked" class="check-box"
                                                    ng-change="itemCheckedChanged(serviceItem)">
                                             <span>{{serviceItem.servicename}}</span>
-                                            <span>{{'id:'+serviceItem.serviceid}}</span>
+                                            <span>{{'('+serviceItem.servicedesc+')'}}</span>
                                             <span>{{serviceItem.des}}</span>
                                         </li>
                                     </ul>
@@ -29,10 +30,17 @@
                     </div>
                     <div class="col-xs-6" style="width: 35%">
                         <h4>请求报文模板</h4>
-                        <pre ng-if="service.requestTemplate"  style="overflow-y:auto; overflow-x:auto; height:400px;">{{service.requestTemplate | parsejson |json}}</pre>
+                        <span loading="detailStatus.loading"></span>
+                        <div ng-if="detailStatus.error">
+                            <span class="error-message">{{detailStatus.errorMessage}}</span>
+                            <button ng-click="retryDetail()">重试</button>
+                        </div>
+
+                        <pre ng-if="service.requestTemplate" style="overflow-y:auto; overflow-x:auto; height:400px;">{{service.requestTemplate | parsejson |json}}</pre>
                     </div>
                     <div class="col-xs-6" style="width: 35%">
                         <h4>返回报文模板</h4>
+                        <span loading="detailStatus.loading"></span>
                         <pre ng-if="service.responceTemplate" style="overflow-y:auto; overflow-x:auto; height:400px;">{{service.responceTemplate | parsejson |json}}</pre>
                     </div>
                 </div>
